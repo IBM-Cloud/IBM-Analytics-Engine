@@ -1,0 +1,18 @@
+{
+    "num_compute_nodes": 1,
+    "hardware_config": "default",
+    "software_package": "ae-1.0-hadoop-spark",
+    "customization": [{
+        "name": "action1",
+        "type": "bootstrap",
+        "script": {
+            "source_type": "https",
+            "source_props": {
+                "username": "",
+                "password": ""
+            },
+            "script_path": "https://raw.githubusercontent.com/shusseyIBM/iae-cli-create/master/bootstrap-mysql.sh"
+        },
+        "script_params": ["admin", "ZCBWQXXXXGQXMJET", "hive", "sl-us-south-1-portal.13.dblayer.com", "32023"]
+    }]
+}

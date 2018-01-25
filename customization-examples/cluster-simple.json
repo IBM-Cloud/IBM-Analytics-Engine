@@ -1,0 +1,5 @@
+{
+    "num_compute_nodes": 1,
+    "hardware_config": "default",
+    "software_package": "ae-1.0-spark"
+}
