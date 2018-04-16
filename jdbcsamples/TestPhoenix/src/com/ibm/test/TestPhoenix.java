@@ -8,16 +8,19 @@ import java.util.Properties;
 
 public class TestPhoenix {  
 
+  // simple java program to show how to work with Phoenix on the Analytics Engine.
+  //<CHANGEME1> - Change to the endpoint from the VCAP of your cluster
+  //<CHANGEME2> - Change to the password of the cluster user from the VCAP of your cluster
   public static void main(String[] args) throws Exception{
     
       // Phoenix jdbc connection string. Refer to the phoenix endpoint from the cluster
-      String phoenix_jdbc_url = "jdbc:phoenix:thin:url=https://chs-mmm-007-mn001.bi.services.us-south.bluemix.net:8443/"
+      String phoenix_jdbc_url = "jdbc:phoenix:thin:url=https://chs-<CHANGEME1>-mn001.bi.services.us-south.bluemix.net:8443/"
         + "gateway/default/avatica;authentication=BASIC;serialization=PROTOBUF";
 
       Class.forName("org.apache.phoenix.jdbc.PhoenixDriver");
       Properties props = new Properties();
       props.setProperty("avatica_user", "clsadmin");
-      props.setProperty("avatica_password", "yadayada");
+      props.setProperty("avatica_password", "<CHANGEME2>");
       Connection conn=DriverManager.getConnection(phoenix_jdbc_url, props);
       
       //CREATE TABLE
