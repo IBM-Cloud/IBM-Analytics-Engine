@@ -5,7 +5,7 @@
 # as an external db. This scripts expects following four arguments:
 # <db_user> <db_password> <db_name> <db_conn_url>
 # Connection url shall be specified in the following format
-# jdbc:mysql://<dbHost>:<dbPort>/<dbName>?createDatabaseIfNotExist=true
+# jdbc:mysql://<dbHost>:<dbPort>/<dbName>
 #-----------------------------------------------------------------------
 
 # Helper functions
