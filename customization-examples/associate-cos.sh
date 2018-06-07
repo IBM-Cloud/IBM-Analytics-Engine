@@ -65,11 +65,15 @@ else
 fi
 
 # Actual customization starts here
+# Note : For existing HDP 2.6.2 clusters, please use configs.sh for cluster customization
+# For new HDP 2.6.2 or 2.6.5 clusters, the following customization using configs.py will work
 if [ "x$NODE_TYPE" == "xmanagement-slave2" ]
-then    
-    /var/lib/ambari-server/resources/scripts/configs.sh -u $AMBARI_USER -p $AMBARI_PASSWORD -port $AMBARI_PORT -s set $AMBARI_HOST $CLUSTER_NAME core-site "fs.cos.myprodservice.access.key" $S3_ACCESS_KEY
-    /var/lib/ambari-server/resources/scripts/configs.sh -u $AMBARI_USER -p $AMBARI_PASSWORD -port $AMBARI_PORT -s set $AMBARI_HOST $CLUSTER_NAME core-site "fs.cos.myprodservice.endpoint" $S3_ENDPOINT
-    /var/lib/ambari-server/resources/scripts/configs.sh -u $AMBARI_USER -p $AMBARI_PASSWORD -port $AMBARI_PORT -s set $AMBARI_HOST $CLUSTER_NAME core-site "fs.cos.myprodservice.secret.key" $S3_SECRET_KEY
+then 
+    echo "Updating Ambari properties"
+    python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$AMBARI_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=core-site -k "fs.cos.myprodservice.access.key" -v $S3_ACCESS_KEY
+    python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$AMBARI_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=core-site -k "fs.cos.myprodservice.endpoint" -v $S3_ENDPOINT
+    python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$AMBARI_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=core-site -k "fs.cos.myprodservice.secret.key" -v $S3_SECRET_KEY
+
 
     echo 'Restart affected services'
     response=`curl -k -u $AMBARI_USER:$AMBARI_PASSWORD -H 'X-Requested-By: ambari' --silent -w "%{http_code}" -X POST -d '{"RequestInfo":{"command":"RESTART","context":"Restart all required services","operation_level":"host_component"},"Requests/resource_filters":[{"hosts_predicate":"HostRoles/stale_configs=true"}]}' https://$AMBARI_HOST:$AMBARI_PORT/api/v1/clusters/$CLUSTER_NAME/requests` 
