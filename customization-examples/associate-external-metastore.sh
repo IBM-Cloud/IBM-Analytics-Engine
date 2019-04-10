@@ -60,6 +60,7 @@ trackProgress ()
 # Validate input
 if [ $# -ne 5 ]
 then 
+	 echo "$# is the number of arguments passed" 
 	 echo "Usage: $0 <db_user> <db_password> <db_name> <db_conn_url> <cluster_password>"
 else
 	DB_USER_NAME="$1"
