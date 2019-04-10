@@ -2,10 +2,10 @@
 #-----------------------------------------------------------------------
 # Customization script to point an IAE cluster's, Hive meta-store to an 
 # external mysql database. It is recommended to use PostGreSQL
-# as an external db. This scripts expects following four arguments:
+# as an external db. This scripts expects following five arguments:
 # <db_user> <db_password> <db_name> <db_conn_url> <cluster_password>
 # Connection url shall be specified in the following format
-# jdbc:mysql://<dbHost>:<dbPort>/<dbName>
+# jdbc:postgresql://<hostname>:<port>/<dbname>?sslmode=verify-ca&sslrootcert=<path-to-cert>
 #-----------------------------------------------------------------------
 
 # Helper functions
@@ -80,6 +80,8 @@ then
      python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$CLUSTER_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=hive-site -k "javax.jdo.option.ConnectionURL" -v $DB_CXN_URL
      python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$CLUSTER_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=hive-site -k "javax.jdo.option.ConnectionUserName" -v $DB_USER_NAME
      python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$CLUSTER_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=hive-site -k "javax.jdo.option.ConnectionPassword" -v $DB_PWD
+     python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$CLUSTER_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=hive-site -k "javax.jdo.option.ConnectionDriverName" -v "org.postgresql.Driver"   
+     python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$CLUSTER_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=hive-site -k "hive_database_type" -v "postgres"   
      python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$CLUSTER_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=hive-site -k "ambari.hive.db.schema.name" -v $DB_NAME   
      
     echo 'Restart services/components affected by Hive configuration change'
