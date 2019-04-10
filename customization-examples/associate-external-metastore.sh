@@ -82,11 +82,7 @@ then
      python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$CLUSTER_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=hive-site -k "ambari.hive.db.schema.name" -v $DB_NAME   
      
     echo 'Restart services/components affected by Hive configuration change'
-    response=`curl -k -u $AMBARI_USER:$CLUSTER_PASSWORD -H 'X-Requested-By: ambari' --silent -w "%{http_code}" -X POST -d '{"RequestInfo":{"command":"RESTART","context":"Restart all required services","operation_level":"host_component"},"Requests/resource_filters":[{"hosts_predicate":"HostRoles/stale_configs=true"}]}' https://$AMBARI_HOST:$
-    
-    
-    
-    PORT/api/v1/clusters/$CLUSTER_NAME/requests` 
+    response=`curl -k -u $AMBARI_USER:$CLUSTER_PASSWORD -H 'X-Requested-By: ambari' --silent -w "%{http_code}" -X POST -d '{"RequestInfo":{"command":"RESTART","context":"Restart all required services","operation_level":"host_component"},"Requests/resource_filters":[{"hosts_predicate":"HostRoles/stale_configs=true"}]}' https://$AMBARI_HOST:$PORT/api/v1/clusters/$CLUSTER_NAME/requests` 
 	
     httpResp=${response:(-3)}
     if [[ "$httpResp" != "202" ]]
