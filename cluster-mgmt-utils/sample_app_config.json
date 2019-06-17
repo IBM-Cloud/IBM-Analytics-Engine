@@ -1,0 +1,12 @@
+{  
+	   "file" : "local:/Users/us0j1312/Documents/softwares/spark-2.3.3-bin-hadoop2.7/examples/jars/spark-examples_2.11-2.3.3.jar",  
+	   "args" : [],  
+	   "className" : "org.apache.spark.examples.SparkPi",  
+	   "jars" : [],  
+	   "files" : [],  
+	   "driverMemory" : "1G",  
+	   "driverCores" : 1,  
+	   "executorMemory" : "1G",  
+	   "executorCores" : 1,  
+	   "numExecutors" : 1  
+} 
