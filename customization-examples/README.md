@@ -10,16 +10,15 @@ However, there are situations where changes and additions need to be baked into 
 
 ## Your IBM Cloud organization
 
-The structure of IBM Cloud provides ways to orginize resources in a number of ways. It is important to know how you or your organization is using the IBM Cloud so that when you create or change instances of IAE you will be using the right constructs. 
+The structure of IBM Cloud provides ways to organize resources in a number of ways. It is important to know how you or your organization is using the IBM Cloud so that when you create or change instances of IAE you will be using the right constructs. 
 
 Find out what your company is using for:
 
 * Resource Group 
 * Region
-* Cloud Foundry Org
-* Cloud Foundry Space
+* Account
 
-These selections should be visible at the top of the page in IBM Cloud when you are in Dashboard views. For further understanding of how to use them to organize your resources refer to [IBM Cloud documentation](https://console.bluemix.net/docs/admin/patterns.html#patterns)
+These selections should be visible at the top of the page in IBM Cloud when you are in Dashboard views. For further understanding of how to use them to organize your resources refer to [IBM Cloud documentation](https://cloud.ibm.com/docs/resources?topic=resources-resource)
 
 
 ## Getting set up and connected to IBM Cloud
