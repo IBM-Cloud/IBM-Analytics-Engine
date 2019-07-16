@@ -1,0 +1,12 @@
+from pyspark.sql import SparkSession,SQLContext
+spark = SparkSession.builder.appName("cricket mania").getOrCreate()
+hconf = spark.sparkContext._jsc.hadoopConfiguration()
+hconf.set("fs.cos.sportywriter.access.key", "CHANGEME")
+hconf.set("fs.cos.sportywriter.secret.key", "CHANGEME")
+hconf.set("fs.cos.sportywriter.endpoint", "CHANGEME")
+max_runs_df = spark.read.csv("cos://sportsbucket.sportywriter/cricket/maxruns-2019.csv", inferSchema = True, header = True)
+max_runs_df.show()
+country_group_df = max_runs_df.groupby("COUNTRY").count().show()
+sqlContext = SQLContext(spark.sparkContext)
+max_runs_df.registerTempTable('maxruns2019')
+sqlContext.sql('select COUNTRY, SUM(MATCHES) from maxruns2019 group by COUNTRY').show()
