@@ -80,7 +80,7 @@ then
     response=`curl -k -u $AMBARI_USER:$AMBARI_PASSWORD -H 'X-Requested-By: ambari' --silent -w "%{http_code}" -X POST -d '{"RequestInfo":{"command":"RESTART","context":"Restart all required services","operation_level":"host_component"},"Requests/resource_filters":[{"hosts_predicate":"HostRoles/stale_configs=true"}]}' https://$AMBARI_HOST:$AMBARI_PORT/api/v1/clusters/$CLUSTER_NAME/requests` 
 	
     httpResp=${response:(-3)}
-    if [[ "$httpResp" != "202" ]]
+    if [[ "$httpResp" != "201" ]]
     then
 		echo "Error initiating restart for the affected services, API response: $httpResp"
 		exit 1
