@@ -55,7 +55,7 @@ trackProgress ()
 }
 
 # Validate input
-if [ $# -ne 3 ]
+if [ $# -ne 4 ]
 then 
 	 echo "Usage: $0 <s3_endpoint> <s3_access_key> <s3_secret_key> <cluster_password>"
 else
