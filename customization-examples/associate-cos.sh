@@ -82,7 +82,7 @@ then
     httpResp=${response:(-3)}
     if [[ "$httpResp" != "201" ]]
     then
-		echo "Error initiating restart for the affected services, API response: $httpResp"
+		echo "Error initiating restart for the affected services, API response: >$httpResp<"
 		exit 1
     else
 		echo "Request accepted. Service restart in progress...${response::-3}"
