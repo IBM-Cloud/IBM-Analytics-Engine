@@ -2,7 +2,7 @@
 #------------------------------------------------------------------------------
 # Customization script to associate a COS instance with an IAE
 # cluster. It expects COS credentials in AWS style. Specifically these three 
-# arguments: <s3_endpoint> <s3_access_key> <s3_secret_key>
+# arguments: <s3_endpoint> <s3_access_key> <s3_secret_key> <cluster_password>
 #------------------------------------------------------------------------------
 
 # Helper functions
@@ -57,11 +57,12 @@ trackProgress ()
 # Validate input
 if [ $# -ne 3 ]
 then 
-	 echo "Usage: $0 <s3_endpoint> <s3_access_key> <s3_secret_key>"
+	 echo "Usage: $0 <s3_endpoint> <s3_access_key> <s3_secret_key> <cluster_password>"
 else
 	S3_ENDPOINT="$1"
 	S3_ACCESS_KEY="$2"
 	S3_SECRET_KEY="$3"
+	AMBARI_PASSWORD="$4"
 fi
 
 # Actual customization starts here
