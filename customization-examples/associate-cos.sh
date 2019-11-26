@@ -71,9 +71,9 @@ fi
 if [ "x$NODE_TYPE" == "xmanagement-slave2" ]
 then 
     echo "Updating Ambari properties"
-    python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$AMBARI_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=core-site -k "fs.cos.myprodservice.access.key" -v $S3_ACCESS_KEY
-    python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$AMBARI_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=core-site -k "fs.cos.myprodservice.endpoint" -v $S3_ENDPOINT
-    python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$AMBARI_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=core-site -k "fs.cos.myprodservice.secret.key" -v $S3_SECRET_KEY
+    /usr/bin/python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$AMBARI_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=core-site -k "fs.cos.myprodservice.access.key" -v $S3_ACCESS_KEY
+    /usr/bin/python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$AMBARI_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=core-site -k "fs.cos.myprodservice.endpoint" -v $S3_ENDPOINT
+    /usr/bin/python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$AMBARI_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=core-site -k "fs.cos.myprodservice.secret.key" -v $S3_SECRET_KEY
 
 
     echo 'Restart affected services'
