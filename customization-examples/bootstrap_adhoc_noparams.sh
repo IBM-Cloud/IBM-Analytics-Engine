@@ -14,7 +14,7 @@ echo "Called and before the for loop"
 
 
 #while getopts ":f:s:t:u:i:" o;
-for o in $f $s $t $u $i
+for o in $f $s $t #$u $i
  do
     case "${o}" in
         $f)
