@@ -64,9 +64,9 @@ for o in $f $s $t $u $i
            #Throw usage and exit if the option is not install or remove
             #u=${OPTARG}
             echo $u 
-            cmd=`/home/common/conda/anaconda3/bin/pip install python-pdf`
+            cmd=`pip install xlwt`
             if [[ $? -ne 0 ]]; then
-                echo "Exiting 1 from pip install python-pdf"
+                echo "Exiting 1 from pip install xlwt"
                 echo $cmd
                 exit 1
             fi
