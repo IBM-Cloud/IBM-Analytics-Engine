@@ -77,7 +77,7 @@ for o in $f $s $t $u $i
            #Throw usage and exit if the option is not install or remove
             #i=${OPTARG}
             echo $i
-            cmd=`/home/common/conda/anaconda2/bin/conda install --yes zope`
+            cmd=`/home/common/conda/anaconda3/bin/conda install --yes zope`
             if [[ $? -ne 0 ]]; then
                 echo "Exiting 1 from conda install zope"
                 echo $cmd 
