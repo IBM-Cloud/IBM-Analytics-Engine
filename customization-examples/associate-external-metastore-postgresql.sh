@@ -34,6 +34,30 @@ parseJson ()
         echo "$jsonValue"
 }
 
+stopService ()
+{
+    response=`curl -u $AMBARI_USER:$CLUSTER_PASSWORD -i -H 'X-Requested-By: ambari' --silent -w "%{http_code}" -X PUT -d \
+    '{"RequestInfo": {"context" :"Stop '"$1"' via REST"}, "Body": {"ServiceInfo": {"state": "INSTALLED"}}}' \
+    https://$AMBARI_HOST:$AMBARI_PORT/api/v1/clusters/$CLUSTER_NAME/services/$1`
+    echo "Response is $response"
+    httpResp=${response:(-3)}
+
+    echo "httpResp is $httpResp"
+    if [[ "$httpResp" == "200" ]]
+    then
+        echo "Hive Service already stopped"
+    elif [[ "$httpResp" != "202" ]]
+    then
+               echo "Error initiating stop for the affected services, API response: $httpResp"
+               exit 1
+    else
+               echo "Request accepted. Hive stop in progress...${response::-3}"
+               trackProgress "${response::-3}"
+    fi
+
+
+}
+
 startService ()
 {
     response=`curl -u $AMBARI_USER:$CLUSTER_PASSWORD -i -H 'X-Requested-By: ambari' --silent -w "%{http_code}" -X PUT -d \
@@ -134,7 +158,7 @@ echo "DB_CXN_URL is $DB_CXN_URL"
 # Actual customization starts here
 # Note : For existing HDP 2.6.2 clusters, please use configs.sh for cluster customization
 # For new HDP 2.6.2 or 2.6.5 clusters, the following customization using configs.py will work
-if [ "x$NODE_TYPE" == "xmanagement-slave2" ]
+if [ "x$NODE_TYPE" == "xmanagement-slave1" ]
 then
      echo "Download postgres certificate files"
      downloadCertFile ${COS_ENDPOINT} ${COS_PATH} ${COS_ACCESS_KEY} ${COS_SECRET_KEY}
