@@ -8,65 +8,102 @@
 # Helper functions
 
 # Parse json and return value for the specified json path
+# Parse json and return value for the specified json path
 parseJson ()
 {
-	jsonString=$1
-	jsonPath=$2
-		
-	echo $(echo $jsonString | python -c "import json,sys; print json.load(sys.stdin)$jsonPath") 
+        jsonString=$1
+        jsonPath=$2
+        jsonValue=''
+        jsonString=`echo $jsonString | grep ${jsonPath}`
+        #echo "json string is $jsonString"
+        case $jsonPath in
+             "href")
+                jsonValue=`echo  $jsonString | grep -oP '(?<="href" : ")[^"]*'`
+                ;;
+             "request_status")
+                jsonValue=`echo  $jsonString | grep -oP '(?<="request_status" : ")[^"]*'`
+                ;;
+             "*")
+                jsonValue=`echo  $jsonString | grep -oP '(?<="request_status" : ")[^"]*'`
+                ;;
+        esac
+        echo "$jsonValue"
 }
 
 stopService ()
 {
-    curl -u $AMBARI_USER:$AMBARI_PASSWORD -i -H 'X-Requested-By: ambari' -X PUT -d \
-    '{"RequestInfo": {"context" :"Start '"$1"' via REST"}, "Body": {"ServiceInfo": {"state": "STARTED"}}}' \
-    https://$AMBARI_HOST:$AMBARI_PORT/api/v1/clusters/$CLUSTER_NAME/services/$1
+    response=`curl -u $AMBARI_USER:$CLUSTER_PASSWORD -i -H 'X-Requested-By: ambari' --silent -w "%{http_code}" -X PUT -d \
+    '{"RequestInfo": {"context" :"Stop '"$1"' via REST"}, "Body": {"ServiceInfo": {"state": "INSTALLED"}}}' \
+    https://$AMBARI_HOST:$AMBARI_PORT/api/v1/clusters/$CLUSTER_NAME/services/$1`
+    echo "Response is $response"
+    httpResp=${response:(-3)}
+
+    echo "httpResp is $httpResp"
+    if [[ "$httpResp" == "200" ]]
+    then
+        echo "Hive Service already stopped"
+    elif [[ "$httpResp" != "202" ]]
+    then
+               echo "Error initiating stop for the affected services, API response: $httpResp"
+               exit 1
+    else
+               echo "Request accepted. Hive stop in progress...${response::-3}"
+               trackProgress "${response::-3}"
+    fi
+
+
 }
 
 startService ()
 {
-    curl -u $AMBARI_USER:$AMBARI_PASSWORD -i -H 'X-Requested-By: ambari' -X PUT -d \
-    '{"RequestInfo": {"context" :"Stop '"$1"' via REST"}, "Body": {"ServiceInfo": {"state": "INSTALLED"}}}' \
-    https://$AMBARI_HOST:$AMBARI_PORT/api/v1/clusters/$CLUSTER_NAME/services/$1
+    response=`curl -u $AMBARI_USER:$CLUSTER_PASSWORD -i -H 'X-Requested-By: ambari' --silent -w "%{http_code}" -X PUT -d \
+    '{"RequestInfo": {"context" :"Start '"$1"' via REST"}, "Body": {"ServiceInfo": {"state": "STARTED"}}}' \
+    https://$AMBARI_HOST:$AMBARI_PORT/api/v1/clusters/$CLUSTER_NAME/services/$1`
+    echo "Response is $response"
+    httpResp=${response:(-3)}
+    echo "httpResp is $httpResp"
+    if [[ "$httpResp" == "200" ]]
+    then
+        echo "Hive Service already started"
+    elif [[ "$httpResp" != "202" ]]
+    then
+               echo "Error initiating start for the affected services, API response: $httpResp"
+               exit 1
+    else
+               echo "Request accepted. Hive start in progress...${response::-3}"
+               trackProgress "${response::-3}"
+    fi
+
 }
 
-# Track progress using the call back returned by Ambari restart API
+# Track progress using the call back returned by Ambari start/stop API
 trackProgress ()
 {
-	response=$1
-	# Extract call back to from response to track progress
-	progressUrl=$(parseJson "$response" '["href"]')
-	echo "Link to track progress: $progressUrl"
-
-	# Progress tracking loop	
-	tempPercent=0
-    while [ "$tempPercent" != "100.0" ]
-	do
-        progressResp=`curl -k -u $AMBARI_USER:$AMBARI_PASSWORD -H 'X-Requested-By:ambari' -X GET $progressUrl --silent`
-		tempPercent=$(parseJson "$progressResp" '["Requests"]["progress_percent"]')
-		echo "Progress: $tempPercent"
-		sleep 5s
-	done
-	
-	# Validate if restart has really succeeded
-	if [ "$tempPercent" == "100.0" ]
-	then
-		# Validate that the request is completed
-		progressResp=`curl -k -u $AMBARI_USER:$AMBARI_PASSWORD -H 'X-Requested-By:ambari' -X GET $progressUrl --silent`
-		finalStatus=$(parseJson "$progressResp" '["Requests"]["request_status"]')
-		if [ "$finalStatus" == "COMPLETED" ]
-        then
-        	echo 'Restart of affected service succeeded.'
-            exit 0
-        else
-        	echo 'Restart of affected service failed'
-            exit 1
-        fi
-	else
-		echo 'Restart of affected service failed'
-		exit 1
-	fi
+        response=$1
+        #echo " Inside trackProgress $response"
+        # Extract call back to from response to track progress
+        parseJson "$response" "href"
+        progressUrl=${jsonValue}
+        # Progress tracking loop
+        status="started"
+    while [ "$status" != "COMPLETED" ]
+        do
+        progressResp=`curl -k -u $AMBARI_USER:$CLUSTER_PASSWORD -H 'X-Requested-By:ambari' -X GET $progressUrl --silent`
+                parseJson "$progressResp" "request_status"
+                status=${jsonValue}
+                if [ "$status" == "COMPLETED" ]
+                then
+                        echo "Start/Stop operation completed sucessfully"
+                        break
+                elif [ "$status" == "FAILED" ]
+                then
+                        echo "Start/Stop operation failed"
+                        exit 1
+                fi
+                sleep 5s
+        done
 }
+
 
 # Validate input
 if [ $# -ne 4 ]
@@ -103,23 +140,14 @@ then
 #		trackProgress "${response::-3}"
 
 	stopService HDFS
-	sleep 60
 	startService HDFS
-	sleep 600
 
 	stopService YARN
-	sleep 60
 	startService YARN
-	sleep 600
 
 	stopService HIVE
-	sleep 60
 	startService HIVE
-	sleep 300
 
 	stopService SPARK
-	sleep 60
 	startService SPARK
-	sleep 300
-     fi
 fi
