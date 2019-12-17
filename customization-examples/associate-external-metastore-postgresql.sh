@@ -139,6 +139,7 @@ if [ $# -ne 9 ]
 then
          echo "$# is the number of arguments passed"
          echo "Usage: $0 <db_user> <db_password> <db_name> <db_conn_url> <cluster_password> <cos_endpoint> <cos_path> <cos_access_key> <cos_secret_key>"
+         exit 1
 else
         DB_USER_NAME="$1"
         DB_PWD="$2"
