@@ -82,6 +82,7 @@ startService ()
 
 downloadCertFile ()
 {
+rm -rf $certFile
 endPoint="$1"
 resource="$2"
 s3Key="$3"
