@@ -6,7 +6,6 @@
 # Helper functions
 
 # Parse json and return value for the specified json path
-# Parse json and return value for the specified json path
 parseJson ()
 {
         jsonString=$1
@@ -28,9 +27,10 @@ parseJson ()
         echo "$jsonValue"
 }
 
+
 stopService ()
 {
-    response=`curl -u $AMBARI_USER:$AMBARI_PASSWORD -i -H 'X-Requested-By: ambari' --silent -w "%{http_code}" -X PUT -d \
+    response=`curl -u $AMBARI_USER:$CLUSTER_PASSWORD -i -H 'X-Requested-By: ambari' --silent -w "%{http_code}" -X PUT -d \
     '{"RequestInfo": {"context" :"Stop '"$1"' via REST"}, "Body": {"ServiceInfo": {"state": "INSTALLED"}}}' \
     https://$AMBARI_HOST:$AMBARI_PORT/api/v1/clusters/$CLUSTER_NAME/services/$1`
     echo "Response is $response"
@@ -54,7 +54,7 @@ stopService ()
 
 startService ()
 {
-    response=`curl -u $AMBARI_USER:$AMBARI_PASSWORD -i -H 'X-Requested-By: ambari' --silent -w "%{http_code}" -X PUT -d \
+    response=`curl -u $AMBARI_USER:$CLUSTER_PASSWORD -i -H 'X-Requested-By: ambari' --silent -w "%{http_code}" -X PUT -d \
     '{"RequestInfo": {"context" :"Start '"$1"' via REST"}, "Body": {"ServiceInfo": {"state": "STARTED"}}}' \
     https://$AMBARI_HOST:$AMBARI_PORT/api/v1/clusters/$CLUSTER_NAME/services/$1`
     echo "Response is $response"
@@ -62,13 +62,13 @@ startService ()
     echo "httpResp is $httpResp"
     if [[ "$httpResp" == "200" ]]
     then
-        echo "Service already started"
+        echo "Hive Service already started"
     elif [[ "$httpResp" != "202" ]]
     then
                echo "Error initiating start for the affected services, API response: $httpResp"
                exit 1
     else
-               echo "Request accepted. Service start in progress...${response::-3}"
+               echo "Request accepted. Hive start in progress...${response::-3}"
                trackProgress "${response::-3}"
     fi
 
@@ -86,6 +86,7 @@ trackProgress ()
         status="started"
     while [ "$status" != "COMPLETED" ]
         do
+        echo "status: $status 1"
         progressResp=`curl -k -u $AMBARI_USER:$CLUSTER_PASSWORD -H 'X-Requested-By:ambari' -X GET $progressUrl --silent`
                 parseJson "$progressResp" "request_status"
                 status=${jsonValue}
@@ -98,10 +99,13 @@ trackProgress ()
                         echo "Start/Stop operation failed"
                         exit 1
                 fi
+                echo "Progress: $status 2"
                 sleep 5s
+                echo "status: $status 3"
         done
 }
 
+ 
 
 # Validate input
 if [ $# -ne 1 ]
