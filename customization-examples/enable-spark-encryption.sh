@@ -62,13 +62,13 @@ startService ()
     echo "httpResp is $httpResp"
     if [[ "$httpResp" == "200" ]]
     then
-        echo "Hive Service already started"
+        echo "Service already started"
     elif [[ "$httpResp" != "202" ]]
     then
                echo "Error initiating start for the affected services, API response: $httpResp"
                exit 1
     else
-               echo "Request accepted. Hive start in progress...${response::-3}"
+               echo "Request accepted. Service start in progress...${response::-3}"
                trackProgress "${response::-3}"
     fi
 
@@ -116,8 +116,10 @@ if [ "x$NODE_TYPE" == "xmanagement-slave2" ]
 then 
     echo "Updating Knox Topology properties"
     /usr/bin/python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$AMBARI_PASSWORD --port=$AMBARI_PORT --action=get --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=topology --file=topo.json
-    sed -i "s/18081/18084/g"  topo.json
+    sed -i "s/18081/18481/g"  topo.json
     /usr/bin/python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$AMBARI_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=topology --file=topo.json
+    echo "Stop Service Knox"
     stopService KNOX
-	  startService KNOX
+    echo "Start Service Knox"
+    startService KNOX
 fi
