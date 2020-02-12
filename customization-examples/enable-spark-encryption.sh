@@ -120,7 +120,8 @@ if [ "x$NODE_TYPE" == "xmanagement-slave2" ]
 then 
     echo "Updating Knox Topology properties"
     /usr/bin/python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$CLUSTER_PASSWORD --port=$AMBARI_PORT --action=get --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=topology --file=topo.json
-    sed -i "s/18081/18481/g"  topo.json
+    SPARK_HOST=`grep :18081 <FILENAME> | awk -F"http://" '{print $2}' | awk -F":" '{print $1}'`
+    sed -i "s,<url>http://$SPARK_HOST:18081</url>,<url>https://$SPARK_HOST:18481</url>,g" topo.json
     /usr/bin/python /var/lib/ambari-server/resources/scripts/configs.py -s https --user=$AMBARI_USER --password=$CLUSTER_PASSWORD --port=$AMBARI_PORT --action=set --host=$AMBARI_HOST --cluster=$CLUSTER_NAME --config-type=topology --file=topo.json
     echo "Stop Service Knox"
     stopService KNOX
