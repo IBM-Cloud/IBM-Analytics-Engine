@@ -17,7 +17,8 @@ if __name__ == '__main__':
 	hconf = spark.sparkContext._jsc.hadoopConfiguration()
 	# for more info on how to config credentials see https://github.com/CODAIT/stocator
 	# see https://cloud.ibm.com/docs/services/cloud-object-storage?topic=cloud-object-storage-endpoints for the list of endpoints
-	hconf.set("fs.cos.service.endpoint" ,"http://s3.us-south.objectstorage.softlayer.net")
+	# make sure you choose the private endpoint of your bucket
+	hconf.set("fs.cos.service.endpoint" ,"https://s3.private.us.cloud-object-storage.appdomain.cloud")
 	hconf.set("fs.cos.service.access.key", "<accessKey>")
 	hconf.set("fs.cos.service.secret.key","<secretKey>")
 
