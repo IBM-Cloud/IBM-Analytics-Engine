@@ -1,14 +1,12 @@
 import com.ibm.metaindex.metadata.metadatastore.parquet.{Parquet, ParquetMetadataBackend}
 import com.ibm.metaindex.{MetaIndexManager, Registration}
-import org.apache.log4j.{Level, LogManager, Logger}
+import org.apache.log4j.{Level, LogManager}
 import org.apache.spark.sql.SparkSession
 
 /**
-  * Sample of indexing and querying hive table using Parquet Metadatastore
+  * Sample of indexing and querying data sets on COS
   */
 object MetaIndexManagerSample {
-  val logger = Logger.getLogger(this.getClass)
-
   def main(args: Array[String]) {
     val spark = SparkSession
       .builder()
@@ -18,7 +16,7 @@ object MetaIndexManagerSample {
     // (optional) set log level to debug specifically for metaindex package - to view the skipped objects
     LogManager.getLogger("com.ibm.metaindex").setLevel(Level.DEBUG)
 
-    // Setup the environment
+    // setup the environment
     // configure Stocator
     // for more info on how to config credentials see https://github.com/CODAIT/stocator
     // see https://cloud.ibm.com/docs/services/cloud-object-storage?topic=cloud-object-storage-endpoints for the list of endpoints
@@ -27,51 +25,54 @@ object MetaIndexManagerSample {
     spark.sparkContext.hadoopConfiguration.set("fs.cos.service.access.key", "<accessKey>")
     spark.sparkContext.hadoopConfiguration.set("fs.cos.service.secret.key","<secretKey>")
 
-    // dataset location
-    val input_path = "cos://mybucket.service/location/to/my/data"
-    // metadata base location
+    // inject the data skipping rule
+    MetaIndexManager.injectDataSkippingRule(spark)
+
+    // enable data skipping
+    MetaIndexManager.enableFiltering(spark)
+
+    // data set and metadata location
+    val dataset_location = "cos://mybucket.service/location/to/my/data"
     val md_base_path = "cos://mybucket.service/location/to/my/base/metdata"
 
-    // Setup the JVM parameters for MetaIndexManager and enable skipping
-    MetaIndexManager.injectDataSkippingRule(spark)
-    // set Parquet as the default metadataStore
+    // setup the JVM parameters for MetaIndexManager - In this example, we will set the JVM wide parameter to a
+    // base path to store all of the indexes.
     Registration.setDefaultMetaDataStore(Parquet)
-    // Set the default metadata location to be a base path defined in the database
     val jvmParameters = new java.util.HashMap[String, String]()
     jvmParameters.put("spark.ibm.metaindex.parquet.mdlocation", md_base_path)
     jvmParameters.put("spark.ibm.metaindex.parquet.mdlocation.type", "EXPLICIT_BASE_PATH_LOCATION")
     MetaIndexManager.setConf(jvmParameters)
-    // Enable data skipping
-    MetaIndexManager.enableFiltering(spark)
 
-    // index the dataset
-    val im = new MetaIndexManager(spark, input_path, ParquetMetadataBackend)
+    // create MetaIndexManager instance with Parquet Metadatastore backend
+    val im = new MetaIndexManager(spark, dataset_location, ParquetMetadataBackend)
+
+    // view index status
+    im.getIndexStats().show(false)
 
     // remove existing index first
     if (im.isIndexed()) {
       im.removeIndex()
     }
 
-    // Build the index
+    // indexing
     println("Building the index:")
     val reader = spark.read.format("parquet")
-    im.indexBuilder()
-      .addMinMaxIndex("temp")
-      .addValueListIndex("city")
-      .addBloomFilterIndex("vid")
-      .build(reader)
+    im.indexBuilder().addMinMaxIndex("temp").addValueListIndex("city").addBloomFilterIndex("vid").build(reader)
 
     // for refresh use
-    //im.refreshIndex(reader)
+    // im.refreshIndex(reader)
 
-    // to view the index status use
-    im.getIndexStats().show()
-
-    // Query the table and view skipping stats
-    val df = reader.load(input_path)
+    // view index status
+    im.getIndexStats().show(false)    
+    
+    // query the table and view skipping stats
+    val df = reader.load(dataset_location)
     df.createOrReplaceTempView("metergen")
     spark.sql("select * from metergen where temp > 30").show()
 
-    MetaIndexManager.getLatestQueryAggregatedStats(spark).show()
+    MetaIndexManager.getLatestQueryAggregatedStats(spark).show(false)
+
+    // (optional) clear the stats for the next query (otherwise, stats will acummulate)
+    MetaIndexManager.clearStats()
   }
 }
