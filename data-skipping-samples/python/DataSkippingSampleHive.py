@@ -2,10 +2,9 @@ from pyspark.sql import SparkSession
 from metaindex import MetaIndexManager
 
 if __name__ == '__main__':
-	#setup SparkSession
 	spark = SparkSession\
         .builder\
-        .appName("MetaIndexManager Hive Sample")\
+        .appName("Data Skipping Hive Sample")\
         .enableHiveSupport()\
         .getOrCreate()
 
@@ -15,6 +14,7 @@ if __name__ == '__main__':
 
 	# setup the environment
 	hconf = spark.sparkContext._jsc.hadoopConfiguration()
+	# configure Stocator
 	# for more info on how to config credentials see https://github.com/CODAIT/stocator
 	# see https://cloud.ibm.com/docs/services/cloud-object-storage?topic=cloud-object-storage-endpoints for the list of endpoints
 	# make sure you choose the private endpoint of your bucket
@@ -22,9 +22,14 @@ if __name__ == '__main__':
 	hconf.set("fs.cos.service.access.key", "<accessKey>")
 	hconf.set("fs.cos.service.secret.key","<secretKey>")
 
-	# dataset
+	# inject the data skipping rule
+	MetaIndexManager.injectDataSkippingRule(spark)
+
+	# enable data skipping
+	MetaIndexManager.enableFiltering(spark)
+
+	# data set and metadata location
 	dataset_location = "cos://mybucket.service/location/to/my/data"
-	# metadata base location
 	md_base_location = "cos://mybucket.service/location/to/my/base/metdata"
 
 	# set the base metadata location in the database
@@ -32,7 +37,7 @@ if __name__ == '__main__':
 
 	# drop table if it already exists
 	spark.sql("DROP TABLE IF EXISTS metergen")
-	# create hive metastore table
+	# create the table
 	createTable = """CREATE EXTERNAL TABLE IF NOT EXISTS metergen (
             vid String,
             date Timestamp,
@@ -54,22 +59,28 @@ if __name__ == '__main__':
 	spark.sql(createTable)
 	spark.sql("SHOW TABLES").show()
 
-	# Recovering the partitions
+	# recovering the partitions
 	spark.sql("ALTER TABLE metergen RECOVER PARTITIONS")
 
-	# Setup the JVM parameters for MetaIndexManager and enable skipping
-	MetaIndexManager.injectDataSkippingRule(spark)
+	# setup the JVM parameters for MetaIndexManager - In this example, we will set the base location to be retrieved
+	# from the database properties
 	# set Parquet as the default metadataStore
 	MetaIndexManager.setDefaultMetaDataStore(spark, 'com.ibm.metaindex.metadata.metadatastore.parquet.Parquet')
-	md_backend_config = dict([('spark.ibm.metaindex.parquet.mdlocation', md_base_location), ("spark.ibm.metaindex.parquet.mdlocation.type", "HIVE_DB_NAME")])
+	md_backend_config = dict([('spark.ibm.metaindex.parquet.mdlocation', "default"),
+	 ("spark.ibm.metaindex.parquet.mdlocation.type", "HIVE_DB_NAME")])
 	MetaIndexManager.setConf(spark, md_backend_config)
-	# Enable data skipping
-	MetaIndexManager.enableFiltering(spark)
 
-	# index the dataset - using the table name
+	# create MetaIndexManager instance with Parquet Metadatastore backend
+	# and setting the table name in the MetaIndexManager properties so the metadata location
+	# will be added automatically to the table properties
+	md_backend = 'com.ibm.metaindex.metadata.metadatastore.parquet.ParquetMetadataBackend'
 	im = MetaIndexManager(spark, "default.metergen", 'com.ibm.metaindex.metadata.metadatastore.parquet.ParquetMetadataBackend')
-	im_config = dict([('spark.ibm.metaindex.parquet.mdlocation', "default.metergen"), ("spark.ibm.metaindex.parquet.mdlocation.type", "HIVE_TABLE_NAME")])
-	im.setMetadataStoreParameters(spark, im_config)
+	im_config = dict([('spark.ibm.metaindex.parquet.mdlocation', "default.metergen"),
+	 ("spark.ibm.metaindex.parquet.mdlocation.type", "HIVE_TABLE_NAME")])
+	im.setMetadataStoreParameters(im_config)
+
+	# view index status
+	im.indexStats().show(10, False)
 
 	# remove existing index first
 	if im.isIndexed():
@@ -80,16 +91,19 @@ if __name__ == '__main__':
 	im.indexBuilder().addMinMaxIndex("temp").addValueListIndex("city").addBloomFilterIndex("vid").build()
 
 	# for refresh use
-	#im.refreshIndex()
+	# im.refreshIndex()
 
 	# to view the index status use
-	im.indexStats().show()
+	im.indexStats().show(10, False)
 
-	# Query the table and view skipping stats
-	spark.sql("select count(*) from mtg where temp > 30").show()
+	# query the table and view skipping stats
+	spark.sql("select count(*) from metergen where temp > 30").show()
 
 	# get aggregated stats
-	MetaIndexManager.getLatestQueryAggregatedStats(spark).show()
+	MetaIndexManager.getLatestQueryAggregatedStats(spark).show(10, False)
+
+	# (optional) clear the stats for the next query (otherwise, stats will acummulate)
+    MetaIndexManager.clearStats(spark)
 
 	# stop SparkSession
 	spark.stop()
