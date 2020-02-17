@@ -103,7 +103,7 @@ if __name__ == '__main__':
 	MetaIndexManager.getLatestQueryAggregatedStats(spark).show(10, False)
 
 	# (optional) clear the stats for the next query (otherwise, stats will acummulate)
-    MetaIndexManager.clearStats(spark)
+	MetaIndexManager.clearStats(spark)
 
 	# stop SparkSession
 	spark.stop()
