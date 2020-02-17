@@ -54,7 +54,7 @@ object MetaIndexManagerSample {
       im.removeIndex()
     }
 
-    // Build the index
+    // indexing
     println("Building the index:")
     val reader = spark.read.format("parquet")
     im.indexBuilder().addMinMaxIndex("temp").addValueListIndex("city").addBloomFilterIndex("vid").build(reader)

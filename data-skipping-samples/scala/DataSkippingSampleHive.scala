@@ -93,7 +93,7 @@ object MetaIndexManagerSampleHive {
       im.removeIndex()
     }
 
-    // Build the index
+    // indexing
     println("Building the index:")
     im.indexBuilder().addMinMaxIndex("temp").addValueListIndex("city").addBloomFilterIndex("vid").build()
 
