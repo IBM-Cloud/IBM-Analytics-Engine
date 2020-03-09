@@ -21,15 +21,9 @@ object MetaIndexManagerSample {
     // for more info on how to config credentials see https://github.com/CODAIT/stocator
     // see https://cloud.ibm.com/docs/services/cloud-object-storage?topic=cloud-object-storage-endpoints for the list of endpoints
     // make sure you choose the private endpoint of your bucket
-    spark.sparkContext.hadoopConfiguration.set("fs.cos.service.endpoint" ,"https://s3.private.us.cloud-object-storage.appdomain.cloud")
+    spark.sparkContext.hadoopConfiguration.set("fs.cos.service.endpoint" ,"https://s3.private.us-south.cloud-object-storage.appdomain.cloud")
     spark.sparkContext.hadoopConfiguration.set("fs.cos.service.access.key", "<accessKey>")
     spark.sparkContext.hadoopConfiguration.set("fs.cos.service.secret.key","<secretKey>")
-
-    // inject the data skipping rule
-    MetaIndexManager.injectDataSkippingRule(spark)
-
-    // enable data skipping
-    MetaIndexManager.enableFiltering(spark)
 
     // data set and metadata location
     val dataset_location = "cos://mybucket.service/location/to/my/data"
@@ -44,10 +38,8 @@ object MetaIndexManagerSample {
     MetaIndexManager.setConf(jvmParameters)
 
     // create MetaIndexManager instance with Parquet Metadatastore backend
+    val reader = spark.read.format("parquet")
     val im = new MetaIndexManager(spark, dataset_location, ParquetMetadataBackend)
-
-    // view index status
-    im.getIndexStats().show(false)
 
     // remove existing index first
     if (im.isIndexed()) {
@@ -56,14 +48,19 @@ object MetaIndexManagerSample {
 
     // indexing
     println("Building the index:")
-    val reader = spark.read.format("parquet")
-    im.indexBuilder().addMinMaxIndex("temp").addValueListIndex("city").addBloomFilterIndex("vid").build(reader)
+    im.indexBuilder().addMinMaxIndex("temp").addValueListIndex("city").addBloomFilterIndex("vid").build(reader).show(false)
 
     // for refresh use
-    // im.refreshIndex(reader)
+    // im.refreshIndex(reader).show(false)
 
     // view index status
-    im.getIndexStats().show(false)    
+    im.getIndexStats().show(false)   
+
+    // inject the data skipping rule
+    MetaIndexManager.injectDataSkippingRule(spark)
+
+    // enable data skipping
+    MetaIndexManager.enableFiltering(spark) 
     
     // query the table and view skipping stats
     val df = reader.load(dataset_location)
