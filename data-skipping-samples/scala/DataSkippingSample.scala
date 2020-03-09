@@ -54,7 +54,7 @@ object MetaIndexManagerSample {
     // im.refreshIndex(reader).show(false)
 
     // view index status
-    im.getIndexStats().show(false)   
+    im.getIndexStats(reader).show(false)
 
     // inject the data skipping rule
     MetaIndexManager.injectDataSkippingRule(spark)
