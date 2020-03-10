@@ -59,6 +59,12 @@ if __name__ == '__main__':
 	# enable data skipping
 	MetaIndexManager.enableFiltering(spark)
 
+	# inject the data skipping rule
+	MetaIndexManager.injectDataSkippingRule(spark)
+
+	# enable data skipping
+	MetaIndexManager.enableFiltering(spark)
+
 	# query the table and view skipping stats
 	df = reader.load(dataset_location)
 	df.createOrReplaceTempView("metergen")
