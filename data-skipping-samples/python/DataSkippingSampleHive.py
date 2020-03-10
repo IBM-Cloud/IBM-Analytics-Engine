@@ -18,15 +18,9 @@ if __name__ == '__main__':
 	# for more info on how to config credentials see https://github.com/CODAIT/stocator
 	# see https://cloud.ibm.com/docs/services/cloud-object-storage?topic=cloud-object-storage-endpoints for the list of endpoints
 	# make sure you choose the private endpoint of your bucket
-	hconf.set("fs.cos.service.endpoint" ,"https://s3.private.us.cloud-object-storage.appdomain.cloud")
+	hconf.set("fs.cos.service.endpoint" ,"https://s3.private.us-south.cloud-object-storage.appdomain.cloud")
 	hconf.set("fs.cos.service.access.key", "<accessKey>")
 	hconf.set("fs.cos.service.secret.key","<secretKey>")
-
-	# inject the data skipping rule
-	MetaIndexManager.injectDataSkippingRule(spark)
-
-	# enable data skipping
-	MetaIndexManager.enableFiltering(spark)
 
 	# data set and metadata location
 	dataset_location = "cos://mybucket.service/location/to/my/data"
@@ -79,22 +73,25 @@ if __name__ == '__main__':
 	 ("spark.ibm.metaindex.parquet.mdlocation.type", "HIVE_TABLE_NAME")])
 	im.setMetadataStoreParameters(im_config)
 
-	# view index status
-	im.indexStats().show(10, False)
-
 	# remove existing index first
 	if im.isIndexed():
 		im.removeIndex()
 
 	# indexing
 	print("Building the index:")
-	im.indexBuilder().addMinMaxIndex("temp").addValueListIndex("city").addBloomFilterIndex("vid").build()
+	im.indexBuilder().addMinMaxIndex("temp").addValueListIndex("city").addBloomFilterIndex("vid").build().show(10, False)
 
 	# for refresh use
-	# im.refreshIndex()
+	# im.refreshIndex().show(10, False)
 
 	# to view the index status use
 	im.indexStats().show(10, False)
+
+	# inject the data skipping rule
+	MetaIndexManager.injectDataSkippingRule(spark)
+
+	# enable data skipping
+	MetaIndexManager.enableFiltering(spark)
 
 	# query the table and view skipping stats
 	spark.sql("select count(*) from metergen where temp > 30").show()
