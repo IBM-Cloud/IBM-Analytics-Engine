@@ -51,7 +51,7 @@ if __name__ == '__main__':
 	# im.refreshIndex(reader).show(10, False)
 
 	# view index status
-	im.indexStats().show(10, False)
+	im.indexStats(reader).show(10, False)
 
 	# inject the data skipping rule
 	MetaIndexManager.injectDataSkippingRule(spark)
