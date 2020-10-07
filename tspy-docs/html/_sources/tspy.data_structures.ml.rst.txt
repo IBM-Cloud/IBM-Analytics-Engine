@@ -1,0 +1,18 @@
+tspy.data\_structures.ml package
+================================
+
+.. automodule:: tspy.data_structures.ml
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   tspy.data_structures.ml.clustering
+   tspy.data_structures.ml.data_preparation
+   tspy.data_structures.ml.itemset_mining
+   tspy.data_structures.ml.sequence_mining

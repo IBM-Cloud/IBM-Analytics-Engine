@@ -1,0 +1,7 @@
+tspy.data\_structures.io.MultiTimeSeriesWriter module
+=====================================================
+
+.. automodule:: tspy.data_structures.io.MultiTimeSeriesWriter
+   :members:
+   :undoc-members:
+   :show-inheritance:

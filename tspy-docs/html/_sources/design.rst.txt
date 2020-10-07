@@ -1,0 +1,40 @@
+.. _tspy-design-label:
+
+****************
+Library design
+****************
+
+The **tspy** library is structured in these main modules
+
+* :py:mod:`tspy`: the highest level module
+
+
+* The rest-data is provided by functions directly under `tspy`, e.g. :func:`.time_series`. The in-motion data is provided by functions inside the module under `tspy`, e.g. :func:`tspy.stream_time_series.queue`. 
+
+.. list-table::
+
+    * - function                      
+      - description 
+    * - :func:`tspy.observation`       
+      - create one observation           
+    * - :func:`tspy.observations`      
+      - create one observation collection
+    * - :func:`tspy.record`            
+      - create one record                
+    * - :func:`tspy.time_series`       
+      - create one time-series           
+    * - :func:`tspy.multi_time_series` 
+      - create one multi-time-series     
+    * - :func:`tspy.builder`           
+      - create a time-series builder    
+
+* :py:mod:`tspy.functions` subpackage provides APIs for performing different time-series related operations, e.g. reduce, transforms, segment.
+
+* :py:mod:`tspy.ml`: provides Machine-Learning related APIs (e.g. clustering-related APIs, data-processing related APIs, itemset-mining related APIs, sequence-mining related APIs) that can operate on tspy's time-series data 
+  
+* :py:mod:`tspy.forecasters`: provides APIs for building forecasting model (e.g. AnomalyDetection) that can operate on tspy's time-series data 
+
+
+.. image:: _static/tspy_diagram.png
+  :width: 600
+  :alt: tspy diagram

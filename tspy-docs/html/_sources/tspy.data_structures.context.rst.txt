@@ -1,0 +1,7 @@
+tspy.data\_structures.context module
+====================================
+
+.. automodule:: tspy.data_structures.context
+   :members:
+   :undoc-members:
+   :show-inheritance:

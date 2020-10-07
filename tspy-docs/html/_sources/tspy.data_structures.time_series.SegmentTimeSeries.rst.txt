@@ -1,0 +1,7 @@
+tspy.data\_structures.time\_series.SegmentTimeSeries module
+===========================================================
+
+.. automodule:: tspy.data_structures.time_series.SegmentTimeSeries
+   :members:
+   :undoc-members:
+   :show-inheritance:

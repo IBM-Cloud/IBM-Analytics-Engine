@@ -1,0 +1,32 @@
+tspy package
+============
+
+.. automodule:: tspy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   tspy.data_structures
+   tspy.functions
+   tspy.ml
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   tspy.exceptions
+   tspy.forecasters
+   tspy.multi_time_series
+   tspy.observations
+   tspy.others
+   tspy.stream_multi_time_series
+   tspy.stream_time_series
+   tspy.time_series

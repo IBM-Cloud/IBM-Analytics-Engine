@@ -1,0 +1,477 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>How to … &mdash; TSPy alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/custom.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="tspy package" href="tspy.html" />
+    <link rel="prev" title="Library design" href="design.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> TSPy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Library Design</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How to …</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#import">import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#convert-back-to-dataframe">convert back to DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collect-statistics">collect statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#load-data-into-memory">load data into memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#element-wise-transform">element-wise transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#filter-out-values-from-a-time-series">filter out values from a time-series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transform-a-time-series">transform a time-series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reduce-a-time-series">reduce a time-series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deal-with-missing-values-n-a-in-a-time-series">deal with missing values (N/A) in a time-series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resample-a-time-series">resample a time-series</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#how-to-two-ts">How to (two TS) …</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#align-two-time-series">align two time-series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#merge-via-join-two-time-series">merge (via join) two time-series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#correlate-two-time-series">correlate two time-series</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#how-to-forecasting">How to forecasting …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tspy.html">tspy package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TSPy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>How to …</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/howto.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to">
+<h1>How to …<a class="headerlink" href="#how-to" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="import">
+<h2>import<a class="headerlink" href="#import" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="convert-back-to-dataframe">
+<h2>convert back to DataFrame<a class="headerlink" href="#convert-back-to-dataframe" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># to be added</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="collect-statistics">
+<h2>collect statistics<a class="headerlink" href="#collect-statistics" title="Permalink to this headline">¶</a></h2>
+<p>Common statistics is returned using a method similar to DataFrame.describe()</p>
+<ul class="simple">
+<li><p>number of data points: <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.describe" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.describe"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.describe()</span></code></a></p></li>
+<li><p>common statistics: <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.count" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.count"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.count()</span></code></a></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># to be added</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-data-into-memory">
+<h2>load data into memory<a class="headerlink" href="#load-data-into-memory" title="Permalink to this headline">¶</a></h2>
+<p>A key property of a time-series data is its lazyness property, i.e. a chain of operation can be applied to it, and the real execution only occurs at action operation.</p>
+<p>An observation collection is an in-memory form of a Time-Series, i.e. no lazy is used on observation collection. So, the belows are action operations</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.collect" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.collect"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.collect()</span></code></a></p></li>
+<li><p><a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.get_values" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.get_values"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.get_values()</span></code></a></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">observations</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+
+<span class="c1"># load only a range</span>
+<span class="n">observations</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">get_values</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="element-wise-transform">
+<h2>element-wise transform<a class="headerlink" href="#element-wise-transform" title="Permalink to this headline">¶</a></h2>
+<p>We can use <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.map" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.map"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.map()</span></code></a> which accepts a lambda function with the argument representing the <em>value</em> in the given
+observation to transform.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># increase one to each value</span>
+<span class="n">ts_2</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filter-out-values-from-a-time-series">
+<h2>filter out values from a time-series<a class="headerlink" href="#filter-out-values-from-a-time-series" title="Permalink to this headline">¶</a></h2>
+<p>We can use <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.filter" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.filter"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.filter()</span></code></a> which accepts a <cite>bool</cite> lambda function with the argument representing the <em>value</em> in the given
+observation - and returns only observation whose value the lambda function return <em>True</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># get even values</span>
+<span class="n">ts_2</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">%</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transform-a-time-series">
+<h2>transform a time-series<a class="headerlink" href="#transform-a-time-series" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The  <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.lag" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.lag"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.lag()</span></code></a> transform the time-series by keeping only data points at a given lag wrt to the first timetick. This gives you a new time-series with fewer data points</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ts_2</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">lag</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The  <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.shift" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.shift"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.shift()</span></code></a> transform the time-series by keeping the time, but move the data values, and those doesn’t have the associated new data value are filled with N/A by default.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ts_2</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p>More complex transforms such as taking the difference between two adjacent values can be done using <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.transform" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.transform"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.transform()</span></code></a> combined with a proper transformers, e.g. <a class="reference internal" href="tspy.functions.transformers.html#tspy.functions.transformers.difference" title="tspy.functions.transformers.difference"><code class="xref py py-func docutils literal notranslate"><span class="pre">functions.transformers.difference()</span></code></a>. The different transformers are given in <a class="reference internal" href="tspy.functions.transformers.html#module-tspy.functions.transformers" title="tspy.functions.transformers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">functions.transformers</span></code></a></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>add white-noise</p></li>
+<li><p>z-score (zero-mean normalization)</p></li>
+<li><p>remove consecutive duplicated values</p></li>
+<li><p>combine values with the same time-tick</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tspy.functions</span> <span class="k">as</span> <span class="nn">tsfunc</span>
+<span class="n">ts_2</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">tsfunc</span><span class="o">.</span><span class="n">transformers</span><span class="o">.</span><span class="n">difference</span><span class="p">())</span>
+
+<span class="n">ts_2</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">tsfunc</span><span class="o">.</span><span class="n">transformers</span><span class="o">.</span><span class="n">remove_consecutive_duplicate_values</span><span class="p">())</span>
+
+<span class="n">ts_2</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">tsfunc</span><span class="o">.</span><span class="n">transformers</span><span class="o">.</span><span class="n">combine_duplicate_time_ticks</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>The transforms, once applied to <a class="reference internal" href="intro.html#segmenttimeseries-label"><span class="std std-ref">SegmentTimeSeries</span></a>, would returns a new time-series, in that
+each new observation is the result of reducing a segment.</p>
+</div>
+<div class="section" id="reduce-a-time-series">
+<h2>reduce a time-series<a class="headerlink" href="#reduce-a-time-series" title="Permalink to this headline">¶</a></h2>
+<p>A reducer is a special form of transforms that returns a single-value or a few values, i.e. it is no longer a time-series.
+A specific reducer is a function provided in the <a class="reference internal" href="tspy.functions.reducers.html#module-tspy.functions.reducers" title="tspy.functions.reducers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">functions.reducers</span></code></a> module.
+We pass that function to the <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.reduce" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.reduce"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.reduce()</span></code></a> API.</p>
+<ul class="simple">
+<li><p>average: <a class="reference internal" href="tspy.functions.reducers.html#tspy.functions.reducers.average" title="tspy.functions.reducers.average"><code class="xref py py-func docutils literal notranslate"><span class="pre">reducers.average()</span></code></a></p></li>
+<li><p>Augmented-Dickey-Fuller test (ADF): test if a STS is stationary or not: <a class="reference internal" href="tspy.functions.reducers.html#tspy.functions.reducers.adf" title="tspy.functions.reducers.adf"><code class="xref py py-func docutils literal notranslate"><span class="pre">reducers.adf()</span></code></a></p></li>
+<li><p>… [REF: <a class="reference internal" href="tspy.functions.reducers.html#module-tspy.functions.reducers" title="tspy.functions.reducers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">reducers</span></code></a>]</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tspy.functions</span> <span class="k">as</span> <span class="nn">tsfunc</span>
+<span class="n">avg</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">tsfunc</span><span class="o">.</span><span class="n">reducers</span><span class="o">.</span><span class="n">average</span><span class="p">())</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">tsfunc</span><span class="o">.</span><span class="n">reducers</span><span class="o">.</span><span class="n">auto_correlation</span><span class="p">())</span>
+
+<span class="n">ts</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">tsfunc</span><span class="o">.</span><span class="n">reducers</span><span class="o">.</span><span class="n">adf</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deal-with-missing-values-n-a-in-a-time-series">
+<h2>deal with missing values (N/A) in a time-series<a class="headerlink" href="#deal-with-missing-values-n-a-in-a-time-series" title="Permalink to this headline">¶</a></h2>
+<p>We use <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.fillna" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.fillna"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.fillna()</span></code></a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tspy.functions</span> <span class="k">as</span> <span class="nn">tsfunc</span>
+<span class="n">new_ts</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">tsfunc</span><span class="o">.</span><span class="n">interpolators</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="mf">0.0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="resample-a-time-series">
+<h2>resample a time-series<a class="headerlink" href="#resample-a-time-series" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.resample" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.resample"><code class="xref py py-meth docutils literal notranslate"><span class="pre">TimeSeries.resample()</span></code></a> can be combined with a proper interpolation function (<a class="reference internal" href="tspy.functions.html#module-tspy.functions" title="tspy.functions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">functions</span></code></a>)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tspy.functions</span> <span class="k">as</span> <span class="nn">tsfunc</span>
+<span class="n">periodicity</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">interp</span> <span class="o">=</span> <span class="n">tsfunc</span><span class="o">.</span><span class="n">interpolators</span><span class="o">.</span><span class="n">nearest</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
+
+<span class="n">interp_ts</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">periodicity</span><span class="p">,</span> <span class="n">interp</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Another way is to segment the time-series, and then apply reducer on each segment.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tspy.functions</span> <span class="k">as</span> <span class="nn">tsfunc</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">tsfunc</span><span class="o">.</span><span class="n">reducers</span><span class="o">.</span><span class="n">average</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-two-ts">
+<h1>How to (two TS) …<a class="headerlink" href="#how-to-two-ts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="align-two-time-series">
+<h2>align two time-series<a class="headerlink" href="#align-two-time-series" title="Permalink to this headline">¶</a></h2>
+<p>The result will be two new STS, each with aligned timestamps with each other.</p>
+<ul class="simple">
+<li><p>inner align</p></li>
+<li><p>full align</p></li>
+<li><p>left align</p></li>
+<li><p>right align</p></li>
+<li><p>left outer align</p></li>
+<li><p>right outer align</p></li>
+</ul>
+</div>
+<div class="section" id="merge-via-join-two-time-series">
+<h2>merge (via join) two time-series<a class="headerlink" href="#merge-via-join-two-time-series" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>inner join</p></li>
+<li><p>full join</p></li>
+<li><p>left join</p></li>
+<li><p>right join</p></li>
+<li><p>left outer join</p></li>
+<li><p>right outer join</p></li>
+</ul>
+<p>This will fill missing values with null. The result of the join will be an <cite>list</cite> where the first value is from the left series and the second value is from the right series.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ts_full</span> <span class="o">=</span> <span class="n">ts_left</span><span class="o">.</span><span class="n">full_join</span><span class="p">(</span><span class="n">ts_right</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ts_full</span><span class="p">)</span>
+
+<span class="c1"># Perform full join with interpolation</span>
+<span class="n">interp</span> <span class="o">=</span> <span class="n">tsfunc</span><span class="o">.</span><span class="n">interpolators</span><span class="o">.</span><span class="n">linear</span><span class="p">()</span>
+
+<span class="n">ts_full</span> <span class="o">=</span> <span class="n">ts_left</span><span class="o">.</span><span class="n">full_join</span><span class="p">(</span><span class="n">ts_right</span><span class="p">,</span> <span class="n">left_interp_func</span><span class="o">=</span><span class="n">interp</span><span class="p">,</span> <span class="n">right_interp_func</span><span class="o">=</span><span class="n">interp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="correlate-two-time-series">
+<h2>correlate two time-series<a class="headerlink" href="#correlate-two-time-series" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>auto-correlation: measure linear relationship between lagged values of a STS.</p></li>
+<li><p>correlation: Pearson correlation of two STSs.</p></li>
+<li><p>dynamic time warping (dtw): measure similarity between two STSs which may vary in speed</p></li>
+<li><p>Granger causality (granger): test the causality between two STSs.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tspy.functions</span> <span class="k">as</span> <span class="nn">tsfunc</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">tsfunc</span><span class="o">.</span><span class="n">reducers</span><span class="o">.</span><span class="n">auto_correlation</span><span class="p">())</span>
+
+<span class="n">corr</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">ts2</span><span class="p">,</span> <span class="n">tsfunc</span><span class="o">.</span><span class="n">reducers</span><span class="o">.</span><span class="n">correlation</span><span class="p">())</span>
+
+<span class="n">dtw_distance</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">ts2</span><span class="p">,</span>
+                     <span class="n">tsfunc</span><span class="o">.</span><span class="n">reducers</span><span class="o">.</span><span class="n">dtw</span><span class="p">(</span><span class="k">lambda</span> <span class="n">obs1</span><span class="p">,</span> <span class="n">obs2</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">bs1</span><span class="o">.</span><span class="n">value</span> <span class="o">-</span> <span class="n">obs2</span><span class="o">.</span><span class="n">value</span><span class="p">)))</span>
+
+ <span class="n">ts</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">ts2</span><span class="p">,</span> <span class="n">tsfunc</span><span class="o">.</span><span class="n">reducers</span><span class="o">.</span><span class="n">granger</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="how-to-forecasting">
+<h1>How to forecasting …<a class="headerlink" href="#how-to-forecasting" title="Permalink to this headline">¶</a></h1>
+<p>TimeSeries library currently supports the following forecasting models:</p>
+<ul class="simple">
+<li><p>BATS</p></li>
+<li><p>Holt-Winters</p></li>
+<li><p>ARIMA</p></li>
+<li><p>ARMA</p></li>
+<li><p>AUTO</p></li>
+<li><p>Season Selector</p></li>
+<li><p>Anomaly Detector</p></li>
+</ul>
+<p>Three steps:</p>
+<ol class="arabic simple">
+<li><p>create a model, which is independent from the time-series data</p></li>
+<li><p><cite>update_model</cite>: train the model on the given time-series data</p></li>
+<li><p><cite>forecast</cite>, <cite>forecast_at</cite>: use the trained model to predict</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="n">training_sample_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">bats_model</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">forecasters</span><span class="o">.</span><span class="n">bats</span><span class="p">(</span><span class="n">training_sample_size</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">timestamp</span> <span class="o">=</span> <span class="n">i</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1.0</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">update_model</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">is_initialized</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">forecast_at</span><span class="p">(</span><span class="mi">120</span><span class="p">))</span>
+
+<span class="n">num_predictions</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">forecasters</span><span class="o">.</span><span class="n">auto</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">confidence</span> <span class="o">=</span> <span class="o">.</span><span class="mi">99</span>
+
+<span class="n">predictions</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">num_predictions</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">confidence</span><span class="o">=</span><span class="n">confidence</span><span class="p">)</span>
+
+<span class="c1"># the list of predicted values can be retrieved in TimeSeries or DataFrame</span>
+<span class="n">predictions</span><span class="o">.</span><span class="n">to_time_series</span><span class="p">()</span><span class="o">.</span><span class="n">to_df</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tspy.html" class="btn btn-neutral float-right" title="tspy package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="design.html" class="btn btn-neutral float-left" title="Library design" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, IBM Research
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

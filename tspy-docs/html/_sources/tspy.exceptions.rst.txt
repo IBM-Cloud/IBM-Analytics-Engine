@@ -1,0 +1,7 @@
+tspy.exceptions module
+======================
+
+.. automodule:: tspy.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:

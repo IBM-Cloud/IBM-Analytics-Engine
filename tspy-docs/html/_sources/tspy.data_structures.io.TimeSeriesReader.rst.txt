@@ -1,0 +1,7 @@
+tspy.data\_structures.io.TimeSeriesReader module
+================================================
+
+.. automodule:: tspy.data_structures.io.TimeSeriesReader
+   :members:
+   :undoc-members:
+   :show-inheritance:

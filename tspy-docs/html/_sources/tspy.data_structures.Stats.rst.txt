@@ -1,0 +1,7 @@
+tspy.data\_structures.Stats module
+==================================
+
+.. automodule:: tspy.data_structures.Stats
+   :members:
+   :undoc-members:
+   :show-inheritance:

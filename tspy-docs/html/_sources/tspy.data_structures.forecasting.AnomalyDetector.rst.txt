@@ -1,0 +1,7 @@
+tspy.data\_structures.forecasting.AnomalyDetector module
+========================================================
+
+.. automodule:: tspy.data_structures.forecasting.AnomalyDetector
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,7 @@
+tspy.data\_structures.io.MultiDataSink module
+=============================================
+
+.. automodule:: tspy.data_structures.io.MultiDataSink
+   :members:
+   :undoc-members:
+   :show-inheritance:

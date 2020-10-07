@@ -1,0 +1,7 @@
+tspy.data\_structures.ml.itemset\_mining.FrequentItemSetStatistics module
+=========================================================================
+
+.. automodule:: tspy.data_structures.ml.itemset_mining.FrequentItemSetStatistics
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,1882 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tspy.data_structures.utils module &mdash; TSPy alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/custom.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="tspy.functions package" href="tspy.functions.html" />
+    <link rel="prev" title="tspy.data_structures.context module" href="tspy.data_structures.context.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> TSPy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Library Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-two-ts">How to (two TS) …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-forecasting">How to forecasting …</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tspy.html">tspy package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tspy.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="tspy.data_structures.html">tspy.data_structures package</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="tspy.data_structures.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="tspy.data_structures.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.functions.html">tspy.functions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.ml.html">tspy.ml package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tspy.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TSPy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="tspy.html">tspy package</a> &raquo;</li>
+        
+          <li><a href="tspy.data_structures.html">tspy.data_structures package</a> &raquo;</li>
+        
+      <li>tspy.data_structures.utils module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tspy.data_structures.utils.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-tspy.data_structures.utils">
+<span id="tspy-data-structures-utils-module"></span><h1>tspy.data_structures.utils module<a class="headerlink" href="#module-tspy.data_structures.utils" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.BinaryMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">BinaryMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.BinaryMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.BinaryMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.BinaryMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.BinaryMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.BinaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.BinaryMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.BinaryMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj_1</span></em>, <em class="sig-param"><span class="n">obj_2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.BinaryMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.FastUnaryMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">FastUnaryMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.FastUnaryMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.FastUnaryMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.FastUnaryMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.FastUnaryMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.FastUnaryMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.FastUnaryMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.FastUnaryMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.FilterFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">FilterFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.FilterFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.FilterFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.FilterFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.FilterFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.FilterFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.FilterFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.FilterFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.FilterFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.FlatUnaryMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">FlatUnaryMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.FlatUnaryMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.FlatUnaryMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.FlatUnaryMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.FlatUnaryMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.FlatUnaryMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.FlatUnaryMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.FlatUnaryMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.Function">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">Function</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.Function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>apply</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.Function.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.Function.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.Function.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['java.util.function.Function']</em><a class="headerlink" href="#tspy.data_structures.utils.Function.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.Function.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.Function.apply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.IMatcher">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">IMatcher</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.IMatcher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 68%" />
+<col style="width: 32%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>getDeleteCost</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>getInsertCost</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>getSubstituteCost</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>getTransposeCost</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>match</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.IMatcher.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.IMatcher.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.IMatcher.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.transforms.reducers.distance.dl.algorithm.IMatcher']</em><a class="headerlink" href="#tspy.data_structures.utils.IMatcher.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.IMatcher.getDeleteCost">
+<code class="sig-name descname">getDeleteCost</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.IMatcher.getDeleteCost" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.IMatcher.getInsertCost">
+<code class="sig-name descname">getInsertCost</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.IMatcher.getInsertCost" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.IMatcher.getSubstituteCost">
+<code class="sig-name descname">getSubstituteCost</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.IMatcher.getSubstituteCost" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.IMatcher.getTransposeCost">
+<code class="sig-name descname">getTransposeCost</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.IMatcher.getTransposeCost" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.IMatcher.match">
+<code class="sig-name descname">match</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj_1</span></em>, <em class="sig-param"><span class="n">obj_2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.IMatcher.match" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.IObjectDistanceCalculator">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">IObjectDistanceCalculator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.IObjectDistanceCalculator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>distance</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.IObjectDistanceCalculator.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.IObjectDistanceCalculator.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.IObjectDistanceCalculator.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.transforms.reducers.distance.dtw.algorithm.IObjectDistanceCalculator']</em><a class="headerlink" href="#tspy.data_structures.utils.IObjectDistanceCalculator.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.IObjectDistanceCalculator.distance">
+<code class="sig-name descname">distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">o_1</span></em>, <em class="sig-param"><span class="n">o_2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.IObjectDistanceCalculator.distance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.Interpolator">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">Interpolator</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.Interpolator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 64%" />
+<col style="width: 36%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>getFutureSize</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>getHistorySize</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>interpolate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.Interpolator.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.Interpolator.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.Interpolator.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.Interpolator']</em><a class="headerlink" href="#tspy.data_structures.utils.Interpolator.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.Interpolator.getFutureSize">
+<code class="sig-name descname">getFutureSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.Interpolator.getFutureSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.Interpolator.getHistorySize">
+<code class="sig-name descname">getHistorySize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.Interpolator.getHistorySize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.Interpolator.interpolate">
+<code class="sig-name descname">interpolate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">history</span></em>, <em class="sig-param"><span class="n">future</span></em>, <em class="sig-param"><span class="n">timestamp</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.Interpolator.interpolate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.IteratorMessageSupplier">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">IteratorMessageSupplier</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">py_supplier</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.IteratorMessageSupplier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>get</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.IteratorMessageSupplier.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.IteratorMessageSupplier.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.IteratorMessageSupplier.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['java.util.function.Supplier']</em><a class="headerlink" href="#tspy.data_structures.utils.IteratorMessageSupplier.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.IteratorMessageSupplier.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.IteratorMessageSupplier.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaDataSink">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">JavaDataSink</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">python_data_sink</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaDataSink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>dump</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaDataSink.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.JavaDataSink.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.JavaDataSink.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.streaming.functions.DataSink']</em><a class="headerlink" href="#tspy.data_structures.utils.JavaDataSink.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaDataSink.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">observations</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaDataSink.dump" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaMultiDataSink">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">JavaMultiDataSink</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">python_multi_data_sink</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaMultiDataSink" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>dump</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaMultiDataSink.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.JavaMultiDataSink.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.JavaMultiDataSink.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.streaming.functions.MultiDataSink']</em><a class="headerlink" href="#tspy.data_structures.utils.JavaMultiDataSink.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaMultiDataSink.dump">
+<code class="sig-name descname">dump</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">observations_map</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaMultiDataSink.dump" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaMultiTimeSeriesWriteFormat">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">JavaMultiTimeSeriesWriteFormat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">python_time_series_writer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaMultiTimeSeriesWriteFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>write</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaMultiTimeSeriesWriteFormat.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.JavaMultiTimeSeriesWriteFormat.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.JavaMultiTimeSeriesWriteFormat.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.io.MultiTimeSeriesWriteFormat']</em><a class="headerlink" href="#tspy.data_structures.utils.JavaMultiTimeSeriesWriteFormat.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaMultiTimeSeriesWriteFormat.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">observations_dict</span></em>, <em class="sig-param"><span class="n">encode_key</span></em>, <em class="sig-param"><span class="n">encode_value</span></em>, <em class="sig-param"><span class="n">options</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaMultiTimeSeriesWriteFormat.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">JavaPullStreamMultiTimeSeriesReader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">py_reader</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 58%" />
+<col style="width: 42%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>isFinished</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>isFinite</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>parse</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>read</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.streaming.io.StreamMultiTimeSeriesReader']</em><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader.isFinished">
+<code class="sig-name descname">isFinished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader.isFinished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader.isFinite">
+<code class="sig-name descname">isFinite</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader.isFinite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader.parse">
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamMultiTimeSeriesReader.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaPullStreamTimeSeriesReader">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">JavaPullStreamTimeSeriesReader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">py_reader</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamTimeSeriesReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 58%" />
+<col style="width: 42%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>isFinished</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>isFinite</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>parse</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>read</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaPullStreamTimeSeriesReader.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamTimeSeriesReader.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.JavaPullStreamTimeSeriesReader.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.streaming.io.StreamTimeSeriesReader']</em><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamTimeSeriesReader.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPullStreamTimeSeriesReader.isFinished">
+<code class="sig-name descname">isFinished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamTimeSeriesReader.isFinished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPullStreamTimeSeriesReader.isFinite">
+<code class="sig-name descname">isFinite</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamTimeSeriesReader.isFinite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPullStreamTimeSeriesReader.parse">
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamTimeSeriesReader.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPullStreamTimeSeriesReader.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPullStreamTimeSeriesReader.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">JavaPushStreamMultiTimeSeriesReader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">py_reader</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 58%" />
+<col style="width: 42%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>isFinished</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>isFinite</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>parse</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>read</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.streaming.io.StreamMultiTimeSeriesReader']</em><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader.isFinished">
+<code class="sig-name descname">isFinished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader.isFinished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader.isFinite">
+<code class="sig-name descname">isFinite</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader.isFinite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader.parse">
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamMultiTimeSeriesReader.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaPushStreamTimeSeriesReader">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">JavaPushStreamTimeSeriesReader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">py_reader</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamTimeSeriesReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 58%" />
+<col style="width: 42%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>isFinished</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>isFinite</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>parse</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>read</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaPushStreamTimeSeriesReader.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamTimeSeriesReader.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.JavaPushStreamTimeSeriesReader.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.streaming.io.StreamTimeSeriesReader']</em><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamTimeSeriesReader.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPushStreamTimeSeriesReader.isFinished">
+<code class="sig-name descname">isFinished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamTimeSeriesReader.isFinished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPushStreamTimeSeriesReader.isFinite">
+<code class="sig-name descname">isFinite</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamTimeSeriesReader.isFinite" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPushStreamTimeSeriesReader.parse">
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">message</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamTimeSeriesReader.parse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaPushStreamTimeSeriesReader.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaPushStreamTimeSeriesReader.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaTimeSeriesReader">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">JavaTimeSeriesReader</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">py_reader</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaTimeSeriesReader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>close</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>end</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>read</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>start</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaTimeSeriesReader.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.JavaTimeSeriesReader.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.JavaTimeSeriesReader.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.io.TimeSeriesReader']</em><a class="headerlink" href="#tspy.data_structures.utils.JavaTimeSeriesReader.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaTimeSeriesReader.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaTimeSeriesReader.close" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaTimeSeriesReader.end">
+<code class="sig-name descname">end</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaTimeSeriesReader.end" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaTimeSeriesReader.read">
+<code class="sig-name descname">read</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span></em>, <em class="sig-param"><span class="n">end</span></em>, <em class="sig-param"><span class="n">inclusive_bounds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaTimeSeriesReader.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaTimeSeriesReader.start">
+<code class="sig-name descname">start</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaTimeSeriesReader.start" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaTimeSeriesWriteFormat">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">JavaTimeSeriesWriteFormat</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">python_time_series_writer</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaTimeSeriesWriteFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>write</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaTimeSeriesWriteFormat.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.JavaTimeSeriesWriteFormat.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.JavaTimeSeriesWriteFormat.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.io.TimeSeriesWriteFormat']</em><a class="headerlink" href="#tspy.data_structures.utils.JavaTimeSeriesWriteFormat.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaTimeSeriesWriteFormat.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">observations</span></em>, <em class="sig-param"><span class="n">encode_value</span></em>, <em class="sig-param"><span class="n">options</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaTimeSeriesWriteFormat.write" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaToPythonBinaryTransformFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">JavaToPythonBinaryTransformFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">py_func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaToPythonBinaryTransformFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>call</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaToPythonBinaryTransformFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.JavaToPythonBinaryTransformFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.JavaToPythonBinaryTransformFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.transform.python.PythonBinaryTransformFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.JavaToPythonBinaryTransformFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaToPythonBinaryTransformFunction.call">
+<code class="sig-name descname">call</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j_time_series_l</span></em>, <em class="sig-param"><span class="n">j_time_series_r</span></em>, <em class="sig-param"><span class="n">start</span></em>, <em class="sig-param"><span class="n">end</span></em>, <em class="sig-param"><span class="n">inclusive_bounds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaToPythonBinaryTransformFunction.call" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaToPythonUnaryTransformFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">JavaToPythonUnaryTransformFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">py_func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaToPythonUnaryTransformFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 44%" />
+<col style="width: 56%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>call</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.JavaToPythonUnaryTransformFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.JavaToPythonUnaryTransformFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.JavaToPythonUnaryTransformFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.transform.python.PythonUnaryTransformFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.JavaToPythonUnaryTransformFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.JavaToPythonUnaryTransformFunction.call">
+<code class="sig-name descname">call</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j_time_series</span></em>, <em class="sig-param"><span class="n">start</span></em>, <em class="sig-param"><span class="n">end</span></em>, <em class="sig-param"><span class="n">inclusive_bounds</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.JavaToPythonUnaryTransformFunction.call" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.NaryMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">NaryMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.NaryMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.NaryMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.NaryMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.NaryMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.NaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.NaryMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.NaryMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.NaryMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.ObservationToKeyUnaryMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">ObservationToKeyUnaryMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.ObservationToKeyUnaryMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.ObservationToKeyUnaryMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.ObservationToKeyUnaryMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.ObservationToKeyUnaryMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.ObservationToKeyUnaryMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.ObservationToKeyUnaryMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j_observation</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.ObservationToKeyUnaryMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.PairUnaryMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">PairUnaryMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.PairUnaryMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.PairUnaryMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.PairUnaryMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.PairUnaryMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.PairUnaryMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.PairUnaryMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj_j_pair</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.PairUnaryMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.Record">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">Record</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">j_obj</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.Record" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">__call__</span></code>(**kwargs)</p></td>
+<td><p>Call self as a function.</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>get</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>keys</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>set</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p><strong>toString</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.Record.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.Record.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.Record.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.utils.Record']</em><a class="headerlink" href="#tspy.data_structures.utils.Record.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.Record.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.Record.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.Record.keys">
+<code class="sig-name descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.Record.keys" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.Record.set">
+<code class="sig-name descname">set</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.Record.set" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.Record.toString">
+<code class="sig-name descname">toString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.Record.toString" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.ReduceTimeSeriesUnaryMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">ReduceTimeSeriesUnaryMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.ReduceTimeSeriesUnaryMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.ReduceTimeSeriesUnaryMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.ReduceTimeSeriesUnaryMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.ReduceTimeSeriesUnaryMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.ReduceTimeSeriesUnaryMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.ReduceTimeSeriesUnaryMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j_ts</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.ReduceTimeSeriesUnaryMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.SegmentFlatUnaryMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">SegmentFlatUnaryMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.SegmentFlatUnaryMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.SegmentFlatUnaryMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.SegmentFlatUnaryMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.SegmentFlatUnaryMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.SegmentFlatUnaryMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.SegmentFlatUnaryMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j_seg</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.SegmentFlatUnaryMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.SegmentUnaryMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">SegmentUnaryMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.SegmentUnaryMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.SegmentUnaryMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.SegmentUnaryMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.SegmentUnaryMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.SegmentUnaryMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.SegmentUnaryMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j_segment</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.SegmentUnaryMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.SeriesConsumer">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">SeriesConsumer</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.SeriesConsumer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>accept</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.SeriesConsumer.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.SeriesConsumer.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.SeriesConsumer.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['java.util.function.Consumer']</em><a class="headerlink" href="#tspy.data_structures.utils.SeriesConsumer.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.SeriesConsumer.accept">
+<code class="sig-name descname">accept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j_series</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.SeriesConsumer.accept" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.SeriesFilterFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">SeriesFilterFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.SeriesFilterFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>apply</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.SeriesFilterFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.SeriesFilterFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.SeriesFilterFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['java.util.function.Function']</em><a class="headerlink" href="#tspy.data_structures.utils.SeriesFilterFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.SeriesFilterFunction.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j_series</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.SeriesFilterFunction.apply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.SeriesUnaryMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">SeriesUnaryMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.SeriesUnaryMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.SeriesUnaryMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.SeriesUnaryMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.SeriesUnaryMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.SeriesUnaryMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.SeriesUnaryMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j_obs_coll</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.SeriesUnaryMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.SeriesWithKeyUnaryMapfunctionToSeries">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">SeriesWithKeyUnaryMapfunctionToSeries</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.SeriesWithKeyUnaryMapfunctionToSeries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.SeriesWithKeyUnaryMapfunctionToSeries.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.SeriesWithKeyUnaryMapfunctionToSeries.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.SeriesWithKeyUnaryMapfunctionToSeries.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.SeriesWithKeyUnaryMapfunctionToSeries.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.SeriesWithKeyUnaryMapfunctionToSeries.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj_j_pair</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.SeriesWithKeyUnaryMapfunctionToSeries.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.TimeSeriesFilterFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">TimeSeriesFilterFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.TimeSeriesFilterFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.TimeSeriesFilterFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.TimeSeriesFilterFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.TimeSeriesFilterFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.FilterFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.TimeSeriesFilterFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.TimeSeriesFilterFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j_ts</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.TimeSeriesFilterFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.UnaryListPairMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">UnaryListPairMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.UnaryListPairMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.UnaryListPairMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.UnaryListPairMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.UnaryListPairMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.UnaryListPairMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.UnaryListPairMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">list_obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.UnaryListPairMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.UnaryMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">UnaryMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.UnaryMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.UnaryMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.UnaryMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.UnaryMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.UnaryMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.UnaryMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.UnaryMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.UnaryMapFunctionResultingInOptional">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">UnaryMapFunctionResultingInOptional</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.UnaryMapFunctionResultingInOptional" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.UnaryMapFunctionResultingInOptional.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.UnaryMapFunctionResultingInOptional.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.UnaryMapFunctionResultingInOptional.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.UnaryMapFunctionResultingInOptional.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.UnaryMapFunctionResultingInOptional.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.UnaryMapFunctionResultingInOptional.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.UnaryMapFunctionTupleResultingInOptional">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">UnaryMapFunctionTupleResultingInOptional</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.UnaryMapFunctionTupleResultingInOptional" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.UnaryMapFunctionTupleResultingInOptional.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.UnaryMapFunctionTupleResultingInOptional.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.UnaryMapFunctionTupleResultingInOptional.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.UnaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.UnaryMapFunctionTupleResultingInOptional.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.UnaryMapFunctionTupleResultingInOptional.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.UnaryMapFunctionTupleResultingInOptional.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.ValueAndSeriesBiFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">ValueAndSeriesBiFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.ValueAndSeriesBiFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>apply</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.ValueAndSeriesBiFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.ValueAndSeriesBiFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.ValueAndSeriesBiFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['java.util.function.BiFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.ValueAndSeriesBiFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.ValueAndSeriesBiFunction.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">j_series</span></em>, <em class="sig-param"><span class="n">state</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.ValueAndSeriesBiFunction.apply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="tspy.data_structures.utils.ValueAndTimeSeriesBinaryMapFunction">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">ValueAndTimeSeriesBinaryMapFunction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.ValueAndTimeSeriesBinaryMapFunction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Java</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>evaluate</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="tspy.data_structures.utils.ValueAndTimeSeriesBinaryMapFunction.Java">
+<em class="property">class </em><code class="sig-name descname">Java</code><a class="headerlink" href="#tspy.data_structures.utils.ValueAndTimeSeriesBinaryMapFunction.Java" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt id="tspy.data_structures.utils.ValueAndTimeSeriesBinaryMapFunction.Java.implements">
+<code class="sig-name descname">implements</code><em class="property"> = ['com.ibm.research.time_series.core.functions.BinaryMapFunction']</em><a class="headerlink" href="#tspy.data_structures.utils.ValueAndTimeSeriesBinaryMapFunction.Java.implements" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.utils.ValueAndTimeSeriesBinaryMapFunction.evaluate">
+<code class="sig-name descname">evaluate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span></em>, <em class="sig-param"><span class="n">j_ts</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.ValueAndTimeSeriesBinaryMapFunction.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.data_structures.utils.cast_to_j_if_necessary">
+<code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">cast_to_j_if_necessary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">tsc</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.cast_to_j_if_necessary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="tspy.data_structures.utils.cast_to_py_if_necessary">
+<code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">cast_to_py_if_necessary</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">obj</span></em>, <em class="sig-param"><span class="n">obj_type</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.cast_to_py_if_necessary" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="tspy.data_structures.utils.day">
+<code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">day</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">jvm</span></em>, <em class="sig-param"><span class="n">num_days</span></em>, <em class="sig-param"><span class="n">unit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.day" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="tspy.data_structures.utils.hour">
+<code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">hour</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">jvm</span></em>, <em class="sig-param"><span class="n">num_hours</span></em>, <em class="sig-param"><span class="n">unit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.hour" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="tspy.data_structures.utils.minute">
+<code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">minute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">jvm</span></em>, <em class="sig-param"><span class="n">num_minutes</span></em>, <em class="sig-param"><span class="n">unit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.minute" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="tspy.data_structures.utils.second">
+<code class="sig-prename descclassname">tspy.data_structures.utils.</code><code class="sig-name descname">second</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">jvm</span></em>, <em class="sig-param"><span class="n">num_seconds</span></em>, <em class="sig-param"><span class="n">unit</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.utils.second" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tspy.functions.html" class="btn btn-neutral float-right" title="tspy.functions package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tspy.data_structures.context.html" class="btn btn-neutral float-left" title="tspy.data_structures.context module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, IBM Research
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

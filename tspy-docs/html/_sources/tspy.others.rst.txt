@@ -1,0 +1,7 @@
+tspy.others module
+==================
+
+.. automodule:: tspy.others
+   :members:
+   :undoc-members:
+   :show-inheritance:

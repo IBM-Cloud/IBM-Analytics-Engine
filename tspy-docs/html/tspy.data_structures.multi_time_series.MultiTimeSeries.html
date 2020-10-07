@@ -1,0 +1,2154 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tspy.data_structures.multi_time_series.MultiTimeSeries module &mdash; TSPy alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/custom.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="tspy.data_structures.multi_time_series.SegmentMultiTimeSeries module" href="tspy.data_structures.multi_time_series.SegmentMultiTimeSeries.html" />
+    <link rel="prev" title="tspy.data_structures.multi_time_series package" href="tspy.data_structures.multi_time_series.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> TSPy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Library Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-two-ts">How to (two TS) …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-forecasting">How to forecasting …</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tspy.html">tspy package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tspy.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="tspy.data_structures.html">tspy.data_structures package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="tspy.data_structures.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tspy.data_structures.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.functions.html">tspy.functions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.ml.html">tspy.ml package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tspy.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TSPy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="tspy.html">tspy package</a> &raquo;</li>
+        
+          <li><a href="tspy.data_structures.html">tspy.data_structures package</a> &raquo;</li>
+        
+          <li><a href="tspy.data_structures.multi_time_series.html">tspy.data_structures.multi_time_series package</a> &raquo;</li>
+        
+      <li>tspy.data_structures.multi_time_series.MultiTimeSeries module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tspy.data_structures.multi_time_series.MultiTimeSeries.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-tspy.data_structures.multi_time_series.MultiTimeSeries">
+<span id="tspy-data-structures-multi-time-series-multitimeseries-module"></span><h1>tspy.data_structures.multi_time_series.MultiTimeSeries module<a class="headerlink" href="#module-tspy.data_structures.multi_time_series.MultiTimeSeries" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.multi_time_series.MultiTimeSeries.</code><code class="sig-name descname">MultiTimeSeries</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">tsc</span></em>, <em class="sig-param"><span class="n">j_mts</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A collection of <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a> where each time-series is identified by some key.</p>
+<p class="rubric">Notes</p>
+<p>Like time-series, operations performed against a multi-time-series are executed lazily unless specified otherwise</p>
+<p>All transforms against a multi-time-series will be run in parallel across time-series</p>
+<p>There is no assumption that all time-series must be aligned or have like periodicity.</p>
+<p class="rubric">Examples</p>
+<p>create a multi-time-series from a dict</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">builder</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tspy</span><span class="o">.</span><span class="n">observation</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tspy</span><span class="o">.</span><span class="n">observation</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">to_time_series</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">ts1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ts2</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1</span>
+<span class="go">TimeStamp: 1     Value: 2</span>
+<span class="go">TimeStamp: 2     Value: 3</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 2     Value: 4</span>
+<span class="go">TimeStamp: 10     Value: 1</span>
+</pre></div>
+</div>
+<p>create a multi-time-series from a pandas dataframe</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;age&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row1</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Row1&#39;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;josh&quot;</span><span class="p">,</span> <span class="mi">27</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row2</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Row2&#39;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;john&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">row3</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Row3&#39;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;bob&quot;</span><span class="p">,</span> <span class="mi">17</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">header</span><span class="p">,</span> <span class="n">row1</span><span class="p">,</span> <span class="n">row2</span><span class="p">,</span> <span class="n">row3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;int64&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;timestamp&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 1     Value: {name=josh, age=27}</span>
+<span class="go">TimeStamp: 5     Value: {name=bob, age=17}</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 3     Value: {name=john, age=4}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Attributes</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.keys" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.keys"><code class="xref py py-obj docutils literal notranslate"><span class="pre">keys</span></code></a></dt><dd><p>Returns</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.aggregate" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.aggregate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aggregate</span></code></a>(zero, seq_func, comb_func)</p></td>
+<td><p>aggregate all series in this multi-time-series to produce a single value</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.aggregate_series" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.aggregate_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aggregate_series</span></code></a>(list_to_val_func)</p></td>
+<td><p>aggregate all time-series in the multi-time-series using a summation function to produce a single time-series</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.aggregate_series_with_key" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.aggregate_series_with_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">aggregate_series_with_key</span></code></a>(list_to_val_func)</p></td>
+<td><p>aggregate all time-series with key in the multi-time-series using a summation function to produce a single time-series</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.align" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">align</span></code></a>(key[, interp_func])</p></td>
+<td><p>align all time-series on a key</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.cache" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.cache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">cache</span></code></a>([cache_size])</p></td>
+<td><p>suggest to the multi-time-series to cache values</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.collect" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.collect"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect</span></code></a>([inclusive])</p></td>
+<td><p>collect and materialize this multi-time-series</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.collect_series" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.collect_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">collect_series</span></code></a>(key[, inclusive])</p></td>
+<td><p>get a collection of observations given a key</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.describe" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.describe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">describe</span></code></a>()</p></td>
+<td><p>retrieve a <a class="reference internal" href="tspy.data_structures.NumStats.html#module-tspy.data_structures.NumStats" title="tspy.data_structures.NumStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">NumStats</span></code></a> object per time-series computed from all values in this multi-time-series (double)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.fillna" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.fillna"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fillna</span></code></a>(interpolator[, null_value])</p></td>
+<td><p>produce a new multi-time-series which is the result of filling all null values.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.filter" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.filter"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter</span></code></a>(func)</p></td>
+<td><p>produce a new multi-time-series which is the result of filtering by each observation’s value given a filter function.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.filter_series" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.filter_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_series</span></code></a>(func)</p></td>
+<td><p>filter each time-series by its time-series object</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.filter_series_key" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.filter_series_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">filter_series_key</span></code></a>(func)</p></td>
+<td><p>filter each time-series by its key</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.forecast" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.forecast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">forecast</span></code></a>(num_predictions, fm[, …])</p></td>
+<td><p>forecast the next num_predictions using a forecasting model for each time-series</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.full_align" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.full_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">full_align</span></code></a>(multi_time_series[, …])</p></td>
+<td><p>align two multi-time-series based on a temporal full join strategy and optionally interpolate missing values</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.full_join" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.full_join"><code class="xref py py-obj docutils literal notranslate"><span class="pre">full_join</span></code></a>(multi_time_series[, join_func, …])</p></td>
+<td><p>join two multi-time-series based on a temporal full join strategy and optionally interpolate missing values</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.get_time_series" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.get_time_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_time_series</span></code></a>(key)</p></td>
+<td><p>get a time-series given a key</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.get_values" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.get_values"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_values</span></code></a>(start, end[, inclusive])</p></td>
+<td><p>get all values between a range in this multi-time-series</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.inner_align" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.inner_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inner_align</span></code></a>(multi_time_series)</p></td>
+<td><p>align two multi-time-series based on a temporal inner join strategy</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.inner_join" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.inner_join"><code class="xref py py-obj docutils literal notranslate"><span class="pre">inner_join</span></code></a>(multi_time_series[, join_func])</p></td>
+<td><p>join two multi-time-series based on a temporal inner join strategy</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_align" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">left_align</span></code></a>(multi_time_series[, interp_func])</p></td>
+<td><p>align two multi-time-series based on a temporal left join strategy and optionally interpolate missing values</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_join" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_join"><code class="xref py py-obj docutils literal notranslate"><span class="pre">left_join</span></code></a>(multi_time_series[, join_func, …])</p></td>
+<td><p>join two multi-time-series based on a temporal left join strategy and optionally interpolate missing values</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_outer_align" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_outer_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">left_outer_align</span></code></a>(multi_time_series[, …])</p></td>
+<td><p>align two multi-time-series based on a temporal left outer join strategy and optionally interpolate missing values</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_outer_join" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_outer_join"><code class="xref py py-obj docutils literal notranslate"><span class="pre">left_outer_join</span></code></a>(multi_time_series[, …])</p></td>
+<td><p>join two multi-time-series based on a temporal left outer join strategy and optionally interpolate missing values</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map</span></code></a>(func)</p></td>
+<td><p>produce a new multi-time-series where each observation’s value in this multi-time-series is mapped to a new observation value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map_series" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map_series</span></code></a>(func)</p></td>
+<td><p>map each <a class="reference internal" href="tspy.data_structures.html#tspy.data_structures.ObservationCollection" title="tspy.data_structures.ObservationCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObservationCollection</span></code></a> to a new collection of observations</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map_series_key" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map_series_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map_series_key</span></code></a>(func)</p></td>
+<td><p>map each time-series key to a new key</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map_series_with_key" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map_series_with_key"><code class="xref py py-obj docutils literal notranslate"><span class="pre">map_series_with_key</span></code></a>(func)</p></td>
+<td><p>map each <a class="reference internal" href="tspy.data_structures.html#tspy.data_structures.ObservationCollection" title="tspy.data_structures.ObservationCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObservationCollection</span></code></a> to a new collection of observations giving access to each time-series key</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.pair_wise_transform" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.pair_wise_transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pair_wise_transform</span></code></a>(binary_transform)</p></td>
+<td><p>produce a new multi-time-series which is the product of performing a pair-wise transform against all combination of keys</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.print" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.print"><code class="xref py py-obj docutils literal notranslate"><span class="pre">print</span></code></a>([start, end, inclusive])</p></td>
+<td><p>print this multi-time-series</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.reduce" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.reduce"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce</span></code></a>(func)</p></td>
+<td><p>reduce each time-series in this multi-time-series to a single value</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.reduce_range" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.reduce_range"><code class="xref py py-obj docutils literal notranslate"><span class="pre">reduce_range</span></code></a>(func, start, end[, inclusive])</p></td>
+<td><p>reduce each time-series in this multi-time-series to a single value given a range</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.resample" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.resample"><code class="xref py py-obj docutils literal notranslate"><span class="pre">resample</span></code></a>(period, interp_func)</p></td>
+<td><p>produce a new multi-time-series by resampling each time-series to a given periodicity</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_align" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">right_align</span></code></a>(multi_time_series[, interp_func])</p></td>
+<td><p>align two multi-time-series based on a temporal right join strategy and optionally interpolate missing values</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_join" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_join"><code class="xref py py-obj docutils literal notranslate"><span class="pre">right_join</span></code></a>(multi_time_series[, join_func, …])</p></td>
+<td><p>join two multi-time-series based on a temporal right join strategy and optionally interpolate missing values</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_outer_align" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_outer_align"><code class="xref py py-obj docutils literal notranslate"><span class="pre">right_outer_align</span></code></a>(multi_time_series[, …])</p></td>
+<td><p>align two time-series based on a temporal right outer join strategy and optionally interpolate missing values</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_outer_join" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_outer_join"><code class="xref py py-obj docutils literal notranslate"><span class="pre">right_outer_join</span></code></a>(multi_time_series[, …])</p></td>
+<td><p>join two multi-time-series based on a temporal right outer join strategy and optionally interpolate missing values</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segment</span></code></a>(window[, step, enforce_bounds])</p></td>
+<td><p>produce a new segment-multi-time-series from a performing a sliding-based segmentation over each time-series</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segment_by</span></code></a>(func)</p></td>
+<td><p>produce a new segment-multi-time-series from a performing a group-by operation on each observation’s value for each time-series</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by_anchor" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by_anchor"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segment_by_anchor</span></code></a>(func, left_delta, right_delta)</p></td>
+<td><p>produce a new segment-multi-time-series from performing an anchor-based segmentation over each time-series.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by_changepoint" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by_changepoint"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segment_by_changepoint</span></code></a>([change_point])</p></td>
+<td><p>produce a new segment-multi-time-series from performing a chang-point based segmentation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by_time" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by_time"><code class="xref py py-obj docutils literal notranslate"><span class="pre">segment_by_time</span></code></a>(window, step)</p></td>
+<td><p>produce a new segment-multi-time-series from a performing a time-based segmentation over each time-series</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.time_series" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.time_series"><code class="xref py py-obj docutils literal notranslate"><span class="pre">time_series</span></code></a>(key)</p></td>
+<td><p>get a time-series given a key</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_df" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_df"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_df</span></code></a>([format, inclusive])</p></td>
+<td><p>convert this multi-time-series to a pandas dataframe.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_df_instants" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_df_instants"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_df_instants</span></code></a>([inclusive])</p></td>
+<td><p>convert this multi-time-series to an observations pandas dataframe.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_df_observations" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_df_observations"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_df_observations</span></code></a>([inclusive])</p></td>
+<td><p>convert this multi-time-series to an observations pandas dataframe.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_segments" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_segments"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_segments</span></code></a>(segment_transform)</p></td>
+<td><p>produce a new segment-multi-time-series from a segmentation transform</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.transform" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.transform"><code class="xref py py-obj docutils literal notranslate"><span class="pre">transform</span></code></a>(*args)</p></td>
+<td><p>produce a new multi-time-series which is the result of performing a transforming over each time-series.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.trs" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.trs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">trs</span></code></a>(key)</p></td>
+<td><p>get a time-series time-reference-system given a key</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.uncache" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.uncache"><code class="xref py py-obj docutils literal notranslate"><span class="pre">uncache</span></code></a>()</p></td>
+<td><p>remove the multi-time-series caching mechanism</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.with_trs" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.with_trs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">with_trs</span></code></a>([granularity, time_tick])</p></td>
+<td><p>create a new multi-time-series with its timestamps mapped based on a granularity and start_time.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.write" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.write"><code class="xref py py-obj docutils literal notranslate"><span class="pre">write</span></code></a>([start, end, inclusive])</p></td>
+<td><p>create a multi-time-series-writer given a range</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.aggregate">
+<code class="sig-name descname">aggregate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">zero</span></em>, <em class="sig-param"><span class="n">seq_func</span></em>, <em class="sig-param"><span class="n">comb_func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.aggregate" title="Permalink to this definition">¶</a></dt>
+<dd><p>aggregate all series in this multi-time-series to produce a single value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>zero</strong><span class="classifier">any</span></dt><dd><p>zero value for aggregation</p>
+</dd>
+<dt><strong>seq_func</strong><span class="classifier">func</span></dt><dd><p>operation to perform against each time series to reduce a time series to a single value</p>
+</dd>
+<dt><strong>comb_func</strong><span class="classifier">func</span></dt><dd><p>operation to perform against each reduced time series values to combine those values</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>any</dt><dd><p>single output value representing the aggregate of all time-series in the multi-time-series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>TSErrorWithMessage</dt><dd><p>If there is an error in aggregating, e.g. incorrect type</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>create a simple multi-time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">builder</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tspy</span><span class="o">.</span><span class="n">observation</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tspy</span><span class="o">.</span><span class="n">observation</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">to_time_series</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">ts1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ts2</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1</span>
+<span class="go">TimeStamp: 1     Value: 2</span>
+<span class="go">TimeStamp: 2     Value: 3</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 2     Value: 4</span>
+<span class="go">TimeStamp: 10     Value: 1</span>
+</pre></div>
+</div>
+<p>get the sum over all time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tspy.functions</span> <span class="kn">import</span> <span class="n">reducers</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span> <span class="o">=</span> <span class="n">mts_orig</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">agg</span><span class="p">,</span><span class="n">cur</span><span class="p">:</span> <span class="n">agg</span> <span class="o">+</span> <span class="n">cur</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">reducers</span><span class="o">.</span><span class="n">sum</span><span class="p">()),</span> <span class="k">lambda</span> <span class="n">agg1</span><span class="p">,</span> <span class="n">agg2</span><span class="p">:</span> <span class="n">agg1</span> <span class="o">+</span> <span class="n">agg2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">sum</span>
+<span class="go">11.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.aggregate_series">
+<code class="sig-name descname">aggregate_series</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">list_to_val_func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.aggregate_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>aggregate all time-series in the multi-time-series using a summation function to produce a single time-series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>list_to_val_func</strong><span class="classifier">func</span></dt><dd><p>function which produces a single value given a list of values</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></dt><dd><p>a new time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>all time-series in this multi-time-series should be aligned prior to calling aggregate_series</p>
+<p class="rubric">Examples</p>
+<p>create a simple multi-time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">ts1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ts2</span><span class="p">})</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1</span>
+<span class="go">TimeStamp: 1     Value: 2</span>
+<span class="go">TimeStamp: 2     Value: 3</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 2</span>
+<span class="go">TimeStamp: 1     Value: 3</span>
+<span class="go">TimeStamp: 2     Value: 4</span>
+</pre></div>
+</div>
+<p>create a sum per time-tick time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">mts_orig</span><span class="o">.</span><span class="n">aggregate_series</span><span class="p">(</span><span class="k">lambda</span> <span class="n">l</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+<span class="go">TimeStamp: 0     Value: 3</span>
+<span class="go">TimeStamp: 1     Value: 5</span>
+<span class="go">TimeStamp: 2     Value: 7</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.aggregate_series_with_key">
+<code class="sig-name descname">aggregate_series_with_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">list_to_val_func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.aggregate_series_with_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>aggregate all time-series with key in the multi-time-series using a summation function to produce a single
+time-series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>list_to_val_func</strong><span class="classifier">func</span></dt><dd><p>function which produces a single value given a list of pairs with key and value</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></dt><dd><p>a new time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.align">
+<code class="sig-name descname">align</code><span class="sig-paren">(</span><em class="sig-param">key</em>, <em class="sig-param">interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.align" title="Permalink to this definition">¶</a></dt>
+<dd><p>align all time-series on a key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key</strong><span class="classifier">any</span></dt><dd><p>key to a time-series within this multi-time-series</p>
+</dd>
+<dt><strong>interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the right time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>create a simple multi-time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">builder</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tspy</span><span class="o">.</span><span class="n">observation</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tspy</span><span class="o">.</span><span class="n">observation</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">to_time_series</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">ts1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ts2</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1</span>
+<span class="go">TimeStamp: 1     Value: 2</span>
+<span class="go">TimeStamp: 2     Value: 3</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 2     Value: 4</span>
+<span class="go">TimeStamp: 10     Value: 1</span>
+</pre></div>
+</div>
+<p>align all time-series on time-series ‘b’</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span> <span class="o">=</span> <span class="n">mts_orig</span><span class="o">.</span><span class="n">align</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 2     Value: 3</span>
+<span class="go">TimeStamp: 10     Value: null</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 2     Value: 4</span>
+<span class="go">TimeStamp: 10     Value: 1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.cache">
+<code class="sig-name descname">cache</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">cache_size</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>suggest to the multi-time-series to cache values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>cache_size</strong><span class="classifier">int, optional</span></dt><dd><p>the max cache size (default is max long)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>this is a lazy operation and will only suggest to the multi-time-series to save values once computed</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.collect">
+<code class="sig-name descname">collect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inclusive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.collect" title="Permalink to this definition">¶</a></dt>
+<dd><p>collect and materialize this multi-time-series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>inclusive</strong><span class="classifier">bool, optional</span></dt><dd><p>if true, will use inclusive bounds (default is False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dict</dt><dd><p>a collection of observations for each key</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>TSErrorWithMessage</dt><dd><p>If there is an error in collecting data, e.g. incorrect type</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.collect" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.collect"><code class="xref py py-func docutils literal notranslate"><span class="pre">collect()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.collect_series">
+<code class="sig-name descname">collect_series</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em>, <em class="sig-param"><span class="n">inclusive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.collect_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>get a collection of observations given a key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key</strong><span class="classifier">any</span></dt><dd><p>the key associated with a time-series in this multi-time-series</p>
+</dd>
+<dt><strong>inclusive</strong><span class="classifier">bool, optional</span></dt><dd><p>if true, will use inclusive bounds (default is False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="tspy.data_structures.html#tspy.data_structures.ObservationCollection" title="tspy.data_structures.ObservationCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObservationCollection</span></code></a></dt><dd><p>the collection of observations associated with the given key</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If there is an error in aggregating, e.g. incorrect key</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.describe">
+<code class="sig-name descname">describe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.describe" title="Permalink to this definition">¶</a></dt>
+<dd><p>retrieve a <a class="reference internal" href="tspy.data_structures.NumStats.html#module-tspy.data_structures.NumStats" title="tspy.data_structures.NumStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">NumStats</span></code></a> object per time-series computed from all values in this
+multi-time-series (double)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>dict</dt><dd><p><a class="reference internal" href="tspy.data_structures.NumStats.html#module-tspy.data_structures.NumStats" title="tspy.data_structures.NumStats"><code class="xref py py-class docutils literal notranslate"><span class="pre">NumStats</span></code></a> for each key</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><dl class="simple">
+<dt>TSErrorWithMessage</dt><dd><p><cite>describe</cite> doesn’t work with the data type</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.fillna">
+<code class="sig-name descname">fillna</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interpolator</span></em>, <em class="sig-param"><span class="n">null_value</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.fillna" title="Permalink to this definition">¶</a></dt>
+<dd><p>produce a new multi-time-series which is the result of filling all null values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>interpolator</strong><span class="classifier">func or interpolator</span></dt><dd><p>the interpolator method to be used when a value is null</p>
+</dd>
+<dt><strong>null_value</strong><span class="classifier">any, optional</span></dt><dd><p>denotes a null value, for instance if nullValue = NaN, NaN would be filled</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.filter">
+<code class="sig-name descname">filter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>produce a new multi-time-series which is the result of filtering by each observation’s value given a filter
+function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">func</span></dt><dd><p>the filter on observation’s value function</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.filter" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.filter"><code class="xref py py-func docutils literal notranslate"><span class="pre">filter()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.filter_series">
+<code class="sig-name descname">filter_series</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.filter_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>filter each time-series by its time-series object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">func</span></dt><dd><p>function which given a time-series will produce a boolean denoting whether to keep the
+time-series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>create a simple multi-time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts3</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">ts1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ts2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">ts3</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: 2.0</span>
+<span class="go">TimeStamp: 2     Value: 3.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: -2.0</span>
+<span class="go">TimeStamp: 2     Value: 3.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+<span class="go">c time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 0.0</span>
+<span class="go">TimeStamp: 1     Value: 1.0</span>
+<span class="go">TimeStamp: 2     Value: 2.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span> <span class="o">=</span> <span class="n">mts_orig</span><span class="o">.</span><span class="n">filter_series</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="o">-</span><span class="mf">2.0</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">collect</span><span class="p">()])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: 2.0</span>
+<span class="go">TimeStamp: 2     Value: 3.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+<span class="go">c time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 0.0</span>
+<span class="go">TimeStamp: 1     Value: 1.0</span>
+<span class="go">TimeStamp: 2     Value: 2.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.filter_series_key">
+<code class="sig-name descname">filter_series_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.filter_series_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>filter each time-series by its key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">func</span></dt><dd><p>function which given a key will produce a boolean denoting whether to keep the time-series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>create a simple multi-time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts3</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">ts1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ts2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">ts3</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: 2.0</span>
+<span class="go">TimeStamp: 2     Value: 3.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: -2.0</span>
+<span class="go">TimeStamp: 2     Value: 3.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+<span class="go">c time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 0.0</span>
+<span class="go">TimeStamp: 1     Value: 1.0</span>
+<span class="go">TimeStamp: 2     Value: 2.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+</pre></div>
+</div>
+<p>filter each series by key != ‘a’</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span> <span class="o">=</span> <span class="n">mts_orig</span><span class="o">.</span><span class="n">filter_series_key</span><span class="p">(</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="n">k</span> <span class="o">!=</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: -2.0</span>
+<span class="go">TimeStamp: 2     Value: 3.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+<span class="go">c time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 0.0</span>
+<span class="go">TimeStamp: 1     Value: 1.0</span>
+<span class="go">TimeStamp: 2     Value: 2.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.forecast">
+<code class="sig-name descname">forecast</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">num_predictions</span></em>, <em class="sig-param"><span class="n">fm</span></em>, <em class="sig-param"><span class="n">start_training_time</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">confidence</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.forecast" title="Permalink to this definition">¶</a></dt>
+<dd><p>forecast the next num_predictions using a forecasting model for each time-series</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>num_predictions</strong><span class="classifier">int</span></dt><dd><p>number of forecasts past the end of the time-series to retrieve</p>
+</dd>
+<dt><strong>fm</strong><span class="classifier"><a class="reference internal" href="tspy.data_structures.forecasting.ForecastingModel.html#tspy.data_structures.forecasting.ForecastingModel.ForecastingModel" title="tspy.data_structures.forecasting.ForecastingModel.ForecastingModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForecastingModel</span></code></a></span></dt><dd><p>the forecasting model to use</p>
+</dd>
+<dt><strong>start_training_time</strong><span class="classifier">int or datetime, optional</span></dt><dd><p>point at which to start training the forecasting model</p>
+</dd>
+<dt><strong>confidence</strong><span class="classifier">float</span></dt><dd><p>number between 0 and 1 which is used in calculating the confidence interval</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dict</dt><dd><p>a collection of observations for each key</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>TSErrorWithMessage</dt><dd><p>If there is an error in forecasting</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.forecast" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.forecast"><code class="xref py py-func docutils literal notranslate"><span class="pre">forecast()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.full_align">
+<code class="sig-name descname">full_align</code><span class="sig-paren">(</span><em class="sig-param">multi_time_series</em>, <em class="sig-param">left_interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em>, <em class="sig-param">right_interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.full_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>align two multi-time-series based on a temporal full join strategy and optionally interpolate missing values</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>multi_time_series</strong><span class="classifier"><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></span></dt><dd><p>the time-series to align with</p>
+</dd>
+<dt><strong>left_interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the left multi-time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+<dt><strong>right_interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the right multi-time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>tuple</dt><dd><p>aligned multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>full align will join on like time-series keys. If a key does not exist in one time-series, it will be
+discarded</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.full_align" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.full_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">full_align()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.full_join">
+<code class="sig-name descname">full_join</code><span class="sig-paren">(</span><em class="sig-param">multi_time_series</em>, <em class="sig-param">join_func=None</em>, <em class="sig-param">left_interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em>, <em class="sig-param">right_interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.full_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>join two multi-time-series based on a temporal full join strategy and optionally interpolate missing values</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>multi_time_series</strong><span class="classifier"><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a> or <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></span></dt><dd><p>the multi-time-series to join with</p>
+</dd>
+<dt><strong>join_func</strong><span class="classifier">func, optional</span></dt><dd><p>function to join to values (default is join to list where left is index 0, right is index 1)</p>
+</dd>
+<dt><strong>left_interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the left time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+<dt><strong>right_interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the right time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>full join will join on like time-series keys. If a key does not exist in one time-series, it will be
+discarded</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.full_join" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.full_join"><code class="xref py py-func docutils literal notranslate"><span class="pre">full_join()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.get_time_series">
+<code class="sig-name descname">get_time_series</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.get_time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>get a time-series given a key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key</strong><span class="classifier">any</span></dt><dd><p>the key associated with a time-series in this multi-time-series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></dt><dd><p>the time-series associated with the given key</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If there is an error in aggregating, e.g. incorrect key</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.get_values">
+<code class="sig-name descname">get_values</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span></em>, <em class="sig-param"><span class="n">end</span></em>, <em class="sig-param"><span class="n">inclusive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.get_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>get all values between a range in this multi-time-series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>start</strong><span class="classifier">int or datetime</span></dt><dd><p>start of range (inclusive)</p>
+</dd>
+<dt><strong>end</strong><span class="classifier">int or datetime</span></dt><dd><p>end of range (inclusive)</p>
+</dd>
+<dt><strong>inclusive</strong><span class="classifier">bool, optional</span></dt><dd><p>if true, will use inclusive bounds (default is False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dict</dt><dd><p>a collection of observations for each key</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>TSErrorWithMessage</dt><dd><p>If there is an error in collecting data, e.g. incorrect type</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.get_values" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.get_values"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_values()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.inner_align">
+<code class="sig-name descname">inner_align</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">multi_time_series</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.inner_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>align two multi-time-series based on a temporal inner join strategy</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>multi_time_series</strong><span class="classifier"><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></span></dt><dd><p>the multi-time-series to align with</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>tuple</dt><dd><p>aligned multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>inner align will align on like time-series keys. If a key does not exist in one time-series, it will be
+discarded</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.inner_align" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.inner_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">inner_align()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.inner_join">
+<code class="sig-name descname">inner_join</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">multi_time_series</span></em>, <em class="sig-param"><span class="n">join_func</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.inner_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>join two multi-time-series based on a temporal inner join strategy</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>multi_time_series</strong><span class="classifier"><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a> or <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></span></dt><dd><p>the multi-time-series to join with</p>
+</dd>
+<dt><strong>join_func</strong><span class="classifier">func, optional</span></dt><dd><p>function to join 2 values at a given time-tick. If None given, joined value will be in a list
+(default is None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>inner join will join on like time-series keys. If a key does not exist in one time-series, it will be
+discarded</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.inner_join" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.inner_join"><code class="xref py py-func docutils literal notranslate"><span class="pre">inner_join()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.keys">
+<em class="property">property </em><code class="sig-name descname">keys</code><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.keys" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>list</dt><dd><p>all keys in this multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_align">
+<code class="sig-name descname">left_align</code><span class="sig-paren">(</span><em class="sig-param">multi_time_series</em>, <em class="sig-param">interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>align two multi-time-series based on a temporal left join strategy and optionally interpolate missing values</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>multi_time_series</strong><span class="classifier"><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></span></dt><dd><p>the time-series to align with</p>
+</dd>
+<dt><strong>interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the right time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>tuple</dt><dd><p>aligned multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>left align will join on like time-series keys. If a key does not exist in one time-series, it will be
+discarded</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.left_align" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.left_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">left_align()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_join">
+<code class="sig-name descname">left_join</code><span class="sig-paren">(</span><em class="sig-param">multi_time_series</em>, <em class="sig-param">join_func=None</em>, <em class="sig-param">interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>join two multi-time-series based on a temporal left join strategy and optionally interpolate missing values</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>multi_time_series</strong><span class="classifier"><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a> or <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></span></dt><dd><p>the multi-time-series to join with</p>
+</dd>
+<dt><strong>join_func</strong><span class="classifier">func, optional</span></dt><dd><p>function to join to values (default is join to list where left is index 0, right is index 1)</p>
+</dd>
+<dt><strong>interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the right time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>left join will join on like time-series keys. If a key does not exist in one time-series, it will be
+discarded</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.left_join" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.left_join"><code class="xref py py-func docutils literal notranslate"><span class="pre">left_join()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_outer_align">
+<code class="sig-name descname">left_outer_align</code><span class="sig-paren">(</span><em class="sig-param">multi_time_series</em>, <em class="sig-param">interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_outer_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>align two multi-time-series based on a temporal left outer join strategy and optionally interpolate missing
+values</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>multi_time_series</strong><span class="classifier"><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></span></dt><dd><p>the multi-time-series to align with</p>
+</dd>
+<dt><strong>interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the right time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>tuple</dt><dd><p>aligned multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>left outer align will join on like time-series keys. If a key does not exist in one time-series, it will be
+discarded</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.left_outer_align" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.left_outer_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">left_outer_align()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_outer_join">
+<code class="sig-name descname">left_outer_join</code><span class="sig-paren">(</span><em class="sig-param">multi_time_series</em>, <em class="sig-param">join_func=None</em>, <em class="sig-param">interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.left_outer_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>join two multi-time-series based on a temporal left outer join strategy and optionally interpolate missing values</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>multi_time_series</strong><span class="classifier"><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a> or <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></span></dt><dd><p>the multi-time-series to join with</p>
+</dd>
+<dt><strong>join_func</strong><span class="classifier">func, optional</span></dt><dd><p>function to join to values (default is join to list where left is index 0, right is index 1)</p>
+</dd>
+<dt><strong>interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the right time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>left outer join will join on like time-series keys. If a key does not exist in one time-series, it will be
+discarded</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.left_outer_join" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.left_outer_join"><code class="xref py py-func docutils literal notranslate"><span class="pre">left_outer_join()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map">
+<code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>produce a new multi-time-series where each observation’s value in this multi-time-series is mapped to a new
+observation value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">func</span></dt><dd><p>value mapping function</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.map" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.map"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map_series">
+<code class="sig-name descname">map_series</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>map each <a class="reference internal" href="tspy.data_structures.html#tspy.data_structures.ObservationCollection" title="tspy.data_structures.ObservationCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObservationCollection</span></code></a> to a new collection of observations</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">func</span></dt><dd><p>function which given a collection of observations, will produce a new collection of observations</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>create a simple multi-time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">builder</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tspy</span><span class="o">.</span><span class="n">observation</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tspy</span><span class="o">.</span><span class="n">observation</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">to_time_series</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">ts1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ts2</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1</span>
+<span class="go">TimeStamp: 1     Value: 2</span>
+<span class="go">TimeStamp: 2     Value: 3</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 2     Value: 4</span>
+<span class="go">TimeStamp: 10     Value: 1</span>
+</pre></div>
+</div>
+<p>add one to each value in our multi-time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span> <span class="o">=</span> <span class="n">mts_orig</span><span class="o">.</span><span class="n">map_series</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">to_time_series</span><span class="p">()</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">collect</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 2</span>
+<span class="go">TimeStamp: 1     Value: 3</span>
+<span class="go">TimeStamp: 2     Value: 4</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 2     Value: 5</span>
+<span class="go">TimeStamp: 10     Value: 2</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map_series_key">
+<code class="sig-name descname">map_series_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map_series_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>map each time-series key to a new key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">func</span></dt><dd><p>function which given a time-series key, will produce a new time-series key</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>all produced keys must be unique</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map_series_with_key">
+<code class="sig-name descname">map_series_with_key</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.map_series_with_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>map each <a class="reference internal" href="tspy.data_structures.html#tspy.data_structures.ObservationCollection" title="tspy.data_structures.ObservationCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObservationCollection</span></code></a> to a new collection of observations giving access to
+each time-series key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">func</span></dt><dd><p>function which given a collection of observations and a key, will produce a new collection of observations</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.pair_wise_transform">
+<code class="sig-name descname">pair_wise_transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">binary_transform</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.pair_wise_transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>produce a new multi-time-series which is the product of performing a pair-wise transform against all
+combination of keys</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>binary_transform</strong><span class="classifier">BinaryTransform</span></dt><dd><p>the binary transform to execute across all pairs in this multi-time-series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>create a simple multi-time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts3</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">ts1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ts2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">ts3</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: 2.0</span>
+<span class="go">TimeStamp: 2     Value: 3.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: -2.0</span>
+<span class="go">TimeStamp: 2     Value: 3.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+<span class="go">c time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 0.0</span>
+<span class="go">TimeStamp: 1     Value: 1.0</span>
+<span class="go">TimeStamp: 2     Value: 2.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+</pre></div>
+</div>
+<p>perform a pair-wise correlation on this multi-time-series (sliding windows of size 3)</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tspy.functions</span> <span class="kn">import</span> <span class="n">reducers</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span> <span class="o">=</span> <span class="n">mts_orig</span><span class="o">.</span><span class="n">segment</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">pair_wise_transform</span><span class="p">(</span><span class="n">reducers</span><span class="o">.</span><span class="n">correlation</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span>
+<span class="go">(a, a) time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: 1.0</span>
+<span class="go">(a, b) time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 0.3973597071195132</span>
+<span class="go">TimeStamp: 1     Value: 0.9332565252573828</span>
+<span class="go">(b, a) time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 0.3973597071195132</span>
+<span class="go">TimeStamp: 1     Value: 0.9332565252573828</span>
+<span class="go">(a, c) time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: 0.9819805060619657</span>
+<span class="go">(b, b) time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: 1.0</span>
+<span class="go">(c, a) time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: 0.9819805060619657</span>
+<span class="go">(b, c) time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 0.3973597071195132</span>
+<span class="go">TimeStamp: 1     Value: 0.8485552916276634</span>
+<span class="go">(c, b) time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 0.3973597071195132</span>
+<span class="go">TimeStamp: 1     Value: 0.8485552916276633</span>
+<span class="go">(c, c) time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: 1.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.print">
+<code class="sig-name descname">print</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inclusive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.print" title="Permalink to this definition">¶</a></dt>
+<dd><p>print this multi-time-series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>start</strong><span class="classifier">int or datetime, optional</span></dt><dd><p>start of range (inclusive) (default is current first time-tick)</p>
+</dd>
+<dt><strong>end</strong><span class="classifier">int or datetime</span></dt><dd><p>end of range (inclusive) (default is current last time-tick)</p>
+</dd>
+<dt><strong>inclusive</strong><span class="classifier">bool, optional</span></dt><dd><p>if true, will use inclusive bounds (default is False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><dl class="simple">
+<dt>ValueError</dt><dd><p>If there is an error in the input arguments.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.reduce">
+<code class="sig-name descname">reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.reduce" title="Permalink to this definition">¶</a></dt>
+<dd><p>reduce each time-series in this multi-time-series to a single value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">unary reducer or func</span></dt><dd><p>the unary reducer method to be used</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dict</dt><dd><p>the output of time-series reduction for each key</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.reduce" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.reduce"><code class="xref py py-func docutils literal notranslate"><span class="pre">reduce()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.reduce_range">
+<code class="sig-name descname">reduce_range</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em>, <em class="sig-param"><span class="n">start</span></em>, <em class="sig-param"><span class="n">end</span></em>, <em class="sig-param"><span class="n">inclusive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.reduce_range" title="Permalink to this definition">¶</a></dt>
+<dd><p>reduce each time-series in this multi-time-series to a single value given a range</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">unary reducer or func</span></dt><dd><p>the unary reducer method to be used</p>
+</dd>
+<dt><strong>start</strong><span class="classifier">int or datetime</span></dt><dd><p>start of range (inclusive)</p>
+</dd>
+<dt><strong>end</strong><span class="classifier">int or datetime</span></dt><dd><p>end of range (inclusive)</p>
+</dd>
+<dt><strong>inclusive</strong><span class="classifier">bool, optional</span></dt><dd><p>if true, will use inclusive bounds (default is False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dict</dt><dd><p>the output of time-series reduction for each key</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>create a simple multi-time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts3</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">ts1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ts2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="n">ts3</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: 2.0</span>
+<span class="go">TimeStamp: 2     Value: 3.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1.0</span>
+<span class="go">TimeStamp: 1     Value: -2.0</span>
+<span class="go">TimeStamp: 2     Value: 3.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+<span class="go">c time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 0.0</span>
+<span class="go">TimeStamp: 1     Value: 1.0</span>
+<span class="go">TimeStamp: 2     Value: 2.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+</pre></div>
+</div>
+<p>reduce each time-series to an average from [1,2]</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tspy.functions</span> <span class="kn">import</span> <span class="n">reducers</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">avg_dict</span> <span class="o">=</span> <span class="n">mts_orig</span><span class="o">.</span><span class="n">reduce_range</span><span class="p">(</span><span class="n">reducers</span><span class="o">.</span><span class="n">average</span><span class="p">(),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">avg_dict</span>
+<span class="go">{&#39;a&#39;: 2.5, &#39;b&#39;: 0.5, &#39;c&#39;: 1.5}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.resample">
+<code class="sig-name descname">resample</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">period</span></em>, <em class="sig-param"><span class="n">interp_func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.resample" title="Permalink to this definition">¶</a></dt>
+<dd><p>produce a new multi-time-series by resampling each time-series to a given periodicity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>period</strong><span class="classifier">int</span></dt><dd><p>the period to resample to</p>
+</dd>
+<dt><strong>func</strong><span class="classifier">func or interpolator</span></dt><dd><p>the interpolator method to be used when a value doesn’t exist at a given time-tick</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.resample" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.resample"><code class="xref py py-func docutils literal notranslate"><span class="pre">resample()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_align">
+<code class="sig-name descname">right_align</code><span class="sig-paren">(</span><em class="sig-param">multi_time_series</em>, <em class="sig-param">interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>align two multi-time-series based on a temporal right join strategy and optionally interpolate missing values</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>multi_time_series</strong><span class="classifier"><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></span></dt><dd><p>the time-series to align with</p>
+</dd>
+<dt><strong>interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the left time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>tuple</dt><dd><p>aligned multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>right align will join on like time-series keys. If a key does not exist in one time-series, it will be
+discarded</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.right_align" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.right_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">right_align()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_join">
+<code class="sig-name descname">right_join</code><span class="sig-paren">(</span><em class="sig-param">multi_time_series</em>, <em class="sig-param">join_func=None</em>, <em class="sig-param">interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>join two multi-time-series based on a temporal right join strategy and optionally interpolate missing values</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>multi_time_series</strong><span class="classifier"><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a> or <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></span></dt><dd><p>the multi-time-series to join with</p>
+</dd>
+<dt><strong>join_func</strong><span class="classifier">func, optional</span></dt><dd><p>function to join to values (default is join to list where left is index 0, right is index 1)</p>
+</dd>
+<dt><strong>interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the left time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>right join will join on like time-series keys. If a key does not exist in one time-series, it will be
+discarded</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.right_join" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.right_join"><code class="xref py py-func docutils literal notranslate"><span class="pre">right_join()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_outer_align">
+<code class="sig-name descname">right_outer_align</code><span class="sig-paren">(</span><em class="sig-param">multi_time_series</em>, <em class="sig-param">interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_outer_align" title="Permalink to this definition">¶</a></dt>
+<dd><p>align two time-series based on a temporal right outer join strategy and optionally interpolate missing values</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>multi_time_series</strong><span class="classifier"><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></span></dt><dd><p>the multi-time-series to align with</p>
+</dd>
+<dt><strong>interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the left time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>tuple</dt><dd><p>aligned multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>right outer align will join on like time-series keys. If a key does not exist in one time-series, it will be
+discarded</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.right_outer_align" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.right_outer_align"><code class="xref py py-func docutils literal notranslate"><span class="pre">right_outer_align()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_outer_join">
+<code class="sig-name descname">right_outer_join</code><span class="sig-paren">(</span><em class="sig-param">multi_time_series</em>, <em class="sig-param">join_func=None</em>, <em class="sig-param">interp_func=&lt;function MultiTimeSeries.&lt;lambda&gt;&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.right_outer_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>join two multi-time-series based on a temporal right outer join strategy and optionally interpolate missing values</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>multi_time_series</strong><span class="classifier"><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a> or <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></span></dt><dd><p>the multi-time-series to join with</p>
+</dd>
+<dt><strong>join_func</strong><span class="classifier">func, optional</span></dt><dd><p>function to join to values (default is join to list where left is index 0, right is index 1)</p>
+</dd>
+<dt><strong>interp_func</strong><span class="classifier">func or interpolator, optional</span></dt><dd><p>the left time-series interpolator method to be used when a value doesn’t exist at a given time-tick
+(default is fill with None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>right outer join will join on like time-series keys. If a key does not exist in one time-series, it will be
+discarded</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.right_outer_join" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.right_outer_join"><code class="xref py py-func docutils literal notranslate"><span class="pre">right_outer_join()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment">
+<code class="sig-name descname">segment</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">window</span></em>, <em class="sig-param"><span class="n">step</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">enforce_bounds</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment" title="Permalink to this definition">¶</a></dt>
+<dd><p>produce a new segment-multi-time-series from a performing a sliding-based segmentation over each time-series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>window</strong><span class="classifier">int</span></dt><dd><p>number of observations per window</p>
+</dd>
+<dt><strong>step</strong><span class="classifier">int, optional</span></dt><dd><p>step size to slide (default is 1)</p>
+</dd>
+<dt><strong>enforce_size</strong><span class="classifier">bool, optional</span></dt><dd><p>if true, will require a window to have the given window size number of observations, otherwise windows can
+have less than or equal to the window size number of observations. (default is True)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>see <code class="xref py py-func docutils literal notranslate"><span class="pre">SegmentMultiTimeSeries()</span></code></dt><dd><p>a new segment-multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.segment" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.segment"><code class="xref py py-func docutils literal notranslate"><span class="pre">segment()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by">
+<code class="sig-name descname">segment_by</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by" title="Permalink to this definition">¶</a></dt>
+<dd><p>produce a new segment-multi-time-series from a performing a group-by operation on each observation’s value
+for each time-series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">func</span></dt><dd><p>value to key function</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>see <code class="xref py py-func docutils literal notranslate"><span class="pre">SegmentMultiTimeSeries()</span></code></dt><dd><p>a new segment-multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.segment_by" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.segment_by"><code class="xref py py-func docutils literal notranslate"><span class="pre">segment_by()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by_anchor">
+<code class="sig-name descname">segment_by_anchor</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">func</span></em>, <em class="sig-param"><span class="n">left_delta</span></em>, <em class="sig-param"><span class="n">right_delta</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by_anchor" title="Permalink to this definition">¶</a></dt>
+<dd><p>produce a new segment-multi-time-series from performing an anchor-based segmentation over each time-series.
+An anchor point is defined as any value that satisfies the filter function. When an anchor point is determined
+the segment is built based on left_delta time ticks to the left of the point and right_delta time ticks to the
+right of the point.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>func</strong><span class="classifier">func</span></dt><dd><p>the filter anchor point function</p>
+</dd>
+<dt><strong>left_delta</strong><span class="classifier">int</span></dt><dd><p>left delta time ticks to the left of the anchor point</p>
+</dd>
+<dt><strong>right_delta</strong><span class="classifier">int</span></dt><dd><p>right delta time ticks to the right of the anchor point</p>
+</dd>
+<dt><strong>perc</strong><span class="classifier">int, optional</span></dt><dd><p>number between 0 and 1.0 to denote how often to accept the anchor (default is None)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>see <code class="xref py py-func docutils literal notranslate"><span class="pre">SegmentMultiTimeSeries()</span></code></dt><dd><p>a new segment-multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.segment_by_anchor" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.segment_by_anchor"><code class="xref py py-func docutils literal notranslate"><span class="pre">segment_by_anchor()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by_changepoint">
+<code class="sig-name descname">segment_by_changepoint</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">change_point</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by_changepoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>produce a new segment-multi-time-series from performing a chang-point based segmentation. A change-point can
+be defined as any change in 2 values that results in a true statement.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>change_point</strong><span class="classifier">func, optional</span></dt><dd><p>a function given a prev/next value to determine if a change exists (default is simple constant change)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>see <code class="xref py py-func docutils literal notranslate"><span class="pre">SegmentMultiTimeSeries()</span></code></dt><dd><p>a new segment-multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.segment_by_changepoint" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.segment_by_changepoint"><code class="xref py py-func docutils literal notranslate"><span class="pre">segment_by_changepoint()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by_time">
+<code class="sig-name descname">segment_by_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">window</span></em>, <em class="sig-param"><span class="n">step</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.segment_by_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>produce a new segment-multi-time-series from a performing a time-based segmentation over each time-series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>window</strong><span class="classifier">int</span></dt><dd><p>time-tick length of window</p>
+</dd>
+<dt><strong>step</strong><span class="classifier">int</span></dt><dd><p>time-tick length of step</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>see <code class="xref py py-func docutils literal notranslate"><span class="pre">SegmentMultiTimeSeries()</span></code></dt><dd><p>a new segment-multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.segment_by_time" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.segment_by_time"><code class="xref py py-func docutils literal notranslate"><span class="pre">segment_by_time()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.time_series">
+<code class="sig-name descname">time_series</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>get a time-series given a key</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key</strong><span class="classifier">any</span></dt><dd><p>the key associated with a time-series in this multi-time-series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></dt><dd><p>the time-series associated with this given key</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_df">
+<code class="sig-name descname">to_df</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">'observations'</span></em>, <em class="sig-param"><span class="n">inclusive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_df" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert this multi-time-series to a pandas dataframe. A pandas dataframe can wither be stored in observations
+format (key column per row) or instants format (one time-series per column)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>format</strong><span class="classifier">str, optional</span></dt><dd><p>dataframe format to store in (default is observations format)</p>
+</dd>
+<dt><strong>inclusive</strong><span class="classifier">bool, optional</span></dt><dd><p>if true, will use inclusive bounds (default is False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dataframe</dt><dd><p>a pandas dataframe representation of this time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>create a simple multi-time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">ts1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ts2</span><span class="p">})</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1</span>
+<span class="go">TimeStamp: 1     Value: 2</span>
+<span class="go">TimeStamp: 2     Value: 3</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 2</span>
+<span class="go">TimeStamp: 1     Value: 3</span>
+<span class="go">TimeStamp: 2     Value: 4</span>
+</pre></div>
+</div>
+<p>create an observations dataframe</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">mts_orig</span><span class="o">.</span><span class="n">to_df</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;observations&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">   timestamp key  value</span>
+<span class="go">0          0   a      1</span>
+<span class="go">1          1   a      2</span>
+<span class="go">2          2   a      3</span>
+<span class="go">3          0   b      2</span>
+<span class="go">4          1   b      3</span>
+<span class="go">5          2   b      4</span>
+</pre></div>
+</div>
+<p>create an instants dataframe</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span> <span class="o">=</span> <span class="n">mts_orig</span><span class="o">.</span><span class="n">to_df</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;instants&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span>
+<span class="go">   timestamp  a  b</span>
+<span class="go">0          0  1  2</span>
+<span class="go">1          1  2  3</span>
+<span class="go">2          2  3  4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_df_instants">
+<code class="sig-name descname">to_df_instants</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inclusive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_df_instants" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert this multi-time-series to an observations pandas dataframe. An observations dataframe is one which
+contains a time-series per column.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>inclusive</strong><span class="classifier">bool, optional</span></dt><dd><p>if true, will use inclusive bounds (default is False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dataframe</dt><dd><p>a pandas dataframe representation of this time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>create a simple multi-time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">ts1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ts2</span><span class="p">})</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1</span>
+<span class="go">TimeStamp: 1     Value: 2</span>
+<span class="go">TimeStamp: 2     Value: 3</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 2</span>
+<span class="go">TimeStamp: 1     Value: 3</span>
+<span class="go">TimeStamp: 2     Value: 4</span>
+</pre></div>
+</div>
+<p>create an instants dataframe</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span> <span class="o">=</span> <span class="n">mts_orig</span><span class="o">.</span><span class="n">to_df_instants</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span>
+<span class="go">   timestamp  a  b</span>
+<span class="go">0          0  1  2</span>
+<span class="go">1          1  2  3</span>
+<span class="go">2          2  3  4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_df_observations">
+<code class="sig-name descname">to_df_observations</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inclusive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_df_observations" title="Permalink to this definition">¶</a></dt>
+<dd><p>convert this multi-time-series to an observations pandas dataframe. An observations dataframe is one which
+contains a key column per record.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>inclusive</strong><span class="classifier">bool, optional</span></dt><dd><p>if true, will use inclusive bounds (default is False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>dataframe</dt><dd><p>a pandas dataframe representation of this time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>create a simple multi-time-series</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts1</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts2</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts_orig</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">ts1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="n">ts2</span><span class="p">})</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1</span>
+<span class="go">TimeStamp: 1     Value: 2</span>
+<span class="go">TimeStamp: 2     Value: 3</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 2</span>
+<span class="go">TimeStamp: 1     Value: 3</span>
+<span class="go">TimeStamp: 2     Value: 4</span>
+</pre></div>
+</div>
+<p>create an observations dataframe</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">mts_orig</span><span class="o">.</span><span class="n">to_df_observations</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">   timestamp key  value</span>
+<span class="go">0          0   a      1</span>
+<span class="go">1          1   a      2</span>
+<span class="go">2          2   a      3</span>
+<span class="go">3          0   b      2</span>
+<span class="go">4          1   b      3</span>
+<span class="go">5          2   b      4</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_segments">
+<code class="sig-name descname">to_segments</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">segment_transform</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.to_segments" title="Permalink to this definition">¶</a></dt>
+<dd><p>produce a new segment-multi-time-series from a segmentation transform</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>segment_transform</strong><span class="classifier">UnaryTransform</span></dt><dd><p>the transform which will result in a time-series of segments</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>see <code class="xref py py-func docutils literal notranslate"><span class="pre">SegmentMultiTimeSeries()</span></code></dt><dd><p>a new segment-multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.to_segments" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.to_segments"><code class="xref py py-func docutils literal notranslate"><span class="pre">to_segments()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.transform">
+<code class="sig-name descname">transform</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.transform" title="Permalink to this definition">¶</a></dt>
+<dd><p>produce a new multi-time-series which is the result of performing a transforming over each time-series. A
+transform can be of type unary (one time-series in, one time-series out) or binary (two time-series in, one
+time-series out)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>args</strong><span class="classifier"><a class="reference internal" href="tspy.data_structures.transforms.UnaryTransform.html#tspy.data_structures.transforms.UnaryTransform.UnaryTransform" title="tspy.data_structures.transforms.UnaryTransform.UnaryTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">UnaryTransform</span></code></a> or <a class="reference internal" href="tspy.data_structures.transforms.BinaryTransform.html#tspy.data_structures.transforms.BinaryTransform.BinaryTransform" title="tspy.data_structures.transforms.BinaryTransform.BinaryTransform"><code class="xref py py-class docutils literal notranslate"><span class="pre">BinaryTransform</span></code></a></span></dt><dd><p>the transformation to apply on each time-series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If there is an error in the input arguments</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>transforms can be shape changing (time-series size out does not necessarily equal time-series size in)</p>
+<p>see <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries.transform" title="tspy.data_structures.time_series.TimeSeries.TimeSeries.transform"><code class="xref py py-func docutils literal notranslate"><span class="pre">transform()</span></code></a> for usage</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.trs">
+<code class="sig-name descname">trs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">key</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.trs" title="Permalink to this definition">¶</a></dt>
+<dd><p>get a time-series time-reference-system given a key</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>key</strong><span class="classifier">any</span></dt><dd><p>the key associated with a time-series in this multi-time-series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl>
+<dt><strong>TRS</strong><span class="classifier"><a class="reference internal" href="tspy.data_structures.observations.TRS.html#tspy.data_structures.observations.TRS.TRS" title="tspy.data_structures.observations.TRS.TRS"><code class="xref py py-class docutils literal notranslate"><span class="pre">TRS</span></code></a></span></dt><dd><p>this time-series time-reference-system</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.uncache">
+<code class="sig-name descname">uncache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.uncache" title="Permalink to this definition">¶</a></dt>
+<dd><p>remove the multi-time-series caching mechanism</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.with_trs">
+<code class="sig-name descname">with_trs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">granularity</span><span class="o">=</span><span class="default_value">datetime.timedelta(0, 0, 1000)</span></em>, <em class="sig-param"><span class="n">time_tick</span><span class="o">=</span><span class="default_value">datetime.datetime(1970, 1, 1, 0, 0, tzinfo=datetime.timezone.utc)</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.with_trs" title="Permalink to this definition">¶</a></dt>
+<dd><p>create a new multi-time-series with its timestamps mapped based on a granularity and start_time. In the
+scope of this method, granularity refers to the granularity at which to see time_ticks and start_time refers to
+the zone-date-time in which to start your time-series data when calling
+<a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.get_values" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.get_values"><code class="xref py py-func docutils literal notranslate"><span class="pre">get_values()</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>granularity</strong><span class="classifier">datetime.timedelta, optional</span></dt><dd><p>the granularity for use in time-series <a class="reference internal" href="tspy.data_structures.observations.TRS.html#tspy.data_structures.observations.TRS.TRS" title="tspy.data_structures.observations.TRS.TRS"><code class="xref py py-class docutils literal notranslate"><span class="pre">TRS</span></code></a> (default is 1ms)</p>
+</dd>
+<dt><strong>start_time</strong><span class="classifier">datetime, optional</span></dt><dd><p>the starting date-time of the time-series (default is 1970-01-01 UTC)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series with its time_ticks mapped based on a new <a class="reference internal" href="tspy.data_structures.observations.TRS.html#tspy.data_structures.observations.TRS.TRS" title="tspy.data_structures.observations.TRS.TRS"><code class="xref py py-class docutils literal notranslate"><span class="pre">TRS</span></code></a>.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>time_ticks will be mapped as follows - (current_time_tick - start_time) / granularity</p>
+<p>if any source time-series does not have a time-reference-system associated with it, this method will
+throw and exception</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.write">
+<code class="sig-name descname">write</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">start</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">end</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">inclusive</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>create a multi-time-series-writer given a range</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>start</strong><span class="classifier">int or datetime, optional</span></dt><dd><p>start of range (inclusive) (default is None)</p>
+</dd>
+<dt><strong>end</strong><span class="classifier">int or datetime, optional</span></dt><dd><p>end of range (inclusive) (default is None)</p>
+</dd>
+<dt><strong>inclusive</strong><span class="classifier">bool, optional</span></dt><dd><p>if true, will use inclusive bounds (default is False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="tspy.data_structures.io.MultiTimeSeriesWriter.html#tspy.data_structures.io.MultiTimeSeriesWriter.MultiTimeSeriesWriter" title="tspy.data_structures.io.MultiTimeSeriesWriter.MultiTimeSeriesWriter"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeriesWriter</span></code></a></dt><dd><p>a new multi-time-series-writer</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If there is an error in the input arguments</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tspy.data_structures.multi_time_series.SegmentMultiTimeSeries.html" class="btn btn-neutral float-right" title="tspy.data_structures.multi_time_series.SegmentMultiTimeSeries module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tspy.data_structures.multi_time_series.html" class="btn btn-neutral float-left" title="tspy.data_structures.multi_time_series package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, IBM Research
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

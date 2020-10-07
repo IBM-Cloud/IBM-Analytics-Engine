@@ -1,0 +1,274 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tspy Python SDK documentation &mdash; TSPy alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/custom.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home" alt="Documentation Home"> TSPy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Library Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-two-ts">How to (two TS) …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-forecasting">How to forecasting …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tspy.html">tspy package</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">TSPy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>tspy Python SDK documentation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tspy-python-sdk-documentation">
+<h1>tspy Python SDK documentation<a class="headerlink" href="#tspy-python-sdk-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-tspy">What is tspy?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-a-time-series-sts-and-mts">What is a time series: STS and MTS?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-a-timestamp-in-tspy">What is a timestamp in tspy?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-an-observation-in-tspy">What is an observation in tspy?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-an-observation-collection-in-tspy">What is an observation collection in tspy?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-a-segment-in-tspy">What is a segment in tspy?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-a-single-time-series-sts-in-tspy">What is a (single) time-series (STS) in tspy?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-a-multi-time-series-mts-in-tspy">What is a multi-time-series (MTS) in tspy?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intro.html#what-is-a-segment-time-series-segts-in-tspy">What is a segment time-series (SegTS) in tspy?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Library Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to …</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#import">import</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#convert-back-to-dataframe">convert back to DataFrame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#collect-statistics">collect statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#load-data-into-memory">load data into memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#element-wise-transform">element-wise transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#filter-out-values-from-a-time-series">filter out values from a time-series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#transform-a-time-series">transform a time-series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#reduce-a-time-series">reduce a time-series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#deal-with-missing-values-n-a-in-a-time-series">deal with missing values (N/A) in a time-series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#resample-a-time-series">resample a time-series</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-two-ts">How to (two TS) …</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#align-two-time-series">align two time-series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#merge-via-join-two-time-series">merge (via join) two time-series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto.html#correlate-two-time-series">correlate two time-series</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-forecasting">How to forecasting …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tspy.html">tspy package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tspy.html#subpackages">Subpackages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tspy.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="intro.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, IBM Research
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
