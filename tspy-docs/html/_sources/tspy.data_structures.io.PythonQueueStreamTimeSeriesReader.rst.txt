@@ -1,0 +1,7 @@
+tspy.data\_structures.io.PythonQueueStreamTimeSeriesReader module
+=================================================================
+
+.. automodule:: tspy.data_structures.io.PythonQueueStreamTimeSeriesReader
+   :members:
+   :undoc-members:
+   :show-inheritance:

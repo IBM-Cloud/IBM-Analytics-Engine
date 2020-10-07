@@ -1,0 +1,7 @@
+tspy.data\_structures.observations.TSBuilder module
+===================================================
+
+.. automodule:: tspy.data_structures.observations.TSBuilder
+   :members:
+   :undoc-members:
+   :show-inheritance:

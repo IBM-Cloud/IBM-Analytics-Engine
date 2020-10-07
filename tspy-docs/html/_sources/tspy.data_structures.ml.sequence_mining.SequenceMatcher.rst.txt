@@ -1,0 +1,7 @@
+tspy.data\_structures.ml.sequence\_mining.SequenceMatcher module
+================================================================
+
+.. automodule:: tspy.data_structures.ml.sequence_mining.SequenceMatcher
+   :members:
+   :undoc-members:
+   :show-inheritance:

@@ -1,0 +1,27 @@
+tspy.data\_structures.io package
+================================
+
+.. automodule:: tspy.data_structures.io
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   tspy.data_structures.io.DataSink
+   tspy.data_structures.io.MultiDataSink
+   tspy.data_structures.io.MultiTimeSeriesWriteFormat
+   tspy.data_structures.io.MultiTimeSeriesWriter
+   tspy.data_structures.io.PullStreamMultiTimeSeriesReader
+   tspy.data_structures.io.PullStreamTimeSeriesReader
+   tspy.data_structures.io.PushStreamMultiTimeSeriesReader
+   tspy.data_structures.io.PushStreamTimeSeriesReader
+   tspy.data_structures.io.PythonQueueStreamMultiTimeSeriesReader
+   tspy.data_structures.io.PythonQueueStreamTimeSeriesReader
+   tspy.data_structures.io.TimeSeriesReader
+   tspy.data_structures.io.TimeSeriesWriteFormat
+   tspy.data_structures.io.TimeSeriesWriter

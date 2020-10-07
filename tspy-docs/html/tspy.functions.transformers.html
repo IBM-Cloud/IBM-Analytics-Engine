@@ -1,0 +1,503 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tspy.functions.transformers module &mdash; TSPy alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/custom.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="tspy.ml package" href="tspy.ml.html" />
+    <link rel="prev" title="tspy.functions.segmenters module" href="tspy.functions.segmenters.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> TSPy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Library Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-two-ts">How to (two TS) …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-forecasting">How to forecasting …</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tspy.html">tspy package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tspy.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.html">tspy.data_structures package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="tspy.functions.html">tspy.functions package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="tspy.functions.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.ml.html">tspy.ml package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tspy.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TSPy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="tspy.html">tspy package</a> &raquo;</li>
+        
+          <li><a href="tspy.functions.html">tspy.functions package</a> &raquo;</li>
+        
+      <li>tspy.functions.transformers module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tspy.functions.transformers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-tspy.functions.transformers">
+<span id="tspy-functions-transformers-module"></span><h1>tspy.functions.transformers module<a class="headerlink" href="#module-tspy.functions.transformers" title="Permalink to this headline">¶</a></h1>
+<p>main entry point for all transformers (given time-series, return new time-series)</p>
+<dl class="py function">
+<dt id="tspy.functions.transformers.awgn">
+<code class="sig-prename descclassname">tspy.functions.transformers.</code><code class="sig-name descname">awgn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mean</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">sd</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.functions.transformers.awgn" title="Permalink to this definition">¶</a></dt>
+<dd><p>add noise using the following method <a class="reference external" href="https://en.wikipedia.org/wiki/Additive_white_Gaussian_noise">https://en.wikipedia.org/wiki/Additive_white_Gaussian_noise</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>mean</strong><span class="classifier">float, optional</span></dt><dd><p>the mean around which to add the noise (default is time-series mean)</p>
+</dd>
+<dt><strong>sd</strong><span class="classifier">float, optional</span></dt><dd><p>the standard deviation to use (default is time-series standard deviation)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>~tspy.data_structures.transforms.UnaryTransform</dt><dd><p>an additive-white-gaussian noise transform which, when applied on a time-series will add noise using the
+following method <a class="reference external" href="https://en.wikipedia.org/wiki/Additive_white_Gaussian_noise">https://en.wikipedia.org/wiki/Additive_white_Gaussian_noise</a></p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.functions.transformers.combine_duplicate_time_ticks">
+<code class="sig-prename descclassname">tspy.functions.transformers.</code><code class="sig-name descname">combine_duplicate_time_ticks</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">combine_strategy</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.functions.transformers.combine_duplicate_time_ticks" title="Permalink to this definition">¶</a></dt>
+<dd><p>combine the observations which have the same time-tick</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>combine_strategy</strong><span class="classifier">func</span></dt><dd><p>a function or lamdba that receives one argument representing the collection of values of the same timestamp and
+returns a single value</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>~tspy.data_structures.transforms.UnaryTransform</dt><dd><p>a combine-duplicate-time-ticks transform, which applied on a time-series will combine the observations which
+have the same time-tick</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.functions.transformers.decompose">
+<code class="sig-prename descclassname">tspy.functions.transformers.</code><code class="sig-name descname">decompose</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">samples_per_season</span></em>, <em class="sig-param"><span class="n">multiplicative</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.functions.transformers.decompose" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the residuals, trend, and seasonal components of a time-series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>samples_per_season</strong><span class="classifier">int</span></dt><dd><p>number of samples in a season</p>
+</dd>
+<dt><strong>multiplicative</strong><span class="classifier">bool</span></dt><dd><p>if True, use multiplicative method, otherwise use additive</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>~tspy.data_structures.transforms.UnaryTransform</dt><dd><p>a decomposition transform, which applied on a time-series will result in the residuals, trend, and seasonal
+components</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.functions.transformers.detect_anomalies">
+<code class="sig-prename descclassname">tspy.functions.transformers.</code><code class="sig-name descname">detect_anomalies</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">forecasting_model</span></em>, <em class="sig-param"><span class="n">confidence</span></em>, <em class="sig-param"><span class="n">update_model</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">info</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.functions.transformers.detect_anomalies" title="Permalink to this definition">¶</a></dt>
+<dd><p>filter for anomalies within the time-series given a forecasting model and its definition of confidence intervals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>forecasting_model</strong><span class="classifier">~tspy.data_structures.forecasting.ForecastingModel</span></dt><dd><p>the forecasting model to use</p>
+</dd>
+<dt><strong>confidence</strong><span class="classifier">float</span></dt><dd><p>a number between 0 and 1 (exclusive) which are used to determine the confidence interval</p>
+</dd>
+<dt><strong>update_model</strong><span class="classifier">bool, optional</span></dt><dd><p>if True, the model will be trained/updated (default is False)</p>
+</dd>
+<dt><strong>info</strong><span class="classifier">bool, optional</span></dt><dd><p>if True, will give back the bounds/errors/expected values, otherwise no other information will be provided
+(default is False)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>~tspy.data_structures.transforms.UnaryTransform</dt><dd><p>an anomaly detection transform which, when applied on a time-series filter for anomalies within the time-series
+given a forecasting model and its definition of confidence intervals</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.functions.transformers.difference">
+<code class="sig-prename descclassname">tspy.functions.transformers.</code><code class="sig-name descname">difference</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.functions.transformers.difference" title="Permalink to this definition">¶</a></dt>
+<dd><p>take the difference between the current observation value and its previous observation value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>~tspy.data_structures.transforms.UnaryTransform</dt><dd><p>a difference transform which, when applied on a numeric time-series will take the difference between the
+current observation value and its previous observation value</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.functions.transformers.ema">
+<code class="sig-prename descclassname">tspy.functions.transformers.</code><code class="sig-name descname">ema</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">window</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.functions.transformers.ema" title="Permalink to this definition">¶</a></dt>
+<dd><p>smooth the time-series (x) such that the i^th observation on the transformed time-series z_i = lambda*x_i +
+(1-lambda)*z_i-1, where lambda - 1/window (window &gt;= 1)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>window</strong><span class="classifier">int</span></dt><dd><p>window size</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>~tspy.data_structures.transforms.UnaryTransform</dt><dd><p>a exponentially-weighted-moving-average transform, which applied on a time-series (x) will smooth the
+time-series such that the i^th observation on the transformed time-series z_i = lambda*x_i + (1-lambda)*z_i-1,
+where lambda - 1/window (window &gt;= 1)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.functions.transformers.ljung_box">
+<code class="sig-prename descclassname">tspy.functions.transformers.</code><code class="sig-name descname">ljung_box</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">window</span></em>, <em class="sig-param"><span class="n">step</span></em>, <em class="sig-param"><span class="n">num_lags</span></em>, <em class="sig-param"><span class="n">period</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.functions.transformers.ljung_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>test for the absence of serial correlation, up to a specified lag</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>window</strong><span class="classifier">int</span></dt><dd><p>length of window</p>
+</dd>
+<dt><strong>step</strong><span class="classifier">int</span></dt><dd><p>number of steps</p>
+</dd>
+<dt><strong>num_lags</strong><span class="classifier">int</span></dt><dd><p>number of lags</p>
+</dd>
+<dt><strong>period</strong><span class="classifier">int</span></dt><dd><p>number to multiply the lag by when getting windows</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>~tspy.data_structures.transforms.UnaryTransform</dt><dd><p>a ljung-box transform, which applied on a time-series will test for the absence of serial correlation,
+up to a specified lag</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.functions.transformers.mwgn">
+<code class="sig-prename descclassname">tspy.functions.transformers.</code><code class="sig-name descname">mwgn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sd</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.functions.transformers.mwgn" title="Permalink to this definition">¶</a></dt>
+<dd><p>add noise given a standard-deviation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>sd</strong><span class="classifier">float, optional</span></dt><dd><p>the standard deviation to use (default is time-series standard deviation)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>~tspy.data_structures.transforms.UnaryTransform</dt><dd><p>an multiplicative-white-gaussian noise transform which, when applied on a time-series will add noise given a
+standard-deviation</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.functions.transformers.paa">
+<code class="sig-prename descclassname">tspy.functions.transformers.</code><code class="sig-name descname">paa</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">m</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.functions.transformers.paa" title="Permalink to this definition">¶</a></dt>
+<dd><p>approximate the time-series in a piecewise fashion. This is used to accelerate similarity measures between two
+time-series</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>m</strong><span class="classifier">int</span></dt><dd><p>num buckets</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>~tspy.data_structures.transforms.UnaryTransform</dt><dd><p>a piecewise-aggregate-approximation transform, which applied on a time-series will approximate the time-series
+in a piecewise fashion. This is used to accelerate similarity measures between two time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.functions.transformers.remove_consecutive_duplicate_values">
+<code class="sig-prename descclassname">tspy.functions.transformers.</code><code class="sig-name descname">remove_consecutive_duplicate_values</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.functions.transformers.remove_consecutive_duplicate_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>trim the time-series by removing consecutive duplicate values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>~tspy.data_structures.transforms.UnaryTransform</dt><dd><p>a remove-consecutive-duplicates transform, which applied on a time-series will trim the time-series by removing
+consecutive duplicate values</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.functions.transformers.sax">
+<code class="sig-prename descclassname">tspy.functions.transformers.</code><code class="sig-name descname">sax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">min_value</span></em>, <em class="sig-param"><span class="n">max_value</span></em>, <em class="sig-param"><span class="n">num_bins</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.functions.transformers.sax" title="Permalink to this definition">¶</a></dt>
+<dd><p>transform the time-series to a time-series of symbols by discretizing the value. Discretization is performed by
+uniformly dividing the values between min_value and max_value into num_bins bins</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>min_value</strong><span class="classifier">float</span></dt><dd><p>min value</p>
+</dd>
+<dt><strong>max_value</strong><span class="classifier">float</span></dt><dd><p>max value</p>
+</dd>
+<dt><strong>num_bins</strong><span class="classifier">int</span></dt><dd><p>number of bins</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>~tspy.data_structures.transforms.UnaryTransform</dt><dd><p>a symbolic-aggregate-approximation transform, which applied on a time-series will transform the time-series to
+a time-series of symbols by discretizing the value</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.functions.transformers.z_score">
+<code class="sig-prename descclassname">tspy.functions.transformers.</code><code class="sig-name descname">z_score</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.functions.transformers.z_score" title="Permalink to this definition">¶</a></dt>
+<dd><p>map each value to a number of standard deviations above/below the mean</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>~tspy.data_structures.transforms.UnaryTransform</dt><dd><p>a Z-Normalization transform which, when applied on a numeric time-series will map each value to a number of
+standard deviations above/below the mean</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tspy.ml.html" class="btn btn-neutral float-right" title="tspy.ml package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tspy.functions.segmenters.html" class="btn btn-neutral float-left" title="tspy.functions.segmenters module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, IBM Research
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

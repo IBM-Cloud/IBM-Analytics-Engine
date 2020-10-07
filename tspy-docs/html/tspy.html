@@ -1,0 +1,777 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tspy package &mdash; TSPy alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/custom.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="tspy.data_structures package" href="tspy.data_structures.html" />
+    <link rel="prev" title="How to …" href="howto.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> TSPy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Library Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-two-ts">How to (two TS) …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-forecasting">How to forecasting …</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">tspy package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.html">tspy.data_structures package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.functions.html">tspy.functions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.ml.html">tspy.ml package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tspy.exceptions.html">tspy.exceptions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.forecasters.html">tspy.forecasters module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.multi_time_series.html">tspy.multi_time_series module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.observations.html">tspy.observations module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.others.html">tspy.others module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.stream_multi_time_series.html">tspy.stream_multi_time_series module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.stream_time_series.html">tspy.stream_time_series module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.time_series.html">tspy.time_series module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TSPy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>tspy package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tspy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-tspy">
+<span id="tspy-package"></span><h1>tspy package<a class="headerlink" href="#module-tspy" title="Permalink to this headline">¶</a></h1>
+<p>Entry point to time-series data-structure creation functions</p>
+<p>Use</p>
+<ul class="simple">
+<li><p>time-series related data builders, e.g.</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>function</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.observation" title="tspy.observation"><code class="xref py py-func docutils literal notranslate"><span class="pre">tspy.observation()</span></code></a></p></td>
+<td><p>create one observation</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tspy.observations.html#module-tspy.observations" title="tspy.observations"><code class="xref py py-func docutils literal notranslate"><span class="pre">tspy.observations()</span></code></a></p></td>
+<td><p>create one observation collection</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#tspy.record" title="tspy.record"><code class="xref py py-func docutils literal notranslate"><span class="pre">tspy.record()</span></code></a></p></td>
+<td><p>create one record</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="tspy.time_series.html#module-tspy.time_series" title="tspy.time_series"><code class="xref py py-func docutils literal notranslate"><span class="pre">tspy.time_series()</span></code></a></p></td>
+<td><p>create one time-series</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="tspy.multi_time_series.html#module-tspy.multi_time_series" title="tspy.multi_time_series"><code class="xref py py-func docutils literal notranslate"><span class="pre">tspy.multi_time_series()</span></code></a></p></td>
+<td><p>create one multi-time-series</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.builder" title="tspy.builder"><code class="xref py py-func docutils literal notranslate"><span class="pre">tspy.builder()</span></code></a></p></td>
+<td><p>create a time-series builder</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><a class="reference internal" href="tspy.stream_time_series.html#module-tspy.stream_time_series" title="tspy.stream_time_series"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tspy.stream_time_series</span></code></a>  module : APIs for connecting stream data into time-series form</p></li>
+<li><p><a class="reference internal" href="tspy.stream_multi_time_series.html#module-tspy.stream_multi_time_series" title="tspy.stream_multi_time_series"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tspy.stream_multi_time_series</span></code></a>  module : APIs for connecting stream data into multi-time-series form</p></li>
+<li><p><a class="reference internal" href="tspy.functions.html#module-tspy.functions" title="tspy.functions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tspy.functions</span></code></a>  module : APIs for performing different time-series related operations, e.g. reduce, transforms, segment</p></li>
+<li><p><code class="xref py py-mod docutils literal notranslate"><span class="pre">tspy.models</span></code>  module : APIs for loading/creating a time-series-based model</p></li>
+<li><p><a class="reference internal" href="tspy.forecasters.html#module-tspy.forecasters" title="tspy.forecasters"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tspy.forecasters</span></code></a>  module : APIs for different forecasting models</p></li>
+<li><p><a class="reference internal" href="tspy.exceptions.html#module-tspy.exceptions" title="tspy.exceptions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tspy.exceptions</span></code></a>  module :</p></li>
+<li><p><a class="reference internal" href="tspy.ml.html#module-tspy.ml" title="tspy.ml"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tspy.ml</span></code></a>  module : APIs for different machine-learning methods</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="tspy.data_structures.html#module-tspy.data_structures" title="tspy.data_structures"><code class="xref py py-mod docutils literal notranslate"><span class="pre">tspy.data_structures</span></code></a>  module : tspy-specific data structure (internally used)</p></li>
+</ul>
+</div></blockquote>
+<dl class="py function">
+<dt id="tspy.builder">
+<code class="sig-prename descclassname">tspy.</code><code class="sig-name descname">builder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#tspy.builder" title="Permalink to this definition">¶</a></dt>
+<dd><p>create a time-series builder</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><a class="reference internal" href="tspy.data_structures.observations.TSBuilder.html#tspy.data_structures.observations.TSBuilder.TSBuilder" title="tspy.data_structures.observations.TSBuilder.TSBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">TSBuilder</span></code></a></dt><dd><p>a new time-series builder</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.multi_time_series">
+<code class="sig-prename descclassname">tspy.</code><code class="sig-name descname">multi_time_series</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.multi_time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>creates a multi-time-series object using data in either</p>
+<ol class="arabic simple">
+<li><p>dict</p></li>
+<li><p>dataframe</p></li>
+<li><p>time-series-reader</p></li>
+<li><p>observation collection</p></li>
+</ol>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>data:</strong></dt><dd><p>type <cite>dict</cite> or <cite>pandas.DataFrame</cite></p>
+<ul class="simple">
+<li><p>dict where one key per <a class="reference internal" href="tspy.data_structures.observations.ObservationCollection.html#tspy.data_structures.observations.ObservationCollection.ObservationCollection" title="tspy.data_structures.observations.ObservationCollection.ObservationCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObservationCollection</span></code></a> or <a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></p></li>
+<li><p>dataframe: there are two way to convert to MTS, depending upon the use-cases,</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>group by values of a given column [e.g. temperature time series and a bunch of locations (keys)],</p></li>
+<li><p>each column is turned into its own time-series [a single timestamp and multiple metrics, e.g. temperature and humidity columns]</p></li>
+</ol>
+</dd>
+<dt><strong>key_column</strong><span class="classifier">string</span></dt><dd><p>(only use when <cite>data</cite> is a pandas’s DataFrame and use-case (1))
+column name containing the key, each key value is used for grouping data into a single-time-series. IMPORTANT: <cite>key_column</cite> and <cite>key_columns</cite> are used exclusively.</p>
+</dd>
+<dt><strong>key_columns</strong><span class="classifier">list, optional</span></dt><dd><p>(only use when <cite>data</cite> is a pandas’s DataFrame and use-case (2))
+columns to use in multi-time-series creation (default is all columns), i.e. each column is turned into its own time-series component.
+IMPORTANT: <cite>key_column</cite> and <cite>key_columns</cite> are used exclusively.</p>
+</dd>
+<dt><strong>ts_column</strong><span class="classifier">string, optional</span></dt><dd><p>(only use when <cite>data</cite> is a pandas’s DataFrame)
+column name containing time-ticks (default: time-tick is based on index into dataframe)</p>
+</dd>
+<dt><strong>value_column</strong><span class="classifier">list or string, optional</span></dt><dd><p>(only use when <cite>data</cite> is a pandas’s DataFrame and use-case (1))
+column name(s) containing values (default is all columns)</p>
+</dd>
+<dt><strong>granularity</strong><span class="classifier">datetime.timedelta, optional</span></dt><dd><p>the granularity for use in time-series <a class="reference internal" href="tspy.data_structures.observations.TRS.html#tspy.data_structures.observations.TRS.TRS" title="tspy.data_structures.observations.TRS.TRS"><code class="xref py py-class docutils literal notranslate"><span class="pre">TRS</span></code></a> (default is None if no start_time, otherwise 1ms)</p>
+</dd>
+<dt><strong>start_time</strong><span class="classifier">datetime, optional</span></dt><dd><p>the starting date-time of the time-series (default is None if no granularity, otherwise 1970-01-01 UTC)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="tspy.data_structures.multi_time_series.MultiTimeSeries.html#tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries" title="tspy.data_structures.multi_time_series.MultiTimeSeries.MultiTimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiTimeSeries</span></code></a></dt><dd><p>a new multi-time-series</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><dl class="simple">
+<dt>ValueError</dt><dd><p>If there is an error in the input arguments, e.g. not a supporting data type</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>create a dict with observation-collection values</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ts1&quot;</span><span class="p">:</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span><span class="o">.</span><span class="n">collect</span><span class="p">(),</span> <span class="s2">&quot;ts2&quot;</span><span class="p">:</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">])</span><span class="o">.</span><span class="n">collect</span><span class="p">()}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_dict</span>
+<span class="go">{&#39;ts1&#39;: [(0,1),(1,2),(2,3)], &#39;ts2&#39;: [(0,4),(1,5),(2,6)]}</span>
+</pre></div>
+</div>
+<p>create a multi-time-series from dict without a time-reference-system</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">(</span><span class="n">my_dict</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span>
+<span class="go">ts2 time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 4</span>
+<span class="go">TimeStamp: 1     Value: 5</span>
+<span class="go">TimeStamp: 2     Value: 6</span>
+<span class="go">ts1 time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 0     Value: 1</span>
+<span class="go">TimeStamp: 1     Value: 2</span>
+<span class="go">TimeStamp: 2     Value: 3</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>create a simple df with a single index</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;letters&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s2">&quot;numbers&quot;</span><span class="p">],</span>
+<span class="go">             ...[&#39;&#39;, &quot;a&quot;, 1, 27],</span>
+<span class="go">             ...[&#39;&#39;, &quot;b&quot;, 3, 4],</span>
+<span class="go">             ...[&#39;&#39;, &quot;a&quot;, 5, 17],</span>
+<span class="go">             ...[&#39;&#39;, &quot;a&quot;, 3, 7],</span>
+<span class="go">             ...[&#39;&#39;, &quot;b&quot;, 2, 45]</span>
+<span class="go">            ...])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:],</span>
+<span class="go">              ...columns=data[0, 1:]).astype(dtype={&#39;letters&#39;: &#39;object&#39;, &#39;timestamp&#39;: &#39;int64&#39;, &#39;numbers&#39;: &#39;float64&#39;})</span>
+<span class="go">  letters  timestamp  numbers</span>
+<span class="go">0       a          1     27.0</span>
+<span class="go">1       b          3      4.0</span>
+<span class="go">2       a          5     17.0</span>
+<span class="go">3       a          3      7.0</span>
+<span class="go">4       b          2     45.0</span>
+</pre></div>
+</div>
+<p>create a multi-time-series from a df using instants format</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ts_column</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span>
+<span class="go">numbers time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 1     Value: 27.0</span>
+<span class="go">TimeStamp: 2     Value: 45.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+<span class="go">TimeStamp: 3     Value: 7.0</span>
+<span class="go">TimeStamp: 5     Value: 17.0</span>
+<span class="go">letters time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 1     Value: a</span>
+<span class="go">TimeStamp: 2     Value: b</span>
+<span class="go">TimeStamp: 3     Value: b</span>
+<span class="go">TimeStamp: 3     Value: a</span>
+<span class="go">TimeStamp: 5     Value: a</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>create a simple df with a single index</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;letters&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s2">&quot;numbers&quot;</span><span class="p">],</span>
+<span class="go">             ...[&#39;&#39;, &quot;a&quot;, 1, 27],</span>
+<span class="go">             ...[&#39;&#39;, &quot;b&quot;, 3, 4],</span>
+<span class="go">             ...[&#39;&#39;, &quot;a&quot;, 5, 17],</span>
+<span class="go">             ...[&#39;&#39;, &quot;a&quot;, 3, 7],</span>
+<span class="go">             ...[&#39;&#39;, &quot;b&quot;, 2, 45]</span>
+<span class="go">            ...])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:],</span>
+<span class="go">              ...columns=data[0, 1:]).astype(dtype={&#39;letters&#39;: &#39;object&#39;, &#39;timestamp&#39;: &#39;int64&#39;, &#39;numbers&#39;: &#39;float64&#39;})</span>
+<span class="go">  letters  timestamp  numbers</span>
+<span class="go">0       a          1     27.0</span>
+<span class="go">1       b          3      4.0</span>
+<span class="go">2       a          5     17.0</span>
+<span class="go">3       a          3      7.0</span>
+<span class="go">4       b          2     45.0</span>
+</pre></div>
+</div>
+<p>create a multi-time-series from a df using observations format where the key is letters</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">multi_time_series</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">key_column</span><span class="o">=</span><span class="s2">&quot;letters&quot;</span><span class="p">,</span> <span class="n">ts_column</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">)</span>
+<span class="go">a time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 1     Value: {numbers=27.0}</span>
+<span class="go">TimeStamp: 3     Value: {numbers=7.0}</span>
+<span class="go">TimeStamp: 5     Value: {numbers=17.0}</span>
+<span class="go">b time series</span>
+<span class="go">------------------------------</span>
+<span class="go">TimeStamp: 2     Value: {numbers=45.0}</span>
+<span class="go">TimeStamp: 3     Value: {numbers=4.0}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.observation">
+<code class="sig-prename descclassname">tspy.</code><code class="sig-name descname">observation</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">time_tick</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.observation" title="Permalink to this definition">¶</a></dt>
+<dd><p>create an observation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>time_tick</strong><span class="classifier">int</span></dt><dd><p>observations time-tick</p>
+</dd>
+<dt><strong>value</strong><span class="classifier">any</span></dt><dd><p>observations value</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="tspy.data_structures.observations.Observation.html#tspy.data_structures.observations.Observation.Observation" title="tspy.data_structures.observations.Observation.Observation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Observation</span></code></a></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.observations">
+<code class="sig-prename descclassname">tspy.</code><code class="sig-name descname">observations</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">varargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.observations" title="Permalink to this definition">¶</a></dt>
+<dd><p>returns an <a class="reference internal" href="tspy.data_structures.html#tspy.data_structures.ObservationCollection" title="tspy.data_structures.ObservationCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObservationCollection</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>observations</strong><span class="classifier">varargs</span></dt><dd><p>either empty or a variable number of observations</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="tspy.data_structures.observations.ObservationCollection.html#tspy.data_structures.observations.ObservationCollection.ObservationCollection" title="tspy.data_structures.observations.ObservationCollection.ObservationCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObservationCollection</span></code></a></dt><dd><p>a new observation-collection</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.record">
+<code class="sig-prename descclassname">tspy.</code><code class="sig-name descname">record</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.record" title="Permalink to this definition">¶</a></dt>
+<dd><p>create a record type (similar to dict)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>kwargs</strong><span class="classifier">named args</span></dt><dd><p>key/value arguments</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>record</dt><dd><p>a dict-like structure that is handled for high performance in time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="tspy.time_series">
+<code class="sig-prename descclassname">tspy.</code><code class="sig-name descname">time_series</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.time_series" title="Permalink to this definition">¶</a></dt>
+<dd><p>creates a single-time-series object using data in either</p>
+<ol class="arabic simple">
+<li><p>list</p></li>
+<li><p>dataframe</p></li>
+<li><p>time-series-reader</p></li>
+<li><p>observation collection</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>data:</strong></dt><dd><p>type <cite>list</cite> or <cite>pandas.DataFrame</cite> or <cite>TimeSeriesReader</cite> or <cite>ObservationCollection</cite></p>
+<ul class="simple">
+<li><p><cite>list</cite></p></li>
+<li><p><code class="xref py py-class docutils literal notranslate"><span class="pre">DataFrame</span></code></p></li>
+<li><p><a class="reference internal" href="tspy.data_structures.io.TimeSeriesReader.html#tspy.data_structures.io.TimeSeriesReader.TimeSeriesReader" title="tspy.data_structures.io.TimeSeriesReader.TimeSeriesReader"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeriesReader</span></code></a></p></li>
+<li><p><a class="reference internal" href="tspy.data_structures.observations.ObservationCollection.html#tspy.data_structures.observations.ObservationCollection.ObservationCollection" title="tspy.data_structures.observations.ObservationCollection.ObservationCollection"><code class="xref py py-class docutils literal notranslate"><span class="pre">ObservationCollection</span></code></a></p></li>
+</ul>
+</dd>
+<dt><strong>ts_func</strong><span class="classifier">func, optional=None</span></dt><dd><p>(only use with <cite>data</cite> is a <cite>list</cite>) if used, it is the function to combine duplicate time-ticks (default is do not combine)</p>
+</dd>
+<dt><strong>granularity</strong><span class="classifier">datetime.timedelta, optional</span></dt><dd><p>the granularity for use in time-series <a class="reference internal" href="tspy.data_structures.observations.TRS.html#tspy.data_structures.observations.TRS.TRS" title="tspy.data_structures.observations.TRS.TRS"><code class="xref py py-class docutils literal notranslate"><span class="pre">TRS</span></code></a> (default is None if no start_time, otherwise 1ms)</p>
+</dd>
+<dt><strong>start_time</strong><span class="classifier">datetime, optional</span></dt><dd><p>the starting date-time of the time-series (default is None if no granularity, otherwise 1970-01-01 UTC)</p>
+</dd>
+<dt><strong>ts_column</strong><span class="classifier">string, optional</span></dt><dd><p>(only use with <cite>data</cite> is a <cite>pd.DataFrame</cite>)
+the name of the column containing timestamps used in retrieving timestamps
+(default is using timestamps based on record index)</p>
+</dd>
+<dt><strong>value_column</strong><span class="classifier">string or list, optional</span></dt><dd><p>(only use with <cite>data</cite> is a <cite>pd.DataFrame</cite>)
+the name of the column containing values used in retrieving values (default is create value using all columns)</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><a class="reference internal" href="tspy.data_structures.time_series.TimeSeries.html#tspy.data_structures.time_series.TimeSeries.TimeSeries" title="tspy.data_structures.time_series.TimeSeries.TimeSeries"><code class="xref py py-class docutils literal notranslate"><span class="pre">TimeSeries</span></code></a></dt><dd><p>a new time-series</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<ul class="simple">
+<li><p>create a simple pandas dataframe</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">],</span>                     <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">27</span><span class="p">],</span>                     <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>                     <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">17</span><span class="p">],</span>                     <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>                     <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">45</span><span class="p">]</span>                    <span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:],</span>                      <span class="n">index</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">],</span>                      <span class="n">columns</span><span class="o">=</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">:])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="s1">&#39;object&#39;</span><span class="p">,</span> <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="s1">&#39;int64&#39;</span><span class="p">,</span> <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="s1">&#39;float64&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">df</span>
+<span class="go">key  timestamp  value</span>
+<span class="go">  a          1   27.0</span>
+<span class="go">  b          3    4.0</span>
+<span class="go">  a          5   17.0</span>
+<span class="go">  a          3    7.0</span>
+<span class="go">  b          2   45.0</span>
+</pre></div>
+</div>
+<p>create a time-series from a dataframe specifying a timestamp and value column</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ts_column</span><span class="o">=</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="n">value_column</span><span class="o">=</span><span class="s2">&quot;value&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span>
+<span class="go">TimeStamp: 1     Value: 27.0</span>
+<span class="go">TimeStamp: 2     Value: 45.0</span>
+<span class="go">TimeStamp: 3     Value: 4.0</span>
+<span class="go">TimeStamp: 3     Value: 7.0</span>
+<span class="go">TimeStamp: 5     Value: 17.0</span>
+</pre></div>
+</div>
+<p>create a time-series from a dataframe specifying only a timestamp column - it will uses all other columns and stores as value
+as a single dictionary.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ts_column</span><span class="o">=</span><span class="s2">&quot;timestamp&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span>
+<span class="go">TimeStamp: 1     Value: {value=27.0, key=a}</span>
+<span class="go">TimeStamp: 2     Value: {value=45.0, key=b}</span>
+<span class="go">TimeStamp: 3     Value: {value=4.0, key=b}</span>
+<span class="go">TimeStamp: 3     Value: {value=7.0, key=a}</span>
+<span class="go">TimeStamp: 5     Value: {value=17.0, key=a}</span>
+</pre></div>
+</div>
+<p>create a time-series from a dataframe specifying no timestamp or value column</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span>
+<span class="go">TimeStamp: 0     Value: {value=27.0, key=a, timestamp=1}</span>
+<span class="go">TimeStamp: 1     Value: {value=4.0, key=b, timestamp=3}</span>
+<span class="go">TimeStamp: 2     Value: {value=17.0, key=a, timestamp=5}</span>
+<span class="go">TimeStamp: 3     Value: {value=7.0, key=a, timestamp=3}</span>
+<span class="go">TimeStamp: 4     Value: {value=45.0, key=b, timestamp=2}</span>
+</pre></div>
+</div>
+<p>create a time-series from a dataframe specifying a timestamp column and using a time-reference-system</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1990</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">granularity</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">ts_column</span><span class="o">=</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="n">granularity</span><span class="o">=</span><span class="n">granularity</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span>
+<span class="go">TimeStamp: 1990-07-13T00:00Z     Value: {value=27.0, key=a}</span>
+<span class="go">TimeStamp: 1990-07-20T00:00Z     Value: {value=45.0, key=b}</span>
+<span class="go">TimeStamp: 1990-07-27T00:00Z     Value: {value=4.0, key=b}</span>
+<span class="go">TimeStamp: 1990-07-27T00:00Z     Value: {value=7.0, key=a}</span>
+<span class="go">TimeStamp: 1990-08-10T00:00Z     Value: {value=17.0, key=a}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>create a time-series from a list of values</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span>
+<span class="go">TimeStamp: 0     Value: 0</span>
+<span class="go">TimeStamp: 1     Value: 1</span>
+</pre></div>
+</div>
+<p>create a time-series from a list of values with a time-reference system</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">granularity</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1990</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">granularity</span><span class="o">=</span><span class="n">granularity</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span>
+<span class="go">TimeStamp: 1990-07-06T00:00Z     Value: 0</span>
+<span class="go">TimeStamp: 1990-07-07T00:00Z     Value: 1</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>create a collection of observations</p></li>
+</ul>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tspy</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">builder</span><span class="p">()</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tspy</span><span class="o">.</span><span class="n">observation</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">))</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">tspy</span><span class="o">.</span><span class="n">observation</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">observations</span>
+<span class="go">[(0,0),(1,1)]</span>
+</pre></div>
+</div>
+<p>create a time-series from observations</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span>
+<span class="go">TimeStamp: 0     Value: 0</span>
+<span class="go">TimeStamp: 1     Value: 1</span>
+</pre></div>
+</div>
+<p>create a time-series from observations with a time-reference system</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">granularity</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">start_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">1990</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span> <span class="o">=</span> <span class="n">tspy</span><span class="o">.</span><span class="n">time_series</span><span class="p">(</span><span class="n">observations</span><span class="p">,</span> <span class="n">granularity</span><span class="o">=</span><span class="n">granularity</span><span class="p">,</span> <span class="n">start_time</span><span class="o">=</span><span class="n">start_time</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ts</span>
+<span class="go">TimeStamp: 1990-07-06T00:00Z     Value: 0</span>
+<span class="go">TimeStamp: 1990-07-07T00:00Z     Value: 1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tspy.data_structures.html">tspy.data_structures package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tspy.data_structures.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.forecasting.html">tspy.data_structures.forecasting package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tspy.data_structures.forecasting.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.io.html">tspy.data_structures.io package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tspy.data_structures.io.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.ml.html">tspy.data_structures.ml package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tspy.data_structures.ml.html#subpackages">Subpackages</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.multi_time_series.html">tspy.data_structures.multi_time_series package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tspy.data_structures.multi_time_series.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.observations.html">tspy.data_structures.observations package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tspy.data_structures.observations.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.stream_multi_time_series.html">tspy.data_structures.stream_multi_time_series package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tspy.data_structures.stream_multi_time_series.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.stream_time_series.html">tspy.data_structures.stream_time_series package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tspy.data_structures.stream_time_series.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.time_series.html">tspy.data_structures.time_series package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tspy.data_structures.time_series.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.transforms.html">tspy.data_structures.transforms package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tspy.data_structures.transforms.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tspy.data_structures.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.NumStats.html">tspy.data_structures.NumStats module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.Stats.html">tspy.data_structures.Stats module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.context.html">tspy.data_structures.context module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.data_structures.utils.html">tspy.data_structures.utils module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tspy.functions.html">tspy.functions package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tspy.functions.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tspy.functions.expressions.html">tspy.functions.expressions module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.functions.interpolators.html">tspy.functions.interpolators module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.functions.matchers.html">tspy.functions.matchers module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.functions.reducers.html">tspy.functions.reducers module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tspy.functions.reducers.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.functions.segmenters.html">tspy.functions.segmenters module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.functions.transformers.html">tspy.functions.transformers module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tspy.ml.html">tspy.ml package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tspy.ml.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tspy.ml.clustering.html">tspy.ml.clustering package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tspy.ml.clustering.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tspy.ml.html#submodules">Submodules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tspy.ml.feature_vectors.html">tspy.ml.feature_vectors module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tspy.exceptions.html">tspy.exceptions module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tspy.forecasters.html">tspy.forecasters module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tspy.multi_time_series.html">tspy.multi_time_series module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tspy.observations.html">tspy.observations module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tspy.others.html">tspy.others module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tspy.stream_multi_time_series.html">tspy.stream_multi_time_series module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tspy.stream_time_series.html">tspy.stream_time_series module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tspy.time_series.html">tspy.time_series module</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tspy.data_structures.html" class="btn btn-neutral float-right" title="tspy.data_structures package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="howto.html" class="btn btn-neutral float-left" title="How to …" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, IBM Research
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

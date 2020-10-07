@@ -1,0 +1,7 @@
+tspy.data\_structures.observations.TRS module
+=============================================
+
+.. automodule:: tspy.data_structures.observations.TRS
+   :members:
+   :undoc-members:
+   :show-inheritance:

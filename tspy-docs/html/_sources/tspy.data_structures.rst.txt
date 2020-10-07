@@ -1,0 +1,34 @@
+tspy.data\_structures package
+=============================
+
+.. automodule:: tspy.data_structures
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   tspy.data_structures.forecasting
+   tspy.data_structures.io
+   tspy.data_structures.ml
+   tspy.data_structures.multi_time_series
+   tspy.data_structures.observations
+   tspy.data_structures.stream_multi_time_series
+   tspy.data_structures.stream_time_series
+   tspy.data_structures.time_series
+   tspy.data_structures.transforms
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   tspy.data_structures.NumStats
+   tspy.data_structures.Stats
+   tspy.data_structures.context
+   tspy.data_structures.utils

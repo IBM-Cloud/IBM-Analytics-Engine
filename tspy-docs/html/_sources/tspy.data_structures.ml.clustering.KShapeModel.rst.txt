@@ -1,0 +1,7 @@
+tspy.data\_structures.ml.clustering.KShapeModel module
+======================================================
+
+.. automodule:: tspy.data_structures.ml.clustering.KShapeModel
+   :members:
+   :undoc-members:
+   :show-inheritance:

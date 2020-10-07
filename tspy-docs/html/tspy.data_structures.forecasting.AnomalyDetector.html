@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tspy.data_structures.forecasting.AnomalyDetector module &mdash; TSPy alpha documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="_static/js/custom.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="tspy.data_structures.forecasting.ForecastingModel module" href="tspy.data_structures.forecasting.ForecastingModel.html" />
+    <link rel="prev" title="tspy.data_structures.forecasting package" href="tspy.data_structures.forecasting.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> TSPy
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="design.html">Library Design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html">How to …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-two-ts">How to (two TS) …</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto.html#how-to-forecasting">How to forecasting …</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="tspy.html">tspy package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="tspy.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="tspy.data_structures.html">tspy.data_structures package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="tspy.data_structures.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tspy.data_structures.html#submodules">Submodules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.functions.html">tspy.functions package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tspy.ml.html">tspy.ml package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tspy.html#submodules">Submodules</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TSPy</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="tspy.html">tspy package</a> &raquo;</li>
+        
+          <li><a href="tspy.data_structures.html">tspy.data_structures package</a> &raquo;</li>
+        
+          <li><a href="tspy.data_structures.forecasting.html">tspy.data_structures.forecasting package</a> &raquo;</li>
+        
+      <li>tspy.data_structures.forecasting.AnomalyDetector module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tspy.data_structures.forecasting.AnomalyDetector.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-tspy.data_structures.forecasting.AnomalyDetector">
+<span id="tspy-data-structures-forecasting-anomalydetector-module"></span><h1>tspy.data_structures.forecasting.AnomalyDetector module<a class="headerlink" href="#module-tspy.data_structures.forecasting.AnomalyDetector" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="tspy.data_structures.forecasting.AnomalyDetector.AnomalyDetector">
+<em class="property">class </em><code class="sig-prename descclassname">tspy.data_structures.forecasting.AnomalyDetector.</code><code class="sig-name descname">AnomalyDetector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">jvm</span></em>, <em class="sig-param"><span class="n">confidence</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.forecasting.AnomalyDetector.AnomalyDetector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A basic anomaly detector which used in conjunction with a
+<code class="xref py py-class docutils literal notranslate"><span class="pre">ForecastingModel</span></code> can identify anomalies</p>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#tspy.data_structures.forecasting.AnomalyDetector.AnomalyDetector.is_anomaly" title="tspy.data_structures.forecasting.AnomalyDetector.AnomalyDetector.is_anomaly"><code class="xref py py-obj docutils literal notranslate"><span class="pre">is_anomaly</span></code></a>(forecasting_model, timestamp, value)</p></td>
+<td><p>check for an anomaly given a forecasting model, a timestamp, and a value</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="tspy.data_structures.forecasting.AnomalyDetector.AnomalyDetector.is_anomaly">
+<code class="sig-name descname">is_anomaly</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">forecasting_model</span></em>, <em class="sig-param"><span class="n">timestamp</span></em>, <em class="sig-param"><span class="n">value</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tspy.data_structures.forecasting.AnomalyDetector.AnomalyDetector.is_anomaly" title="Permalink to this definition">¶</a></dt>
+<dd><p>check for an anomaly given a forecasting model, a timestamp, and a value</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl>
+<dt><strong>forecasting_model</strong><span class="classifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">ForecastingModel</span></code></span></dt><dd><p>the model against which this request is made</p>
+</dd>
+<dt><strong>timestamp</strong><span class="classifier">int</span></dt><dd><p>the point in time for which the actual value corresponds</p>
+</dd>
+<dt><strong>value</strong><span class="classifier">float</span></dt><dd><p>the data value under consideration as an anomaly</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>bool</dt><dd><p>true if the value is outside of the bounds identified for the given time using the instance’s confidence
+level or the value is NaN, otherwise false</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tspy.data_structures.forecasting.ForecastingModel.html" class="btn btn-neutral float-right" title="tspy.data_structures.forecasting.ForecastingModel module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tspy.data_structures.forecasting.html" class="btn btn-neutral float-left" title="tspy.data_structures.forecasting package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, IBM Research
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

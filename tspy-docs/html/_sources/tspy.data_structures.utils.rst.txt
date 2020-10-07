@@ -1,0 +1,7 @@
+tspy.data\_structures.utils module
+==================================
+
+.. automodule:: tspy.data_structures.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

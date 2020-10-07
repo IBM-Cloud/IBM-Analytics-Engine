@@ -1,0 +1,266 @@
+************
+Introduction
+************
+
+What is tspy?
+===================================
+
+**tspy** is the Python wrapper to the Apache Spark-powered time-series library.
+
+The library is provided as part of `IBM Analytics Engine <https://www.ibm.com/cloud/analytics-engine>`_ and can be used via `IBM Watson Studio <https://www.ibm.com/cloud/watson-studio>`_. 
+
+
+To load the library, we run:
+
+.. code-block:: python
+
+    import tspy
+
+However, we may also need to load :ref:`other modules <tspy-design-label>`.
+
+
+What is a time series: STS and MTS?
+===================================
+
+A time series is a sequence of data values measured at successive, though not necessarily regular, points in time. 
+A time point is called a :ref:`timestamp <timestamp-label>`, and its combination with the associated sequence of data values is called an :ref:`observation <observation-label>`.
+
+We can have one or many data columns at each time point.
+
+.. math::
+    \begin{array}{cc}
+    timestamp & data1 \\
+    t1 & o1_1  \\
+    t2 & o1_2  \\
+    t3 & o1_3  \\
+    ... \\
+    tn & o1_n  \\
+    \end{array}
+
+    \begin{array}{ccc}
+    timestamp & data1 & data2 \\
+    t1 & o1_1 & o2_1 \\
+    t2 & o1_2 & o2_2 \\
+    t3 & o1_3 & o2_3 \\
+    ... \\
+    tn & o1_n & o2_n \\
+    \end{array}
+
+
+In general, you time-series data can be organized as a **single time-series** (STS) object, as given above, or a **multiple time-series** (MTS) object, as given below. 
+In MTS, each time-series belongs to a particular grouping value
+
+.. math::
+
+    \begin{array}{cccc}
+    group & timestamp & data1 & data2 \\
+    g1 & t1 & o1_1 & o2_1 \\
+    g1 & t2 & o1_2 & o2_2 \\
+    g1 & t3 & o1_3 & o2_3 \\
+    g1 & ... \\
+    g1 & tn & o1_n & o2_n \\
+    g2 & t'1 & o1'_1 & o2'_1 \\
+    g2 & t'2 & o1'_2 & o2'_2 \\
+    g2 & t'3 & o1'_3 & o2'_3 \\
+    g2 & ... \\           
+    g2 & t'n & o1'_n & o2'_n \\
+    \end{array}
+
+
+.. _timestamp-label:
+
+What is a timestamp in tspy?
+=======================================================
+
+A timestamp (or time-tick) can be, but must not necessarily be, associated with a time reference system (TRS), which defines the granularity of each timetick and the start time.
+
+The time is stored as a `long` type.  In the simplest scenario, a timestamp is just an integer value, and can be inferred from the index of the data
+
+.. code-block:: python
+
+    import tspy
+    values = [1.0, 2.0, 4.0]
+    x = tspy.time_series(values)
+    x
+
+.. code-block:: console
+
+    TimeStamp: 0     Value: 1.0
+    TimeStamp: 1     Value: 2.0
+    TimeStamp: 2     Value: 4.0
+
+To make the `long` value human-readable, it needs to be mapped to a *time-reference-system*  (TRS).
+
+.. _TRS-label:
+
+TRS is a local, regional or global system used to identify time. A time reference system defines a specific projection for forward and reverse mapping between timestamp and its numeric representation. A common example that most of us are familiar with is UTC time, which maps a timestamp (Jan 1, 2019 12am midnight GMT) into a 64-bit integer value (1546300800000) that captures the number of milliseconds that have elapsed since Jan 1, 1970 12am (midnight) GMT. Generally speaking, the timestamp
+value is better suited for human readability, while the numeric representation is better suited for machine processing.
+
+
+.. _observation-label:
+
+What is an observation in tspy?
+=======================================================
+
+An **observation** is a combination of a :ref:`timestamp <timestamp-label>` and a value which can be any, e.g. numeric value, categorical value, or an array of numeric/categorical values.
+
+In Python, a numeric value is represented in the computer using one of the following types:
+
+* built-in: int, float
+* np.ndarray, pd.dataframe: int32, int64, float64
+
+In tspy, an observation is of type :class:`.Observation`. However, you don't create it directly. Instead, an **observation** is created using :func:`.observation` API. 
+
+.. 
+    NOTE: This API is also exposed to be used directly from `tspy` package, i.e. :func:`tspy.observation`.
+
+.. code-block:: python
+
+    import tspy
+    # simple timestamp ~ an int
+    x = tspy.observation(1, 1.0)
+
+.. _observationcollection-label:
+
+What is an observation collection in tspy?
+=======================================================
+
+An **observation collection** is a sequence of :ref:`observation <observation-label>`, with certain properties.
+It is described in class :py:class:`.ObservationCollection`. However, we don't create 
+it directly from the class. Instead, an observation collection is created using :func:`tspy.observations`.
+
+.. code-block:: python
+
+    import tspy
+    observations = tspy.observations(
+       tspy.observation(1, 1.0),
+       tspy.observation(2, 2.0),
+       tspy.observation(3, 3.0),
+       tspy.observation(4, 4.0)
+    )
+
+Another option is to use the single-time-series builder :func:`tspy.builder` to create a single-time-series object,
+from which we can extract the observation collections using :meth:`.result` API.
+
+.. code-block:: python
+
+    import tspy
+    ts_builder = tspy.ts_builder()
+    ts_builder.add(tspy.observation(1,1))
+    ts_builder.add(tspy.observation(2,2))
+    ts_builder.add(tspy.observation(1,3))
+    observations = ts_builder.result()
+
+
+.. _segment-label:
+
+What is a segment in tspy?
+=======================================================
+
+A **segment** is an **observation collection** with:
+
+* extra information: start time and end time [the start/end time needs not equal to the first/last timestamp]
+* observations are sorted in order.
+
+It is represented by :py:class:`.Segment` class. Generally, we don't create a segment directly and we don't store an individual segment separately. Instead, a segment can be created 
+by :ref:`segmenting or windowing <segmenttimeseries-label>` a TimeSeries object or MultiTimeSeries object, which returns a new type such as :py:class:`.SegmentTimeSeries` and :py:class:`.SegmentMultiTimeSeries`. 
+
+
+* **window-based segmentation**: segment by sliding a window (of given size) with an offset which can be index-based (:meth:`.TimeSeries.segment`, :meth:`.MultiTimeSeries.segment`) or time-based (:meth:`.TimeSeries.segment_by_time`, :meth:`.MultiTimeSeries.segment_by_time`). 
+
+.. code-block:: python
+
+    # .segment(window_size, offset)
+    seg_ts = ts.segment(3,2)
+
+* **segment by silence**: 
+
+.. code-block:: python
+
+    # N/A
+
+* **anchor-based segmentation**: segment by filtering the value to the right segment (:meth:`.TimeSeries.segment_by`, :meth:`.TimeSeries.segment_by_anchor`, :meth:`.TimeSeries.segment_by_changepoint`, :meth:`.TimeSeries.segment_by_marker`, :meth:`.MultiTimeSeries.segment_by`, :meth:`.MultiTimeSeries.segment_by_anchor`, :meth:`.MultiTimeSeries.segment_by_changepoint`, :meth:`.MultiTimeSeries.segment_by_marker`). Example: put into 2 segments (one holds odd values, and one holds even values)
+
+.. code-block:: python
+
+    seg_ts = ts.segment_by(lambda x: x % 2 == 0)
+
+    seg_ts = ts.segment_by_time(3, 3)
+
+    seg_ts = ts.segment_by_anchor(lambda d: d%2 == 0, 1, 1)
+
+.. _timeseries-label:
+
+What is a (single) time-series (STS) in tspy?
+=======================================================
+
+It is represented by :py:class:`.TimeSeries` class. To create a time-series, however, we use through the builder
+which accepts data in different forms. Eventually, the data is converted to an internal representation for STS and MTS. 
+
+* In memory list
+* Pandas dataframe
+* In memory collection of observations (:class:`.ObservationCollection`)
+* User defined reader (:class:`.TimeSeriesReader`)
+
+.. code-block:: python
+
+    import tspy
+    values = [1.0, 2.0, 4.0]
+    x = tspy.builder.time_series(values)
+    x
+
+The example belows shows how to create a simple STS where each index denotes a day after the start time of 1990-01-01 (:ref:`TRS <TRS-label>`).
+
+.. code-block:: python
+
+    import tspy
+    import datetime
+    granularity = datetime.timedelta(days=1)
+    start_time = datetime.datetime(1990, 1, 1, 0, 0, 0, 0, tzinfo=datetime.timezone.utc)
+    x = tspy.time_series([1, 2, 3], granularity=granularity, start_time=start_time)
+
+REF: :func:`.builders.time_series.time_series`
+
+.. _multitimeseries-label:
+
+What is a multi-time-series (MTS) in tspy?
+=======================================================
+
+It is represented by :py:class:`.MultiTimeSeries` class. To create a time-series, however, we use through the builder `tspy.builders.multi_time_series`.
+
+tspy accepts data in different forms which can be converted to 
+an internal representation for STS and MTS. 
+
+* In memory list
+* Pandas dataframe
+* In memory collection of observations (:class:`.ObservationCollection`)
+* User defined reader (:class:`.TimeSeriesReader`)
+
+.. code-block:: python
+
+    data = np.array([['', 'letters', 'timestamp', "numbers"],
+          ['', "a", 1, 27],
+          ['', "b", 3, 4],
+          ['', "a", 5, 17],
+          ['', "a", 3, 7],
+          ['', "b", 2, 45]
+         ])
+    df = pd.DataFrame(data=data[1:, 1:],
+           columns=data[0, 1:]).astype(dtype={'letters': 'object', 'timestamp': 'int64', 'numbers': 'float64'})
+    x =  tspy.multi_time_series(df, ts_column='timestamp')
+
+REF: :func:`.builders.multi_time_series.multi_time_series`
+
+.. _segmenttimeseries-label:
+
+What is a segment time-series (SegTS) in tspy?
+=======================================================
+
+A **segment time-series**, represented by either :class:`.SegmentTimeSeries` or :class:`.SegmentMultiTimeSeries` class, is a special form of time-series, as a result of :ref:`segmenting <segment-label>` the STS/MTS object. 
+
+
+.. 
+    How a time series is represented in tspy?
+    =======================================================
+
+

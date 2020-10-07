@@ -1,0 +1,7 @@
+tspy.data\_structures.stream\_multi\_time\_series.MultiObservationStream module
+===============================================================================
+
+.. automodule:: tspy.data_structures.stream_multi_time_series.MultiObservationStream
+   :members:
+   :undoc-members:
+   :show-inheritance:

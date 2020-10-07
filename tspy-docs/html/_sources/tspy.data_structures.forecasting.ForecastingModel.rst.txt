@@ -1,0 +1,7 @@
+tspy.data\_structures.forecasting.ForecastingModel module
+=========================================================
+
+.. automodule:: tspy.data_structures.forecasting.ForecastingModel
+   :members:
+   :undoc-members:
+   :show-inheritance:

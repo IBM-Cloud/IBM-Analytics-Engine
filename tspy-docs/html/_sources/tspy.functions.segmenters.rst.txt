@@ -1,0 +1,7 @@
+tspy.functions.segmenters module
+================================
+
+.. automodule:: tspy.functions.segmenters
+   :members:
+   :undoc-members:
+   :show-inheritance:

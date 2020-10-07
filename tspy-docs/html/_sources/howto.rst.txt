@@ -1,0 +1,270 @@
+************
+How to ...
+************
+
+import 
+----------------
+
+..
+    import tspy
+    import tspy.functions as tsfunc
+
+convert back to DataFrame
+-------------------------
+
+.. code-block:: python
+
+    # to be added
+
+collect statistics 
+-------------------------
+
+Common statistics is returned using a method similar to DataFrame.describe()
+
+* number of data points: :meth:`.TimeSeries.describe`
+* common statistics: :meth:`.TimeSeries.count`
+
+.. code-block:: python
+
+    # to be added
+    ts.count()
+
+    ts.describe()
+
+load data into memory
+-------------------------
+
+A key property of a time-series data is its lazyness property, i.e. a chain of operation can be applied to it, and the real execution only occurs at action operation.
+
+An observation collection is an in-memory form of a Time-Series, i.e. no lazy is used on observation collection. So, the belows are action operations
+
+* :meth:`.TimeSeries.collect` 
+* :meth:`.TimeSeries.get_values` 
+
+.. code-block:: python
+    
+    observations = ts.collect()
+
+    # load only a range
+    observations = ts.get_values()
+
+
+element-wise transform
+-------------------------
+
+We can use :meth:`.TimeSeries.map` which accepts a lambda function with the argument representing the *value* in the given
+observation to transform.
+
+.. 
+    Ask Josh: can we also take into account the timetick for the lambda?
+
+.. code-block:: python
+    
+    # increase one to each value
+    ts_2 = ts.map(lambda x: x+1)
+
+filter out values from a time-series
+--------------------------------------
+
+We can use :meth:`.TimeSeries.filter` which accepts a `bool` lambda function with the argument representing the *value* in the given
+observation - and returns only observation whose value the lambda function return *True*.
+
+.. 
+    Ask Josh: can we also take into account the timetick for the lambda?
+
+.. code-block:: python
+    
+    # get even values 
+    ts_2 = ts.filter(lambda x: x %2 == 0)
+
+
+transform a time-series
+--------------------------------------
+
+* The  :meth:`.TimeSeries.lag` transform the time-series by keeping only data points at a given lag wrt to the first timetick. This gives you a new time-series with fewer data points
+
+
+.. code-block:: python
+    
+    ts_2 = ts.lag(1)
+
+* The  :meth:`.TimeSeries.shift` transform the time-series by keeping the time, but move the data values, and those doesn't have the associated new data value are filled with N/A by default.
+
+.. code-block:: python
+    
+    ts_2 = ts.shift(1)
+
+* More complex transforms such as taking the difference between two adjacent values can be done using :meth:`.TimeSeries.transform` combined with a proper transformers, e.g. :func:`.functions.transformers.difference`. The different transformers are given in :mod:`.functions.transformers`
+
+    * add white-noise
+    * z-score (zero-mean normalization)
+    * remove consecutive duplicated values
+    * combine values with the same time-tick
+
+.. code-block:: python
+    
+    import tspy.functions as tsfunc
+    ts_2 = ts.transform(tsfunc.transformers.difference())
+
+    ts_2 = ts.transform(tsfunc.transformers.remove_consecutive_duplicate_values())
+
+    ts_2 = ts.transform(tsfunc.transformers.combine_duplicate_time_ticks(lambda x: sum(x)))
+
+The transforms, once applied to :ref:`SegmentTimeSeries <segmenttimeseries-label>`, would returns a new time-series, in that
+each new observation is the result of reducing a segment.
+
+reduce a time-series
+--------------------------------------------------
+
+A reducer is a special form of transforms that returns a single-value or a few values, i.e. it is no longer a time-series.
+A specific reducer is a function provided in the :mod:`.functions.reducers` module.
+We pass that function to the :meth:`.TimeSeries.reduce` API.
+
+* average: :func:`.reducers.average`
+* Augmented-Dickey-Fuller test (ADF): test if a STS is stationary or not: :func:`.reducers.adf`
+* ... [REF: :mod:`.reducers`]
+
+
+.. code-block:: python
+
+    import tspy.functions as tsfunc
+    avg = ts.reduce(tsfunc.reducers.average())
+
+    ts.reduce(tsfunc.reducers.auto_correlation())
+
+    ts.reduce(tsfunc.reducers.adf())
+
+
+deal with missing values (N/A) in a time-series
+--------------------------------------------------
+
+We use :meth:`.TimeSeries.fillna`
+
+.. code-block:: python
+    
+    import tspy.functions as tsfunc
+    new_ts = ts.fillna(tsfunc.interpolators.fill(0.0))
+
+resample a time-series
+--------------------------------------------------
+
+The :meth:`.TimeSeries.resample` can be combined with a proper interpolation function (:mod:`.functions`)
+
+.. code-block:: python
+    
+    import tspy.functions as tsfunc
+    periodicity = 2
+    interp = tsfunc.interpolators.nearest(0.0)
+
+    interp_ts = ts.resample(periodicity, interp)
+
+Another way is to segment the time-series, and then apply reducer on each segment.
+
+.. code-block:: python
+    
+    import tspy.functions as tsfunc
+    ts.segment(2).transform(tsfunc.reducers.average())
+
+************************
+How to (two TS) ...
+************************
+
+align two time-series
+----------------------------------
+
+The result will be two new STS, each with aligned timestamps with each other.
+
+* inner align
+* full align
+* left align
+* right align
+* left outer align
+* right outer align
+
+merge (via join) two time-series
+---------------------------------
+
+* inner join
+* full join
+* left join
+* right join
+* left outer join
+* right outer join
+
+This will fill missing values with null. The result of the join will be an `list` where the first value is from the left series and the second value is from the right series.
+
+.. code-block:: python
+
+    ts_full = ts_left.full_join(ts_right)
+    print(ts_full)
+
+    # Perform full join with interpolation
+    interp = tsfunc.interpolators.linear()
+
+    ts_full = ts_left.full_join(ts_right, left_interp_func=interp, right_interp_func=interp)
+
+
+correlate two time-series
+-------------------------
+
+* auto-correlation: measure linear relationship between lagged values of a STS.
+* correlation: Pearson correlation of two STSs.
+* dynamic time warping (dtw): measure similarity between two STSs which may vary in speed
+* Granger causality (granger): test the causality between two STSs.
+
+.. code-block:: python
+
+    import tspy.functions as tsfunc
+    ts.reduce(tsfunc.reducers.auto_correlation())
+
+    corr = ts.reduce(ts2, tsfunc.reducers.correlation())
+
+    dtw_distance = ts.reduce(ts2,
+                         tsfunc.reducers.dtw(lambda obs1, obs2: abs(bs1.value - obs2.value)))
+
+     ts.reduce(ts2, tsfunc.reducers.granger(1))
+
+************************
+How to forecasting ...
+************************
+
+TimeSeries library currently supports the following forecasting models:
+
+* BATS
+* Holt-Winters
+* ARIMA
+* ARMA
+* AUTO
+* Season Selector
+* Anomaly Detector
+
+
+Three steps:
+
+1. create a model, which is independent from the time-series data
+2. `update_model`: train the model on the given time-series data
+3. `forecast`, `forecast_at`: use the trained model to predict
+
+.. code-block:: python
+
+    import tspy
+    training_sample_size = 10
+    bats_model = tspy.forecasters.bats(training_sample_size)
+
+
+    for i in range(100):
+        timestamp = i
+        value = random.randint(1,10) * 1.0
+        model.update_model(timestamp, value)
+
+    if model.is_initialized():
+        print(model.forecast_at(120))
+
+    num_predictions = 5
+    model = tspy.forecasters.auto(8)
+    confidence = .99
+
+    predictions = ts.forecast(num_predictions, model, confidence=confidence)
+
+    # the list of predicted values can be retrieved in TimeSeries or DataFrame
+    predictions.to_time_series().to_df()

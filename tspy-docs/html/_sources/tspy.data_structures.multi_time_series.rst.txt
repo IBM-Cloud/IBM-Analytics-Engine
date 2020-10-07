@@ -1,0 +1,16 @@
+tspy.data\_structures.multi\_time\_series package
+=================================================
+
+.. automodule:: tspy.data_structures.multi_time_series
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   tspy.data_structures.multi_time_series.MultiTimeSeries
+   tspy.data_structures.multi_time_series.SegmentMultiTimeSeries

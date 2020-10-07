@@ -1,0 +1,7 @@
+tspy.functions.matchers module
+==============================
+
+.. automodule:: tspy.functions.matchers
+   :members:
+   :undoc-members:
+   :show-inheritance:
