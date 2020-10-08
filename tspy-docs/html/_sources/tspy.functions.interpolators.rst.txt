@@ -1,7 +1,0 @@
-tspy.functions.interpolators module
-===================================
-
-.. automodule:: tspy.functions.interpolators
-   :members:
-   :undoc-members:
-   :show-inheritance:

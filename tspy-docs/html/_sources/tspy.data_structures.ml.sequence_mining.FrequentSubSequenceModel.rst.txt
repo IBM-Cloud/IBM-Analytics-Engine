@@ -1,7 +1,0 @@
-tspy.data\_structures.ml.sequence\_mining.FrequentSubSequenceModel module
-=========================================================================
-
-.. automodule:: tspy.data_structures.ml.sequence_mining.FrequentSubSequenceModel
-   :members:
-   :undoc-members:
-   :show-inheritance:

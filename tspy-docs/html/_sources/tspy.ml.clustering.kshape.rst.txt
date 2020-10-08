@@ -1,7 +1,0 @@
-tspy.ml.clustering.kshape module
-================================
-
-.. automodule:: tspy.ml.clustering.kshape
-   :members:
-   :undoc-members:
-   :show-inheritance:

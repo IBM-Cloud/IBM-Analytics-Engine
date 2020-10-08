@@ -1,7 +1,0 @@
-tspy.data\_structures.observations.Segment module
-=================================================
-
-.. automodule:: tspy.data_structures.observations.Segment
-   :members:
-   :undoc-members:
-   :show-inheritance:

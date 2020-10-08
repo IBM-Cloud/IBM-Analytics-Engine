@@ -1,7 +1,0 @@
-tspy.data\_structures.stream\_multi\_time\_series.SegmentStreamMultiTimeSeries module
-=====================================================================================
-
-.. automodule:: tspy.data_structures.stream_multi_time_series.SegmentStreamMultiTimeSeries
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,7 +1,0 @@
-tspy.data\_structures.io.DataSink module
-========================================
-
-.. automodule:: tspy.data_structures.io.DataSink
-   :members:
-   :undoc-members:
-   :show-inheritance:

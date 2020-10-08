@@ -1,7 +1,0 @@
-tspy.functions.expressions module
-=================================
-
-.. automodule:: tspy.functions.expressions
-   :members:
-   :undoc-members:
-   :show-inheritance:

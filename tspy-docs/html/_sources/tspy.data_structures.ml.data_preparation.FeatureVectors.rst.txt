@@ -1,7 +1,0 @@
-tspy.data\_structures.ml.data\_preparation.FeatureVectors module
-================================================================
-
-.. automodule:: tspy.data_structures.ml.data_preparation.FeatureVectors
-   :members:
-   :undoc-members:
-   :show-inheritance:

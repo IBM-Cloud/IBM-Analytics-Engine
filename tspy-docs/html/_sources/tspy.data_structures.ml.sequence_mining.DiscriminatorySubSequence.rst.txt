@@ -1,7 +1,0 @@
-tspy.data\_structures.ml.sequence\_mining.DiscriminatorySubSequence module
-==========================================================================
-
-.. automodule:: tspy.data_structures.ml.sequence_mining.DiscriminatorySubSequence
-   :members:
-   :undoc-members:
-   :show-inheritance:

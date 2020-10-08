@@ -1,7 +1,0 @@
-tspy.observations module
-========================
-
-.. automodule:: tspy.observations
-   :members:
-   :undoc-members:
-   :show-inheritance:

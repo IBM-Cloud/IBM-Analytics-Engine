@@ -1,7 +1,0 @@
-tspy.data\_structures.time\_series.TimeSeries module
-====================================================
-
-.. automodule:: tspy.data_structures.time_series.TimeSeries
-   :members:
-   :undoc-members:
-   :show-inheritance:

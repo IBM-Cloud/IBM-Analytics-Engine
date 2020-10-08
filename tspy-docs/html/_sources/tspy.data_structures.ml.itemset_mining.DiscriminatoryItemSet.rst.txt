@@ -1,7 +1,0 @@
-tspy.data\_structures.ml.itemset\_mining.DiscriminatoryItemSet module
-=====================================================================
-
-.. automodule:: tspy.data_structures.ml.itemset_mining.DiscriminatoryItemSet
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,7 +1,0 @@
-tspy.functions.reducers module
-==============================
-
-.. automodule:: tspy.functions.reducers
-   :members:
-   :undoc-members:
-   :show-inheritance:

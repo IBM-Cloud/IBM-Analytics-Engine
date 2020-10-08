@@ -1,7 +1,0 @@
-tspy.data\_structures.forecasting.SeasonSelector module
-=======================================================
-
-.. automodule:: tspy.data_structures.forecasting.SeasonSelector
-   :members:
-   :undoc-members:
-   :show-inheritance:

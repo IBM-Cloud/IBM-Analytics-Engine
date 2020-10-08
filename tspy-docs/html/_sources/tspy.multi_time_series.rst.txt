@@ -1,7 +1,0 @@
-tspy.multi\_time\_series module
-===============================
-
-.. automodule:: tspy.multi_time_series
-   :members:
-   :undoc-members:
-   :show-inheritance:

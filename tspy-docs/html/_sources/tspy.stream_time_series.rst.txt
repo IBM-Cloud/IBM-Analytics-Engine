@@ -1,7 +1,0 @@
-tspy.stream\_time\_series module
-================================
-
-.. automodule:: tspy.stream_time_series
-   :members:
-   :undoc-members:
-   :show-inheritance:

@@ -1,7 +1,0 @@
-tspy.forecasters module
-=======================
-
-.. automodule:: tspy.forecasters
-   :members:
-   :undoc-members:
-   :show-inheritance:

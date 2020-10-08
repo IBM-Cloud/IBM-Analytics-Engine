@@ -1,7 +1,0 @@
-tspy.data\_structures.observations.ObservationCollection module
-===============================================================
-
-.. automodule:: tspy.data_structures.observations.ObservationCollection
-   :members:
-   :undoc-members:
-   :show-inheritance:

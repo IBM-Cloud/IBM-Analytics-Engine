@@ -1,7 +1,0 @@
-tspy.data\_structures.io.PushStreamMultiTimeSeriesReader module
-===============================================================
-
-.. automodule:: tspy.data_structures.io.PushStreamMultiTimeSeriesReader
-   :members:
-   :undoc-members:
-   :show-inheritance:

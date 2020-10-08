@@ -1,7 +1,0 @@
-tspy.ml.feature\_vectors module
-===============================
-
-.. automodule:: tspy.ml.feature_vectors
-   :members:
-   :undoc-members:
-   :show-inheritance:
