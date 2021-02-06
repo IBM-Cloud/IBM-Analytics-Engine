@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+echo "$NODE_TYPE <-- NodeType"
 if [ "x$NODE_TYPE" == "management2" ]
 then 
   /home/common/conda/miniconda3.7/bin/pip3 install xlwt
