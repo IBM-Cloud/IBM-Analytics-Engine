@@ -1,0 +1,12 @@
+{
+  "application_details": {
+  "application": "/opt/ibm/customization-scripts/customize_instance_app.py",
+    "arguments": ["{\"library_set\":{\"action\":\"add\",\"name\":\"kafka_jaas_conf\",\"script\":{\"source\":\"py_files\",\"params\":[\"https://CHANGEME\",\"CHANGEME\",\"jaas.conf\",\"CHANGEME_ACCESS_KEY\",\"CHANGEME_SECRET_KEY\"]}}}"],
+    "py-files": "cos://CHANGEME.mycosservice/customization_script.py",
+        "conf": {
+          "spark.hadoop.fs.cos.mycosservice.endpoint":"CHANGEME",
+          "spark.hadoop.fs.cos.mycosservice.access.key":"CHANGEME",
+          "spark.hadoop.fs.cos.mycosservice.secret.key":"CHANGEME"
+    }
+  }
+}
