@@ -1,0 +1,19 @@
+{
+  "application_details": {
+    "application": "cos://CHANGEME.mycosservice/kafkaconsumerexample_2.12-1.0.jar",
+    "class":"main.Main",
+    "conf": {
+      "spark.cos.url":"cos://CHANGEME.mycosservice",
+      "spark.hadoop.fs.cos.mycosservice.endpoint": "CHANGEME",
+      "spark.hadoop.fs.cos.mycosservice.access.key": "CHANGEME",
+      "spark.hadoop.fs.cos.mycosservice.secret.key": "CHANGEME",
+      "spark.driver.extraJavaOptions":"-Djava.security.auth.login.config=/home/spark/shared/user-libs/kafka_jaas_conf/custom/jaas.conf",
+      "spark.executor.extraJavaOptions":"-Djava.security.auth.login.config=/home/spark/shared/user-libs/kafka_jaas_conf/custom/jaas.conf",
+      "spark.kafka_bootstrap_servers":"CHANGEME",
+      "spark.kafka_topic":"stock",
+      "spark.trigger_time_ms":"30000",
+      "ae.spark.librarysets": "kafka_jaas_conf"
+      },
+      "packages":"org.apache.spark:spark-sql-kafka-0-10_2.12:3.1.2"
+    }
+}
