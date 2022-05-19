@@ -60,7 +60,7 @@ object Main {
       writeStream.
       format("parquet"). //This stores the data on COS as a parquet file. it can be changed to "csv" or "json" if required. 
       trigger(Trigger.ProcessingTime(trigger_time_ms)).
-      option("checkpointLocation", s"${s3Url}/checkpoint2s").
+      option("checkpointLocation", s"${s3Url}/checkpoint").
       option("path", s"${s3Url}/kafkadata").
       option("header", "true"). 
       start()
