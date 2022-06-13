@@ -66,7 +66,7 @@ start = PythonOperator(
 
 analyze_sales_data_america = PythonOperator(
     task_id = 'analyze_sales_data_america',
-    python_callable= _sales_data,
+    python_callable= _submit_spark_application,
     op_kwargs={'region':'america'},
     dag=dag)
 
@@ -79,7 +79,7 @@ track_application_america = PythonSensor(
 
 analyze_sales_data_europe = PythonOperator(
     task_id = 'analyze_sales_data_europe',
-    python_callable= _sales_data,
+    python_callable= _submit_spark_application,
     op_kwargs={'region':'europe'},
     dag=dag)
 
@@ -92,7 +92,7 @@ track_application_europe = PythonSensor(
 
 analyze_sales_data_asia = PythonOperator(
     task_id = 'analyze_sales_data_asia',
-    python_callable= _sales_data,
+    python_callable= _submit_spark_application,
     op_kwargs={'region':'asia'},
     dag=dag)
 
@@ -104,7 +104,7 @@ track_application_asia = PythonSensor(
 
 analyze_overall_trends = PythonOperator(
     task_id = 'analyze_overall_trends',
-    python_callable= _sales_data,
+    python_callable= _submit_spark_application,
     op_kwargs={'region':'overall'},
     dag=dag)
 
